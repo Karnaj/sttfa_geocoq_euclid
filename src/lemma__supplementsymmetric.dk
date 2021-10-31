@@ -1,0 +1,59 @@
+thm lemma__supplementsymmetric :
+  sttfa.eps
+    (sttfa.forall
+       euclidean__axioms.Point
+       (A:(sttfa.eta euclidean__axioms.Point) =>
+        sttfa.forall
+          euclidean__axioms.Point
+          (B:(sttfa.eta euclidean__axioms.Point) =>
+           sttfa.forall
+             euclidean__axioms.Point
+             (C:(sttfa.eta euclidean__axioms.Point) =>
+              sttfa.forall
+                euclidean__axioms.Point
+                (D:(sttfa.eta euclidean__axioms.Point) =>
+                 sttfa.forall
+                   euclidean__axioms.Point
+                   (E:(sttfa.eta euclidean__axioms.Point) =>
+                    sttfa.impl (euclidean__defs.Supp A B C E D) (euclidean__defs.Supp D B E C A)))))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  D:(sttfa.eta euclidean__axioms.Point) =>
+  E:(sttfa.eta euclidean__axioms.Point) =>
+  H:(sttfa.eps (euclidean__defs.Supp A B C E D)) =>
+  (H0:(sttfa.eps (logic.and (euclidean__defs.Out B C E) (euclidean__axioms.BetS A B D))) =>
+   (H1:(sttfa.eps (euclidean__axioms.BetS D B A)) =>
+    (H2:(sttfa.eps (euclidean__defs.Out B E C)) =>
+     (H3:(sttfa.eps (euclidean__defs.Supp D B E C A)) => H3)
+       (logic.conj (euclidean__defs.Out B E C) (euclidean__axioms.BetS D B A) H2 H1))
+      (logic.and__ind
+         (euclidean__defs.Out B C E)
+         (euclidean__axioms.BetS A B D)
+         (euclidean__defs.Out B E C)
+         (H2:(sttfa.eps (euclidean__defs.Out B C E)) =>
+          H3:(sttfa.eps (euclidean__axioms.BetS A B D)) => lemma__ray5.lemma__ray5 B C E H2)
+         H0))
+     (logic.and__ind
+        (euclidean__defs.Out B C E)
+        (euclidean__axioms.BetS A B D)
+        (euclidean__axioms.BetS D B A)
+        (H1:(sttfa.eps (euclidean__defs.Out B C E)) =>
+         H2:(sttfa.eps (euclidean__axioms.BetS A B D)) =>
+         euclidean__axioms.axiom__betweennesssymmetry A B D H2)
+        H0))
+    ((H0:(sttfa.eps (logic.and (euclidean__defs.Out B C E) (euclidean__axioms.BetS A B D))) =>
+      (__TmpHyp:(sttfa.eps
+                   (logic.and (euclidean__defs.Out B C E) (euclidean__axioms.BetS A B D))) =>
+       logic.and__ind
+         (euclidean__defs.Out B C E)
+         (euclidean__axioms.BetS A B D)
+         (logic.and (euclidean__defs.Out B C E) (euclidean__axioms.BetS A B D))
+         (H1:(sttfa.eps (euclidean__defs.Out B C E)) =>
+          H2:(sttfa.eps (euclidean__axioms.BetS A B D)) =>
+          logic.conj (euclidean__defs.Out B C E) (euclidean__axioms.BetS A B D) H1 H2)
+         __TmpHyp)
+        H0)
+       H).
+

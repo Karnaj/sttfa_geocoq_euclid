@@ -1,0 +1,39 @@
+thm lemma__doublereverse :
+  sttfa.eps
+    (sttfa.forall
+       euclidean__axioms.Point
+       (A:(sttfa.eta euclidean__axioms.Point) =>
+        sttfa.forall
+          euclidean__axioms.Point
+          (B:(sttfa.eta euclidean__axioms.Point) =>
+           sttfa.forall
+             euclidean__axioms.Point
+             (C:(sttfa.eta euclidean__axioms.Point) =>
+              sttfa.forall
+                euclidean__axioms.Point
+                (D:(sttfa.eta euclidean__axioms.Point) =>
+                 sttfa.impl
+                   (euclidean__axioms.Cong A B C D)
+                   (logic.and (euclidean__axioms.Cong D C B A) (euclidean__axioms.Cong B A D C)))))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  D:(sttfa.eta euclidean__axioms.Point) =>
+  H:(sttfa.eps (euclidean__axioms.Cong A B C D)) =>
+  (H0:(sttfa.eps (euclidean__axioms.Cong C D D C)) =>
+   (H1:(sttfa.eps (euclidean__axioms.Cong A B D C)) =>
+    (H2:(sttfa.eps (euclidean__axioms.Cong B A A B)) =>
+     (H3:(sttfa.eps (euclidean__axioms.Cong B A D C)) =>
+      (H4:(sttfa.eps (euclidean__axioms.Cong D C B A)) =>
+       logic.conj
+         (euclidean__axioms.Cong D C B A)
+         (euclidean__axioms.Cong B A D C)
+         H4
+         H3)
+        (lemma__congruencesymmetric.lemma__congruencesymmetric D B A C H3))
+       (lemma__congruencetransitive.lemma__congruencetransitive B A A B D C H2 H1))
+      (euclidean__axioms.cn__equalityreverse B A))
+     (lemma__congruencetransitive.lemma__congruencetransitive A B C D D C H H0))
+    (euclidean__axioms.cn__equalityreverse C D).
+

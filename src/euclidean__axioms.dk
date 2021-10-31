@@ -1,0 +1,1209 @@
+Point : sttfa.type.
+
+Circle : sttfa.type.
+
+Cong :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow Point (sttfa.arrow Point (sttfa.arrow Point (sttfa.arrow Point sttfa.bool))))).
+
+BetS :
+  sttfa.etap (sttfa.p (sttfa.arrow Point (sttfa.arrow Point (sttfa.arrow Point sttfa.bool)))).
+
+PA : sttfa.eta Point.
+
+PB : sttfa.eta Point.
+
+PC : sttfa.eta Point.
+
+CI :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow Circle (sttfa.arrow Point (sttfa.arrow Point (sttfa.arrow Point sttfa.bool))))).
+
+def eq :
+  sttfa.etap (sttfa.p (sttfa.arrow Point (sttfa.arrow Point sttfa.bool)))
+  :=
+  logic.eq Point.
+
+def neq :
+  sttfa.etap (sttfa.p (sttfa.arrow Point (sttfa.arrow Point sttfa.bool)))
+  :=
+  A:(sttfa.eta Point) => B:(sttfa.eta Point) => logic.not (eq A B).
+
+def TE :
+  sttfa.etap (sttfa.p (sttfa.arrow Point (sttfa.arrow Point (sttfa.arrow Point sttfa.bool))))
+  :=
+  A:(sttfa.eta Point) =>
+  B:(sttfa.eta Point) =>
+  C:(sttfa.eta Point) =>
+  logic.not (logic.and (neq A B) (logic.and (neq B C) (logic.not (BetS A B C)))).
+
+def nCol :
+  sttfa.etap (sttfa.p (sttfa.arrow Point (sttfa.arrow Point (sttfa.arrow Point sttfa.bool))))
+  :=
+  A:(sttfa.eta Point) =>
+  B:(sttfa.eta Point) =>
+  C:(sttfa.eta Point) =>
+  logic.and
+    (neq A B)
+    (logic.and
+       (neq A C)
+       (logic.and
+          (neq B C)
+          (logic.and
+             (logic.not (BetS A B C))
+             (logic.and (logic.not (BetS A C B)) (logic.not (BetS B A C)))))).
+
+def Col :
+  sttfa.etap (sttfa.p (sttfa.arrow Point (sttfa.arrow Point (sttfa.arrow Point sttfa.bool))))
+  :=
+  A:(sttfa.eta Point) =>
+  B:(sttfa.eta Point) =>
+  C:(sttfa.eta Point) =>
+  logic.or
+    (eq A B)
+    (logic.or
+       (eq A C)
+       (logic.or (eq B C) (logic.or (BetS B A C) (logic.or (BetS A B C) (BetS A C B))))).
+
+def Cong__3 :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          Point
+          (sttfa.arrow
+             Point
+             (sttfa.arrow
+                Point
+                (sttfa.arrow Point (sttfa.arrow Point (sttfa.arrow Point sttfa.bool)))))))
+  :=
+  A:(sttfa.eta Point) =>
+  B:(sttfa.eta Point) =>
+  C:(sttfa.eta Point) =>
+  a:(sttfa.eta Point) =>
+  b:(sttfa.eta Point) =>
+  c:(sttfa.eta Point) => logic.and (Cong A B a b) (logic.and (Cong B C b c) (Cong A C a c)).
+
+def TS :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow Point (sttfa.arrow Point (sttfa.arrow Point (sttfa.arrow Point sttfa.bool)))))
+  :=
+  P:(sttfa.eta Point) =>
+  A:(sttfa.eta Point) =>
+  B:(sttfa.eta Point) =>
+  Q:(sttfa.eta Point) =>
+  logic.ex Point (X:(sttfa.eta Point) => logic.and (BetS P X Q) (logic.and (Col A B X) (nCol A B P))).
+
+def Triangle :
+  sttfa.etap (sttfa.p (sttfa.arrow Point (sttfa.arrow Point (sttfa.arrow Point sttfa.bool))))
+  :=
+  A:(sttfa.eta Point) => B:(sttfa.eta Point) => C:(sttfa.eta Point) => nCol A B C.
+
+def OnCirc :
+  sttfa.etap (sttfa.p (sttfa.arrow Point (sttfa.arrow Circle sttfa.bool)))
+  :=
+  B:(sttfa.eta Point) =>
+  J:(sttfa.eta Circle) =>
+  logic.ex
+    Point
+    (X:(sttfa.eta Point) =>
+     logic.ex
+       Point
+       (Y:(sttfa.eta Point) =>
+        logic.ex Point (U:(sttfa.eta Point) => logic.and (CI J U X Y) (Cong U B X Y)))).
+
+def InCirc :
+  sttfa.etap (sttfa.p (sttfa.arrow Point (sttfa.arrow Circle sttfa.bool)))
+  :=
+  P:(sttfa.eta Point) =>
+  J:(sttfa.eta Circle) =>
+  logic.ex
+    Point
+    (X:(sttfa.eta Point) =>
+     logic.ex
+       Point
+       (Y:(sttfa.eta Point) =>
+        logic.ex
+          Point
+          (U:(sttfa.eta Point) =>
+           logic.ex
+             Point
+             (V:(sttfa.eta Point) =>
+              logic.ex
+                Point
+                (W:(sttfa.eta Point) =>
+                 logic.and
+                   (CI J U V W)
+                   (logic.or
+                      (eq P U)
+                      (logic.and (BetS U Y X) (logic.and (Cong U X V W) (Cong U P U Y))))))))).
+
+def OutCirc :
+  sttfa.etap (sttfa.p (sttfa.arrow Point (sttfa.arrow Circle sttfa.bool)))
+  :=
+  P:(sttfa.eta Point) =>
+  J:(sttfa.eta Circle) =>
+  logic.ex
+    Point
+    (X:(sttfa.eta Point) =>
+     logic.ex
+       Point
+       (U:(sttfa.eta Point) =>
+        logic.ex
+          Point
+          (V:(sttfa.eta Point) =>
+           logic.ex
+             Point
+             (W:(sttfa.eta Point) =>
+              logic.and (CI J U V W) (logic.and (BetS U X P) (Cong U X V W)))))).
+
+cn__congruencetransitive :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (B:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (C:(sttfa.eta Point) =>
+           sttfa.forall
+             Point
+             (D:(sttfa.eta Point) =>
+              sttfa.forall
+                Point
+                (E:(sttfa.eta Point) =>
+                 sttfa.forall
+                   Point
+                   (P:(sttfa.eta Point) =>
+                    sttfa.forall
+                      Point
+                      (Q:(sttfa.eta Point) =>
+                       sttfa.impl (Cong P Q B C) (sttfa.impl (Cong P Q D E) (Cong B C D E))))))))).
+
+cn__congruencereflexive :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) => sttfa.forall Point (B:(sttfa.eta Point) => Cong A B A B))).
+
+cn__equalityreverse :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) => sttfa.forall Point (B:(sttfa.eta Point) => Cong A B B A))).
+
+cn__sumofparts :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (B:(sttfa.eta Point) =>
+           sttfa.forall
+             Point
+             (C:(sttfa.eta Point) =>
+              sttfa.forall
+                Point
+                (a:(sttfa.eta Point) =>
+                 sttfa.forall
+                   Point
+                   (b:(sttfa.eta Point) =>
+                    sttfa.forall
+                      Point
+                      (c:(sttfa.eta Point) =>
+                       sttfa.impl
+                         (Cong A B a b)
+                         (sttfa.impl
+                            (Cong B C b c)
+                            (sttfa.impl (BetS A B C) (sttfa.impl (BetS a b c) (Cong A C a c))))))))))).
+
+cn__stability :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) =>
+        sttfa.forall Point (B:(sttfa.eta Point) => sttfa.impl (logic.not (neq A B)) (eq A B)))).
+
+axiom__circle__center__radius :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (B:(sttfa.eta Point) =>
+           sttfa.forall
+             Point
+             (C:(sttfa.eta Point) =>
+              sttfa.forall
+                Circle
+                (J:(sttfa.eta Circle) =>
+                 sttfa.forall
+                   Point
+                   (P:(sttfa.eta Point) =>
+                    sttfa.impl (CI J A B C) (sttfa.impl (OnCirc P J) (Cong A P B C)))))))).
+
+axiom__lower__dim : sttfa.eps (nCol PA PB PC).
+
+axiom__betweennessidentity :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) => sttfa.forall Point (B:(sttfa.eta Point) => logic.not (BetS A B A)))).
+
+axiom__betweennesssymmetry :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (B:(sttfa.eta Point) =>
+           sttfa.forall Point (C:(sttfa.eta Point) => sttfa.impl (BetS A B C) (BetS C B A))))).
+
+axiom__innertransitivity :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (B:(sttfa.eta Point) =>
+           sttfa.forall
+             Point
+             (C:(sttfa.eta Point) =>
+              sttfa.forall
+                Point
+                (D:(sttfa.eta Point) =>
+                 sttfa.impl (BetS A B D) (sttfa.impl (BetS B C D) (BetS A B C))))))).
+
+axiom__connectivity :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (B:(sttfa.eta Point) =>
+           sttfa.forall
+             Point
+             (C:(sttfa.eta Point) =>
+              sttfa.forall
+                Point
+                (D:(sttfa.eta Point) =>
+                 sttfa.impl
+                   (BetS A B D)
+                   (sttfa.impl
+                      (BetS A C D)
+                      (sttfa.impl
+                         (logic.not (BetS A B C))
+                         (sttfa.impl (logic.not (BetS A C B)) (eq B C))))))))).
+
+axiom__nocollapse :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (B:(sttfa.eta Point) =>
+           sttfa.forall
+             Point
+             (C:(sttfa.eta Point) =>
+              sttfa.forall
+                Point
+                (D:(sttfa.eta Point) =>
+                 sttfa.impl (neq A B) (sttfa.impl (Cong A B C D) (neq C D))))))).
+
+axiom__5__line :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (B:(sttfa.eta Point) =>
+           sttfa.forall
+             Point
+             (C:(sttfa.eta Point) =>
+              sttfa.forall
+                Point
+                (D:(sttfa.eta Point) =>
+                 sttfa.forall
+                   Point
+                   (a:(sttfa.eta Point) =>
+                    sttfa.forall
+                      Point
+                      (b:(sttfa.eta Point) =>
+                       sttfa.forall
+                         Point
+                         (c:(sttfa.eta Point) =>
+                          sttfa.forall
+                            Point
+                            (d:(sttfa.eta Point) =>
+                             sttfa.impl
+                               (Cong B C b c)
+                               (sttfa.impl
+                                  (Cong A D a d)
+                                  (sttfa.impl
+                                     (Cong B D b d)
+                                     (sttfa.impl
+                                        (BetS A B C)
+                                        (sttfa.impl
+                                           (BetS a b c)
+                                           (sttfa.impl (Cong A B a b) (Cong D C d c))))))))))))))).
+
+postulate__Pasch__inner :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (B:(sttfa.eta Point) =>
+           sttfa.forall
+             Point
+             (C:(sttfa.eta Point) =>
+              sttfa.forall
+                Point
+                (P:(sttfa.eta Point) =>
+                 sttfa.forall
+                   Point
+                   (Q:(sttfa.eta Point) =>
+                    sttfa.impl
+                      (BetS A P C)
+                      (sttfa.impl
+                         (BetS B Q C)
+                         (sttfa.impl
+                            (nCol A C B)
+                            (logic.ex
+                               Point
+                               (X:(sttfa.eta Point) => logic.and (BetS A X Q) (BetS B X P))))))))))).
+
+postulate__Pasch__outer :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (B:(sttfa.eta Point) =>
+           sttfa.forall
+             Point
+             (C:(sttfa.eta Point) =>
+              sttfa.forall
+                Point
+                (P:(sttfa.eta Point) =>
+                 sttfa.forall
+                   Point
+                   (Q:(sttfa.eta Point) =>
+                    sttfa.impl
+                      (BetS A P C)
+                      (sttfa.impl
+                         (BetS B C Q)
+                         (sttfa.impl
+                            (nCol B Q A)
+                            (logic.ex
+                               Point
+                               (X:(sttfa.eta Point) => logic.and (BetS A X Q) (BetS B P X))))))))))).
+
+postulate__Euclid2 :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (B:(sttfa.eta Point) =>
+           sttfa.impl (neq A B) (logic.ex Point (X:(sttfa.eta Point) => BetS A B X))))).
+
+postulate__Euclid3 :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (B:(sttfa.eta Point) =>
+           sttfa.impl (neq A B) (logic.ex Circle (X:(sttfa.eta Circle) => CI X A A B))))).
+
+postulate__line__circle :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (B:(sttfa.eta Point) =>
+           sttfa.forall
+             Point
+             (C:(sttfa.eta Point) =>
+              sttfa.forall
+                Circle
+                (K:(sttfa.eta Circle) =>
+                 sttfa.forall
+                   Point
+                   (P:(sttfa.eta Point) =>
+                    sttfa.forall
+                      Point
+                      (Q:(sttfa.eta Point) =>
+                       sttfa.impl
+                         (CI K C P Q)
+                         (sttfa.impl
+                            (InCirc B K)
+                            (sttfa.impl
+                               (neq A B)
+                               (logic.ex
+                                  Point
+                                  (X:(sttfa.eta Point) =>
+                                   logic.ex
+                                     Point
+                                     (Y:(sttfa.eta Point) =>
+                                      logic.and
+                                        (Col A B X)
+                                        (logic.and
+                                           (BetS A B Y)
+                                           (logic.and
+                                              (OnCirc X K)
+                                              (logic.and (OnCirc Y K) (BetS X B Y)))))))))))))))).
+
+postulate__circle__circle :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (C:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (D:(sttfa.eta Point) =>
+           sttfa.forall
+             Point
+             (F:(sttfa.eta Point) =>
+              sttfa.forall
+                Point
+                (G:(sttfa.eta Point) =>
+                 sttfa.forall
+                   Circle
+                   (J:(sttfa.eta Circle) =>
+                    sttfa.forall
+                      Circle
+                      (K:(sttfa.eta Circle) =>
+                       sttfa.forall
+                         Point
+                         (P:(sttfa.eta Point) =>
+                          sttfa.forall
+                            Point
+                            (Q:(sttfa.eta Point) =>
+                             sttfa.forall
+                               Point
+                               (R:(sttfa.eta Point) =>
+                                sttfa.forall
+                                  Point
+                                  (S:(sttfa.eta Point) =>
+                                   sttfa.impl
+                                     (CI J C R S)
+                                     (sttfa.impl
+                                        (InCirc P J)
+                                        (sttfa.impl
+                                           (OutCirc Q J)
+                                           (sttfa.impl
+                                              (CI K D F G)
+                                              (sttfa.impl
+                                                 (OnCirc P K)
+                                                 (sttfa.impl
+                                                    (OnCirc Q K)
+                                                    (logic.ex
+                                                       Point
+                                                       (X:(sttfa.eta Point) =>
+                                                        logic.and
+                                                          (OnCirc X J)
+                                                          (OnCirc X K))))))))))))))))))).
+
+postulate__Euclid5 :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (a:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (p:(sttfa.eta Point) =>
+           sttfa.forall
+             Point
+             (q:(sttfa.eta Point) =>
+              sttfa.forall
+                Point
+                (r:(sttfa.eta Point) =>
+                 sttfa.forall
+                   Point
+                   (s:(sttfa.eta Point) =>
+                    sttfa.forall
+                      Point
+                      (t:(sttfa.eta Point) =>
+                       sttfa.impl
+                         (BetS r t s)
+                         (sttfa.impl
+                            (BetS p t q)
+                            (sttfa.impl
+                               (BetS r a q)
+                               (sttfa.impl
+                                  (Cong p t q t)
+                                  (sttfa.impl
+                                     (Cong t r t s)
+                                     (sttfa.impl
+                                        (nCol p q s)
+                                        (logic.ex
+                                           Point
+                                           (X:(sttfa.eta Point) =>
+                                            logic.and (BetS p a X) (BetS s q X))))))))))))))).
+
+EF :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          Point
+          (sttfa.arrow
+             Point
+             (sttfa.arrow
+                Point
+                (sttfa.arrow
+                   Point
+                   (sttfa.arrow
+                      Point
+                      (sttfa.arrow Point (sttfa.arrow Point (sttfa.arrow Point sttfa.bool))))))))).
+
+ET :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          Point
+          (sttfa.arrow
+             Point
+             (sttfa.arrow
+                Point
+                (sttfa.arrow Point (sttfa.arrow Point (sttfa.arrow Point sttfa.bool))))))).
+
+axiom__congruentequal :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (B:(sttfa.eta Point) =>
+           sttfa.forall
+             Point
+             (C:(sttfa.eta Point) =>
+              sttfa.forall
+                Point
+                (a:(sttfa.eta Point) =>
+                 sttfa.forall
+                   Point
+                   (b:(sttfa.eta Point) =>
+                    sttfa.forall
+                      Point
+                      (c:(sttfa.eta Point) => sttfa.impl (Cong__3 A B C a b c) (ET A B C a b c)))))))).
+
+axiom__ETpermutation :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (B:(sttfa.eta Point) =>
+           sttfa.forall
+             Point
+             (C:(sttfa.eta Point) =>
+              sttfa.forall
+                Point
+                (a:(sttfa.eta Point) =>
+                 sttfa.forall
+                   Point
+                   (b:(sttfa.eta Point) =>
+                    sttfa.forall
+                      Point
+                      (c:(sttfa.eta Point) =>
+                       sttfa.impl
+                         (ET A B C a b c)
+                         (logic.and
+                            (ET A B C b c a)
+                            (logic.and
+                               (ET A B C a c b)
+                               (logic.and
+                                  (ET A B C b a c)
+                                  (logic.and (ET A B C c b a) (ET A B C c a b)))))))))))).
+
+axiom__ETsymmetric :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (B:(sttfa.eta Point) =>
+           sttfa.forall
+             Point
+             (C:(sttfa.eta Point) =>
+              sttfa.forall
+                Point
+                (a:(sttfa.eta Point) =>
+                 sttfa.forall
+                   Point
+                   (b:(sttfa.eta Point) =>
+                    sttfa.forall
+                      Point
+                      (c:(sttfa.eta Point) => sttfa.impl (ET A B C a b c) (ET a b c A B C)))))))).
+
+axiom__EFpermutation :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (B:(sttfa.eta Point) =>
+           sttfa.forall
+             Point
+             (C:(sttfa.eta Point) =>
+              sttfa.forall
+                Point
+                (D:(sttfa.eta Point) =>
+                 sttfa.forall
+                   Point
+                   (a:(sttfa.eta Point) =>
+                    sttfa.forall
+                      Point
+                      (b:(sttfa.eta Point) =>
+                       sttfa.forall
+                         Point
+                         (c:(sttfa.eta Point) =>
+                          sttfa.forall
+                            Point
+                            (d:(sttfa.eta Point) =>
+                             sttfa.impl
+                               (EF A B C D a b c d)
+                               (logic.and
+                                  (EF A B C D b c d a)
+                                  (logic.and
+                                     (EF A B C D d c b a)
+                                     (logic.and
+                                        (EF A B C D c d a b)
+                                        (logic.and
+                                           (EF A B C D b a d c)
+                                           (logic.and
+                                              (EF A B C D d a b c)
+                                              (logic.and
+                                                 (EF A B C D c b a d)
+                                                 (EF A B C D a d c b)))))))))))))))).
+
+axiom__halvesofequals :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (B:(sttfa.eta Point) =>
+           sttfa.forall
+             Point
+             (C:(sttfa.eta Point) =>
+              sttfa.forall
+                Point
+                (D:(sttfa.eta Point) =>
+                 sttfa.forall
+                   Point
+                   (a:(sttfa.eta Point) =>
+                    sttfa.forall
+                      Point
+                      (b:(sttfa.eta Point) =>
+                       sttfa.forall
+                         Point
+                         (c:(sttfa.eta Point) =>
+                          sttfa.forall
+                            Point
+                            (d:(sttfa.eta Point) =>
+                             sttfa.impl
+                               (ET A B C B C D)
+                               (sttfa.impl
+                                  (TS A B C D)
+                                  (sttfa.impl
+                                     (ET a b c b c d)
+                                     (sttfa.impl
+                                        (TS a b c d)
+                                        (sttfa.impl (EF A B D C a b d c) (ET A B C a b c)))))))))))))).
+
+axiom__EFsymmetric :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (B:(sttfa.eta Point) =>
+           sttfa.forall
+             Point
+             (C:(sttfa.eta Point) =>
+              sttfa.forall
+                Point
+                (D:(sttfa.eta Point) =>
+                 sttfa.forall
+                   Point
+                   (a:(sttfa.eta Point) =>
+                    sttfa.forall
+                      Point
+                      (b:(sttfa.eta Point) =>
+                       sttfa.forall
+                         Point
+                         (c:(sttfa.eta Point) =>
+                          sttfa.forall
+                            Point
+                            (d:(sttfa.eta Point) =>
+                             sttfa.impl (EF A B C D a b c d) (EF a b c d A B C D)))))))))).
+
+axiom__EFtransitive :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (B:(sttfa.eta Point) =>
+           sttfa.forall
+             Point
+             (C:(sttfa.eta Point) =>
+              sttfa.forall
+                Point
+                (D:(sttfa.eta Point) =>
+                 sttfa.forall
+                   Point
+                   (P:(sttfa.eta Point) =>
+                    sttfa.forall
+                      Point
+                      (Q:(sttfa.eta Point) =>
+                       sttfa.forall
+                         Point
+                         (R:(sttfa.eta Point) =>
+                          sttfa.forall
+                            Point
+                            (S:(sttfa.eta Point) =>
+                             sttfa.forall
+                               Point
+                               (a:(sttfa.eta Point) =>
+                                sttfa.forall
+                                  Point
+                                  (b:(sttfa.eta Point) =>
+                                   sttfa.forall
+                                     Point
+                                     (c:(sttfa.eta Point) =>
+                                      sttfa.forall
+                                        Point
+                                        (d:(sttfa.eta Point) =>
+                                         sttfa.impl
+                                           (EF A B C D a b c d)
+                                           (sttfa.impl
+                                              (EF a b c d P Q R S)
+                                              (EF A B C D P Q R S))))))))))))))).
+
+axiom__ETtransitive :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (B:(sttfa.eta Point) =>
+           sttfa.forall
+             Point
+             (C:(sttfa.eta Point) =>
+              sttfa.forall
+                Point
+                (P:(sttfa.eta Point) =>
+                 sttfa.forall
+                   Point
+                   (Q:(sttfa.eta Point) =>
+                    sttfa.forall
+                      Point
+                      (R:(sttfa.eta Point) =>
+                       sttfa.forall
+                         Point
+                         (a:(sttfa.eta Point) =>
+                          sttfa.forall
+                            Point
+                            (b:(sttfa.eta Point) =>
+                             sttfa.forall
+                               Point
+                               (c:(sttfa.eta Point) =>
+                                sttfa.impl
+                                  (ET A B C a b c)
+                                  (sttfa.impl (ET a b c P Q R) (ET A B C P Q R)))))))))))).
+
+axiom__cutoff1 :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (B:(sttfa.eta Point) =>
+           sttfa.forall
+             Point
+             (C:(sttfa.eta Point) =>
+              sttfa.forall
+                Point
+                (D:(sttfa.eta Point) =>
+                 sttfa.forall
+                   Point
+                   (E:(sttfa.eta Point) =>
+                    sttfa.forall
+                      Point
+                      (a:(sttfa.eta Point) =>
+                       sttfa.forall
+                         Point
+                         (b:(sttfa.eta Point) =>
+                          sttfa.forall
+                            Point
+                            (c:(sttfa.eta Point) =>
+                             sttfa.forall
+                               Point
+                               (d:(sttfa.eta Point) =>
+                                sttfa.forall
+                                  Point
+                                  (e:(sttfa.eta Point) =>
+                                   sttfa.impl
+                                     (BetS A B C)
+                                     (sttfa.impl
+                                        (BetS a b c)
+                                        (sttfa.impl
+                                           (BetS E D C)
+                                           (sttfa.impl
+                                              (BetS e d c)
+                                              (sttfa.impl
+                                                 (ET B C D b c d)
+                                                 (sttfa.impl
+                                                    (ET A C E a c e)
+                                                    (EF A B D E a b d e))))))))))))))))).
+
+axiom__cutoff2 :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (B:(sttfa.eta Point) =>
+           sttfa.forall
+             Point
+             (C:(sttfa.eta Point) =>
+              sttfa.forall
+                Point
+                (D:(sttfa.eta Point) =>
+                 sttfa.forall
+                   Point
+                   (E:(sttfa.eta Point) =>
+                    sttfa.forall
+                      Point
+                      (a:(sttfa.eta Point) =>
+                       sttfa.forall
+                         Point
+                         (b:(sttfa.eta Point) =>
+                          sttfa.forall
+                            Point
+                            (c:(sttfa.eta Point) =>
+                             sttfa.forall
+                               Point
+                               (d:(sttfa.eta Point) =>
+                                sttfa.forall
+                                  Point
+                                  (e:(sttfa.eta Point) =>
+                                   sttfa.impl
+                                     (BetS B C D)
+                                     (sttfa.impl
+                                        (BetS b c d)
+                                        (sttfa.impl
+                                           (ET C D E c d e)
+                                           (sttfa.impl
+                                              (EF A B D E a b d e)
+                                              (EF A B C E a b c e))))))))))))))).
+
+axiom__paste1 :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (B:(sttfa.eta Point) =>
+           sttfa.forall
+             Point
+             (C:(sttfa.eta Point) =>
+              sttfa.forall
+                Point
+                (D:(sttfa.eta Point) =>
+                 sttfa.forall
+                   Point
+                   (E:(sttfa.eta Point) =>
+                    sttfa.forall
+                      Point
+                      (a:(sttfa.eta Point) =>
+                       sttfa.forall
+                         Point
+                         (b:(sttfa.eta Point) =>
+                          sttfa.forall
+                            Point
+                            (c:(sttfa.eta Point) =>
+                             sttfa.forall
+                               Point
+                               (d:(sttfa.eta Point) =>
+                                sttfa.forall
+                                  Point
+                                  (e:(sttfa.eta Point) =>
+                                   sttfa.impl
+                                     (BetS A B C)
+                                     (sttfa.impl
+                                        (BetS a b c)
+                                        (sttfa.impl
+                                           (BetS E D C)
+                                           (sttfa.impl
+                                              (BetS e d c)
+                                              (sttfa.impl
+                                                 (ET B C D b c d)
+                                                 (sttfa.impl
+                                                    (EF A B D E a b d e)
+                                                    (ET A C E a c e))))))))))))))))).
+
+axiom__deZolt1 :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (B:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (C:(sttfa.eta Point) =>
+           sttfa.forall
+             Point
+             (D:(sttfa.eta Point) =>
+              sttfa.forall
+                Point
+                (E:(sttfa.eta Point) => sttfa.impl (BetS B E D) (logic.not (ET D B C E B C))))))).
+
+axiom__deZolt2 :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (B:(sttfa.eta Point) =>
+           sttfa.forall
+             Point
+             (C:(sttfa.eta Point) =>
+              sttfa.forall
+                Point
+                (E:(sttfa.eta Point) =>
+                 sttfa.forall
+                   Point
+                   (F:(sttfa.eta Point) =>
+                    sttfa.impl
+                      (Triangle A B C)
+                      (sttfa.impl
+                         (BetS B E A)
+                         (sttfa.impl (BetS B F C) (logic.not (ET A B C E B F)))))))))).
+
+axiom__paste2 :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (B:(sttfa.eta Point) =>
+           sttfa.forall
+             Point
+             (C:(sttfa.eta Point) =>
+              sttfa.forall
+                Point
+                (D:(sttfa.eta Point) =>
+                 sttfa.forall
+                   Point
+                   (E:(sttfa.eta Point) =>
+                    sttfa.forall
+                      Point
+                      (M:(sttfa.eta Point) =>
+                       sttfa.forall
+                         Point
+                         (a:(sttfa.eta Point) =>
+                          sttfa.forall
+                            Point
+                            (b:(sttfa.eta Point) =>
+                             sttfa.forall
+                               Point
+                               (c:(sttfa.eta Point) =>
+                                sttfa.forall
+                                  Point
+                                  (d:(sttfa.eta Point) =>
+                                   sttfa.forall
+                                     Point
+                                     (e:(sttfa.eta Point) =>
+                                      sttfa.forall
+                                        Point
+                                        (m:(sttfa.eta Point) =>
+                                         sttfa.impl
+                                           (BetS B C D)
+                                           (sttfa.impl
+                                              (BetS b c d)
+                                              (sttfa.impl
+                                                 (ET C D E c d e)
+                                                 (sttfa.impl
+                                                    (EF A B C E a b c e)
+                                                    (sttfa.impl
+                                                       (BetS A M D)
+                                                       (sttfa.impl
+                                                          (BetS B M E)
+                                                          (sttfa.impl
+                                                             (BetS a m d)
+                                                             (sttfa.impl
+                                                                (BetS b m e)
+                                                                (EF
+                                                                   A
+                                                                   B
+                                                                   D
+                                                                   E
+                                                                   a
+                                                                   b
+                                                                   d
+                                                                   e))))))))))))))))))))).
+
+axiom__paste3 :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (B:(sttfa.eta Point) =>
+           sttfa.forall
+             Point
+             (C:(sttfa.eta Point) =>
+              sttfa.forall
+                Point
+                (D:(sttfa.eta Point) =>
+                 sttfa.forall
+                   Point
+                   (M:(sttfa.eta Point) =>
+                    sttfa.forall
+                      Point
+                      (a:(sttfa.eta Point) =>
+                       sttfa.forall
+                         Point
+                         (b:(sttfa.eta Point) =>
+                          sttfa.forall
+                            Point
+                            (c:(sttfa.eta Point) =>
+                             sttfa.forall
+                               Point
+                               (d:(sttfa.eta Point) =>
+                                sttfa.forall
+                                  Point
+                                  (m:(sttfa.eta Point) =>
+                                   sttfa.impl
+                                     (ET A B C a b c)
+                                     (sttfa.impl
+                                        (ET A B D a b d)
+                                        (sttfa.impl
+                                           (BetS C M D)
+                                           (sttfa.impl
+                                              (logic.or
+                                                 (BetS A M B)
+                                                 (logic.or (eq A M) (eq M B)))
+                                              (sttfa.impl
+                                                 (BetS c m d)
+                                                 (sttfa.impl
+                                                    (logic.or
+                                                       (BetS a m b)
+                                                       (logic.or (eq a m) (eq m b)))
+                                                    (EF A C B D a c b d))))))))))))))))).
+
+axiom__paste4 :
+  sttfa.eps
+    (sttfa.forall
+       Point
+       (A:(sttfa.eta Point) =>
+        sttfa.forall
+          Point
+          (B:(sttfa.eta Point) =>
+           sttfa.forall
+             Point
+             (C:(sttfa.eta Point) =>
+              sttfa.forall
+                Point
+                (D:(sttfa.eta Point) =>
+                 sttfa.forall
+                   Point
+                   (F:(sttfa.eta Point) =>
+                    sttfa.forall
+                      Point
+                      (G:(sttfa.eta Point) =>
+                       sttfa.forall
+                         Point
+                         (H:(sttfa.eta Point) =>
+                          sttfa.forall
+                            Point
+                            (J:(sttfa.eta Point) =>
+                             sttfa.forall
+                               Point
+                               (K:(sttfa.eta Point) =>
+                                sttfa.forall
+                                  Point
+                                  (L:(sttfa.eta Point) =>
+                                   sttfa.forall
+                                     Point
+                                     (M:(sttfa.eta Point) =>
+                                      sttfa.forall
+                                        Point
+                                        (P:(sttfa.eta Point) =>
+                                         sttfa.forall
+                                           Point
+                                           (e:(sttfa.eta Point) =>
+                                            sttfa.forall
+                                              Point
+                                              (m:(sttfa.eta Point) =>
+                                               sttfa.impl
+                                                 (EF A B m D F K H G)
+                                                 (sttfa.impl
+                                                    (EF D B e C G H M L)
+                                                    (sttfa.impl
+                                                       (BetS A P C)
+                                                       (sttfa.impl
+                                                          (BetS B P D)
+                                                          (sttfa.impl
+                                                             (BetS K H M)
+                                                             (sttfa.impl
+                                                                (BetS F G L)
+                                                                (sttfa.impl
+                                                                   (BetS B m D)
+                                                                   (sttfa.impl
+                                                                    (BetS
+                                                                    B
+                                                                    e
+                                                                    C)
+                                                                    (sttfa.impl
+                                                                    (BetS
+                                                                    F
+                                                                    J
+                                                                    M)
+                                                                    (sttfa.impl
+                                                                    (BetS
+                                                                    K
+                                                                    J
+                                                                    L)
+                                                                    (EF
+                                                                    A
+                                                                    B
+                                                                    C
+                                                                    D
+                                                                    F
+                                                                    K
+                                                                    M
+                                                                    L))))))))))))))))))))))))).
+

@@ -1,0 +1,167 @@
+thm lemma__ray3 :
+  sttfa.eps
+    (sttfa.forall
+       euclidean__axioms.Point
+       (B:(sttfa.eta euclidean__axioms.Point) =>
+        sttfa.forall
+          euclidean__axioms.Point
+          (C:(sttfa.eta euclidean__axioms.Point) =>
+           sttfa.forall
+             euclidean__axioms.Point
+             (D:(sttfa.eta euclidean__axioms.Point) =>
+              sttfa.forall
+                euclidean__axioms.Point
+                (V:(sttfa.eta euclidean__axioms.Point) =>
+                 sttfa.impl
+                   (euclidean__defs.Out B C D)
+                   (sttfa.impl (euclidean__defs.Out B C V) (euclidean__defs.Out B D V)))))))
+  :=
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  D:(sttfa.eta euclidean__axioms.Point) =>
+  V:(sttfa.eta euclidean__axioms.Point) =>
+  H:(sttfa.eps (euclidean__defs.Out B C D)) =>
+  H0:(sttfa.eps (euclidean__defs.Out B C V)) =>
+  (H1:(sttfa.eps
+         (logic.ex
+            euclidean__axioms.Point
+            (E:(sttfa.eta euclidean__axioms.Point) =>
+             logic.and (euclidean__axioms.BetS E B D) (euclidean__axioms.BetS E B C)))) =>
+   logic.ex__ind
+     euclidean__axioms.Point
+     (E:(sttfa.eta euclidean__axioms.Point) =>
+      logic.and (euclidean__axioms.BetS E B D) (euclidean__axioms.BetS E B C))
+     (euclidean__defs.Out B D V)
+     (E:(sttfa.eta euclidean__axioms.Point) =>
+      H2:(sttfa.eps (logic.and (euclidean__axioms.BetS E B D) (euclidean__axioms.BetS E B C))) =>
+      logic.and__ind
+        (euclidean__axioms.BetS E B D)
+        (euclidean__axioms.BetS E B C)
+        (euclidean__defs.Out B D V)
+        (H3:(sttfa.eps (euclidean__axioms.BetS E B D)) =>
+         H4:(sttfa.eps (euclidean__axioms.BetS E B C)) =>
+         (H5:(sttfa.eps
+                (logic.ex
+                   euclidean__axioms.Point
+                   (H5:(sttfa.eta euclidean__axioms.Point) =>
+                    logic.and
+                      (euclidean__axioms.BetS H5 B V)
+                      (euclidean__axioms.BetS H5 B C)))) =>
+          logic.ex__ind
+            euclidean__axioms.Point
+            (H6:(sttfa.eta euclidean__axioms.Point) =>
+             logic.and (euclidean__axioms.BetS H6 B V) (euclidean__axioms.BetS H6 B C))
+            (euclidean__defs.Out B D V)
+            (H6:(sttfa.eta euclidean__axioms.Point) =>
+             H7:(sttfa.eps
+                   (logic.and
+                      (euclidean__axioms.BetS H6 B V)
+                      (euclidean__axioms.BetS H6 B C))) =>
+             logic.and__ind
+               (euclidean__axioms.BetS H6 B V)
+               (euclidean__axioms.BetS H6 B C)
+               (euclidean__defs.Out B D V)
+               (H8:(sttfa.eps (euclidean__axioms.BetS H6 B V)) =>
+                H9:(sttfa.eps (euclidean__axioms.BetS H6 B C)) =>
+                (H10:(sttfa.eps (logic.not (logic.not (euclidean__axioms.BetS E B V)))) =>
+                 (H11:(sttfa.eps (euclidean__defs.Out B D V)) => H11)
+                   ((H11:(sttfa.eps (euclidean__axioms.BetS E B V)) =>
+                     logic.ex__intro
+                       euclidean__axioms.Point
+                       (X:(sttfa.eta euclidean__axioms.Point) =>
+                        logic.and
+                          (euclidean__axioms.BetS X B V)
+                          (euclidean__axioms.BetS X B D))
+                       E
+                       (logic.conj
+                          (euclidean__axioms.BetS E B V)
+                          (euclidean__axioms.BetS E B D)
+                          H11
+                          H3))
+                      (euclidean__tactics.NNPP (euclidean__axioms.BetS E B V) H10)))
+                  (H10:(sttfa.eps (logic.not (euclidean__axioms.BetS E B V))) =>
+                   (H11:(sttfa.eps (logic.not (euclidean__axioms.BetS B E H6))) =>
+                    (H12:(sttfa.eps (logic.not (euclidean__axioms.BetS B H6 E))) =>
+                     (H13:(sttfa.eps (euclidean__axioms.BetS C B E)) =>
+                      (H14:(sttfa.eps (euclidean__axioms.BetS C B H6)) =>
+                       (H15:(sttfa.eps (euclidean__axioms.eq H6 E)) =>
+                        (H16:(sttfa.eps (euclidean__axioms.BetS E B V)) =>
+                         H10 H16)
+                          (logic.eq__ind__r
+                             euclidean__axioms.Point
+                             E
+                             (H16:(sttfa.eta euclidean__axioms.Point) =>
+                              sttfa.impl
+                                (euclidean__axioms.BetS H16 B V)
+                                (sttfa.impl
+                                   (euclidean__axioms.BetS H16 B C)
+                                   (sttfa.impl
+                                      (logic.not
+                                         (euclidean__axioms.BetS
+                                            B
+                                            E
+                                            H16))
+                                      (sttfa.impl
+                                         (logic.not
+                                            (euclidean__axioms.BetS
+                                               B
+                                               H16
+                                               E))
+                                         (sttfa.impl
+                                            (euclidean__axioms.BetS
+                                               C
+                                               B
+                                               H16)
+                                            (euclidean__axioms.BetS
+                                               E
+                                               B
+                                               V))))))
+                             (H16:(sttfa.eps
+                                     (euclidean__axioms.BetS E B V)) =>
+                              H17:(sttfa.eps
+                                     (euclidean__axioms.BetS E B C)) =>
+                              H18:(sttfa.eps
+                                     (logic.not
+                                        (euclidean__axioms.BetS B E E))) =>
+                              H19:(sttfa.eps
+                                     (logic.not
+                                        (euclidean__axioms.BetS B E E))) =>
+                              H20:(sttfa.eps
+                                     (euclidean__axioms.BetS C B E)) =>
+                              H16)
+                             H6
+                             H15
+                             H8
+                             H9
+                             H11
+                             H12
+                             H14))
+                         (lemma__outerconnectivity.lemma__outerconnectivity
+                            C
+                            B
+                            H6
+                            E
+                            H14
+                            H13
+                            H12
+                            H11))
+                        (euclidean__axioms.axiom__betweennesssymmetry H6 B C H9))
+                       (euclidean__axioms.axiom__betweennesssymmetry E B C H4))
+                      (H12:(sttfa.eps (euclidean__axioms.BetS B H6 E)) =>
+                       (H13:(sttfa.eps (euclidean__axioms.BetS E H6 B)) =>
+                        (H14:(sttfa.eps (euclidean__axioms.BetS E B V)) =>
+                         H10 H14)
+                          (lemma__3__7a.lemma__3__7a E H6 B V H13 H8))
+                         (euclidean__axioms.axiom__betweennesssymmetry B H6 E H12)))
+                     (H11:(sttfa.eps (euclidean__axioms.BetS B E H6)) =>
+                      (H12:(sttfa.eps (euclidean__axioms.BetS H6 E B)) =>
+                       (H13:(sttfa.eps (euclidean__axioms.BetS E B V)) => H10 H13)
+                         (lemma__3__6a.lemma__3__6a H6 E B V H12 H8))
+                        (euclidean__axioms.axiom__betweennesssymmetry B E H6 H11))))
+               H7)
+            H5)
+           H0)
+        H2)
+     H1)
+    H.
+

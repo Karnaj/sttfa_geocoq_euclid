@@ -1,0 +1,60 @@
+thm lemma__raystrict :
+  sttfa.eps
+    (sttfa.forall
+       euclidean__axioms.Point
+       (A:(sttfa.eta euclidean__axioms.Point) =>
+        sttfa.forall
+          euclidean__axioms.Point
+          (B:(sttfa.eta euclidean__axioms.Point) =>
+           sttfa.forall
+             euclidean__axioms.Point
+             (C:(sttfa.eta euclidean__axioms.Point) =>
+              sttfa.impl (euclidean__defs.Out A B C) (euclidean__axioms.neq A C)))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  H:(sttfa.eps (euclidean__defs.Out A B C)) =>
+  (H0:(sttfa.eps
+         (logic.ex
+            euclidean__axioms.Point
+            (J:(sttfa.eta euclidean__axioms.Point) =>
+             logic.and (euclidean__axioms.BetS J A C) (euclidean__axioms.BetS J A B)))) =>
+   logic.ex__ind
+     euclidean__axioms.Point
+     (J:(sttfa.eta euclidean__axioms.Point) =>
+      logic.and (euclidean__axioms.BetS J A C) (euclidean__axioms.BetS J A B))
+     (euclidean__axioms.neq A C)
+     (J:(sttfa.eta euclidean__axioms.Point) =>
+      H1:(sttfa.eps (logic.and (euclidean__axioms.BetS J A C) (euclidean__axioms.BetS J A B))) =>
+      logic.and__ind
+        (euclidean__axioms.BetS J A C)
+        (euclidean__axioms.BetS J A B)
+        (euclidean__axioms.neq A C)
+        (H2:(sttfa.eps (euclidean__axioms.BetS J A C)) =>
+         H3:(sttfa.eps (euclidean__axioms.BetS J A B)) =>
+         (H4:(sttfa.eps (euclidean__axioms.neq A C)) => H4)
+           ((H4:(sttfa.eps
+                   (logic.and
+                      (euclidean__axioms.neq A C)
+                      (logic.and (euclidean__axioms.neq J A) (euclidean__axioms.neq J C)))) =>
+             logic.and__ind
+               (euclidean__axioms.neq A C)
+               (logic.and (euclidean__axioms.neq J A) (euclidean__axioms.neq J C))
+               (euclidean__axioms.neq A C)
+               (H5:(sttfa.eps (euclidean__axioms.neq A C)) =>
+                H6:(sttfa.eps
+                      (logic.and (euclidean__axioms.neq J A) (euclidean__axioms.neq J C))) =>
+                logic.and__ind
+                  (euclidean__axioms.neq J A)
+                  (euclidean__axioms.neq J C)
+                  (euclidean__axioms.neq A C)
+                  (H7:(sttfa.eps (euclidean__axioms.neq J A)) =>
+                   H8:(sttfa.eps (euclidean__axioms.neq J C)) => H5)
+                  H6)
+               H4)
+              (lemma__betweennotequal.lemma__betweennotequal J A C H2)))
+        H1)
+     H0)
+    H.
+

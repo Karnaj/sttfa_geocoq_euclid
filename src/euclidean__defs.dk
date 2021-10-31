@@ -1,0 +1,767 @@
+def Out :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          euclidean__axioms.Point
+          (sttfa.arrow euclidean__axioms.Point (sttfa.arrow euclidean__axioms.Point sttfa.bool))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  logic.ex
+    euclidean__axioms.Point
+    (X:(sttfa.eta euclidean__axioms.Point) =>
+     logic.and (euclidean__axioms.BetS X A C) (euclidean__axioms.BetS X A B)).
+
+def Lt :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          euclidean__axioms.Point
+          (sttfa.arrow
+             euclidean__axioms.Point
+             (sttfa.arrow euclidean__axioms.Point (sttfa.arrow euclidean__axioms.Point sttfa.bool)))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  D:(sttfa.eta euclidean__axioms.Point) =>
+  logic.ex
+    euclidean__axioms.Point
+    (X:(sttfa.eta euclidean__axioms.Point) =>
+     logic.and (euclidean__axioms.BetS C X D) (euclidean__axioms.Cong C X A B)).
+
+def Midpoint :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          euclidean__axioms.Point
+          (sttfa.arrow euclidean__axioms.Point (sttfa.arrow euclidean__axioms.Point sttfa.bool))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  logic.and (euclidean__axioms.BetS A B C) (euclidean__axioms.Cong A B B C).
+
+def CongA :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          euclidean__axioms.Point
+          (sttfa.arrow
+             euclidean__axioms.Point
+             (sttfa.arrow
+                euclidean__axioms.Point
+                (sttfa.arrow
+                   euclidean__axioms.Point
+                   (sttfa.arrow
+                      euclidean__axioms.Point
+                      (sttfa.arrow euclidean__axioms.Point sttfa.bool)))))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  a:(sttfa.eta euclidean__axioms.Point) =>
+  b:(sttfa.eta euclidean__axioms.Point) =>
+  c:(sttfa.eta euclidean__axioms.Point) =>
+  logic.ex
+    euclidean__axioms.Point
+    (U:(sttfa.eta euclidean__axioms.Point) =>
+     logic.ex
+       euclidean__axioms.Point
+       (V:(sttfa.eta euclidean__axioms.Point) =>
+        logic.ex
+          euclidean__axioms.Point
+          (u:(sttfa.eta euclidean__axioms.Point) =>
+           logic.ex
+             euclidean__axioms.Point
+             (v:(sttfa.eta euclidean__axioms.Point) =>
+              logic.and
+                (Out B A U)
+                (logic.and
+                   (Out B C V)
+                   (logic.and
+                      (Out b a u)
+                      (logic.and
+                         (Out b c v)
+                         (logic.and
+                            (euclidean__axioms.Cong B U b u)
+                            (logic.and
+                               (euclidean__axioms.Cong B V b v)
+                               (logic.and
+                                  (euclidean__axioms.Cong U V u v)
+                                  (euclidean__axioms.nCol A B C))))))))))).
+
+def AdjacentAngle :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          euclidean__axioms.Point
+          (sttfa.arrow
+             euclidean__axioms.Point
+             (sttfa.arrow
+                euclidean__axioms.Point
+                (sttfa.arrow
+                   euclidean__axioms.Point
+                   (sttfa.arrow
+                      euclidean__axioms.Point
+                      (sttfa.arrow euclidean__axioms.Point sttfa.bool)))))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  D:(sttfa.eta euclidean__axioms.Point) =>
+  E:(sttfa.eta euclidean__axioms.Point) =>
+  F:(sttfa.eta euclidean__axioms.Point) =>
+  logic.and (euclidean__axioms.eq B E) (logic.and (euclidean__axioms.BetS A B F) (Out B D C)).
+
+def VA :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          euclidean__axioms.Point
+          (sttfa.arrow
+             euclidean__axioms.Point
+             (sttfa.arrow
+                euclidean__axioms.Point
+                (sttfa.arrow
+                   euclidean__axioms.Point
+                   (sttfa.arrow
+                      euclidean__axioms.Point
+                      (sttfa.arrow euclidean__axioms.Point sttfa.bool)))))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  D:(sttfa.eta euclidean__axioms.Point) =>
+  E:(sttfa.eta euclidean__axioms.Point) =>
+  F:(sttfa.eta euclidean__axioms.Point) =>
+  logic.and
+    (euclidean__axioms.eq B E)
+    (logic.and (euclidean__axioms.BetS A B D) (euclidean__axioms.BetS C B F)).
+
+def Supp :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          euclidean__axioms.Point
+          (sttfa.arrow
+             euclidean__axioms.Point
+             (sttfa.arrow
+                euclidean__axioms.Point
+                (sttfa.arrow
+                   euclidean__axioms.Point
+                   (sttfa.arrow euclidean__axioms.Point sttfa.bool))))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  D:(sttfa.eta euclidean__axioms.Point) =>
+  F:(sttfa.eta euclidean__axioms.Point) => logic.and (Out B C D) (euclidean__axioms.BetS A B F).
+
+def Per :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          euclidean__axioms.Point
+          (sttfa.arrow euclidean__axioms.Point (sttfa.arrow euclidean__axioms.Point sttfa.bool))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  logic.ex
+    euclidean__axioms.Point
+    (X:(sttfa.eta euclidean__axioms.Point) =>
+     logic.and
+       (euclidean__axioms.BetS A B X)
+       (logic.and
+          (euclidean__axioms.Cong A B X B)
+          (logic.and (euclidean__axioms.Cong A C X C) (euclidean__axioms.neq B C)))).
+
+def Perp__at :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          euclidean__axioms.Point
+          (sttfa.arrow
+             euclidean__axioms.Point
+             (sttfa.arrow
+                euclidean__axioms.Point
+                (sttfa.arrow
+                   euclidean__axioms.Point
+                   (sttfa.arrow euclidean__axioms.Point sttfa.bool))))))
+  :=
+  P:(sttfa.eta euclidean__axioms.Point) =>
+  Q:(sttfa.eta euclidean__axioms.Point) =>
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  logic.ex
+    euclidean__axioms.Point
+    (X:(sttfa.eta euclidean__axioms.Point) =>
+     logic.and
+       (euclidean__axioms.Col P Q C)
+       (logic.and
+          (euclidean__axioms.Col A B C)
+          (logic.and (euclidean__axioms.Col A B X) (Per X C P)))).
+
+def Perp :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          euclidean__axioms.Point
+          (sttfa.arrow
+             euclidean__axioms.Point
+             (sttfa.arrow euclidean__axioms.Point (sttfa.arrow euclidean__axioms.Point sttfa.bool)))))
+  :=
+  P:(sttfa.eta euclidean__axioms.Point) =>
+  Q:(sttfa.eta euclidean__axioms.Point) =>
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  logic.ex euclidean__axioms.Point (X:(sttfa.eta euclidean__axioms.Point) => Perp__at P Q A B X).
+
+def InAngle :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          euclidean__axioms.Point
+          (sttfa.arrow
+             euclidean__axioms.Point
+             (sttfa.arrow euclidean__axioms.Point (sttfa.arrow euclidean__axioms.Point sttfa.bool)))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  P:(sttfa.eta euclidean__axioms.Point) =>
+  logic.ex
+    euclidean__axioms.Point
+    (X:(sttfa.eta euclidean__axioms.Point) =>
+     logic.ex
+       euclidean__axioms.Point
+       (Y:(sttfa.eta euclidean__axioms.Point) =>
+        logic.and (Out B A X) (logic.and (Out B C Y) (euclidean__axioms.BetS X P Y)))).
+
+def OS :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          euclidean__axioms.Point
+          (sttfa.arrow
+             euclidean__axioms.Point
+             (sttfa.arrow euclidean__axioms.Point (sttfa.arrow euclidean__axioms.Point sttfa.bool)))))
+  :=
+  P:(sttfa.eta euclidean__axioms.Point) =>
+  Q:(sttfa.eta euclidean__axioms.Point) =>
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  logic.ex
+    euclidean__axioms.Point
+    (X:(sttfa.eta euclidean__axioms.Point) =>
+     logic.ex
+       euclidean__axioms.Point
+       (U:(sttfa.eta euclidean__axioms.Point) =>
+        logic.ex
+          euclidean__axioms.Point
+          (V:(sttfa.eta euclidean__axioms.Point) =>
+           logic.and
+             (euclidean__axioms.Col A B U)
+             (logic.and
+                (euclidean__axioms.Col A B V)
+                (logic.and
+                   (euclidean__axioms.BetS P U X)
+                   (logic.and
+                      (euclidean__axioms.BetS Q V X)
+                      (logic.and (euclidean__axioms.nCol A B P) (euclidean__axioms.nCol A B Q)))))))).
+
+def IO :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          euclidean__axioms.Point
+          (sttfa.arrow
+             euclidean__axioms.Point
+             (sttfa.arrow euclidean__axioms.Point (sttfa.arrow euclidean__axioms.Point sttfa.bool)))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  D:(sttfa.eta euclidean__axioms.Point) =>
+  logic.and
+    (euclidean__axioms.BetS A B C)
+    (logic.and
+       (euclidean__axioms.BetS A B D)
+       (logic.and (euclidean__axioms.BetS A C D) (euclidean__axioms.BetS B C D))).
+
+def isosceles :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          euclidean__axioms.Point
+          (sttfa.arrow euclidean__axioms.Point (sttfa.arrow euclidean__axioms.Point sttfa.bool))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  logic.and (euclidean__axioms.Triangle A B C) (euclidean__axioms.Cong A B A C).
+
+def Cut :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          euclidean__axioms.Point
+          (sttfa.arrow
+             euclidean__axioms.Point
+             (sttfa.arrow
+                euclidean__axioms.Point
+                (sttfa.arrow
+                   euclidean__axioms.Point
+                   (sttfa.arrow euclidean__axioms.Point sttfa.bool))))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  D:(sttfa.eta euclidean__axioms.Point) =>
+  E:(sttfa.eta euclidean__axioms.Point) =>
+  logic.and
+    (euclidean__axioms.BetS A E B)
+    (logic.and
+       (euclidean__axioms.BetS C E D)
+       (logic.and (euclidean__axioms.nCol A B C) (euclidean__axioms.nCol A B D))).
+
+def LtA :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          euclidean__axioms.Point
+          (sttfa.arrow
+             euclidean__axioms.Point
+             (sttfa.arrow
+                euclidean__axioms.Point
+                (sttfa.arrow
+                   euclidean__axioms.Point
+                   (sttfa.arrow
+                      euclidean__axioms.Point
+                      (sttfa.arrow euclidean__axioms.Point sttfa.bool)))))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  D:(sttfa.eta euclidean__axioms.Point) =>
+  E:(sttfa.eta euclidean__axioms.Point) =>
+  F:(sttfa.eta euclidean__axioms.Point) =>
+  logic.ex
+    euclidean__axioms.Point
+    (U:(sttfa.eta euclidean__axioms.Point) =>
+     logic.ex
+       euclidean__axioms.Point
+       (X:(sttfa.eta euclidean__axioms.Point) =>
+        logic.ex
+          euclidean__axioms.Point
+          (V:(sttfa.eta euclidean__axioms.Point) =>
+           logic.and
+             (euclidean__axioms.BetS U X V)
+             (logic.and (Out E D U) (logic.and (Out E F V) (CongA A B C D E X)))))).
+
+def TG :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          euclidean__axioms.Point
+          (sttfa.arrow
+             euclidean__axioms.Point
+             (sttfa.arrow
+                euclidean__axioms.Point
+                (sttfa.arrow
+                   euclidean__axioms.Point
+                   (sttfa.arrow
+                      euclidean__axioms.Point
+                      (sttfa.arrow euclidean__axioms.Point sttfa.bool)))))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  D:(sttfa.eta euclidean__axioms.Point) =>
+  E:(sttfa.eta euclidean__axioms.Point) =>
+  F:(sttfa.eta euclidean__axioms.Point) =>
+  logic.ex
+    euclidean__axioms.Point
+    (X:(sttfa.eta euclidean__axioms.Point) =>
+     logic.and
+       (euclidean__axioms.BetS A B X)
+       (logic.and (euclidean__axioms.Cong B X C D) (Lt E F A X))).
+
+def TT :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          euclidean__axioms.Point
+          (sttfa.arrow
+             euclidean__axioms.Point
+             (sttfa.arrow
+                euclidean__axioms.Point
+                (sttfa.arrow
+                   euclidean__axioms.Point
+                   (sttfa.arrow
+                      euclidean__axioms.Point
+                      (sttfa.arrow
+                         euclidean__axioms.Point
+                         (sttfa.arrow
+                            euclidean__axioms.Point
+                            (sttfa.arrow euclidean__axioms.Point sttfa.bool)))))))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  D:(sttfa.eta euclidean__axioms.Point) =>
+  E:(sttfa.eta euclidean__axioms.Point) =>
+  F:(sttfa.eta euclidean__axioms.Point) =>
+  G:(sttfa.eta euclidean__axioms.Point) =>
+  H:(sttfa.eta euclidean__axioms.Point) =>
+  logic.ex
+    euclidean__axioms.Point
+    (X:(sttfa.eta euclidean__axioms.Point) =>
+     logic.and
+       (euclidean__axioms.BetS E F X)
+       (logic.and (euclidean__axioms.Cong F X G H) (TG A B C D E X))).
+
+def RT :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          euclidean__axioms.Point
+          (sttfa.arrow
+             euclidean__axioms.Point
+             (sttfa.arrow
+                euclidean__axioms.Point
+                (sttfa.arrow
+                   euclidean__axioms.Point
+                   (sttfa.arrow
+                      euclidean__axioms.Point
+                      (sttfa.arrow euclidean__axioms.Point sttfa.bool)))))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  D:(sttfa.eta euclidean__axioms.Point) =>
+  E:(sttfa.eta euclidean__axioms.Point) =>
+  F:(sttfa.eta euclidean__axioms.Point) =>
+  logic.ex
+    euclidean__axioms.Point
+    (X:(sttfa.eta euclidean__axioms.Point) =>
+     logic.ex
+       euclidean__axioms.Point
+       (Y:(sttfa.eta euclidean__axioms.Point) =>
+        logic.ex
+          euclidean__axioms.Point
+          (Z:(sttfa.eta euclidean__axioms.Point) =>
+           logic.ex
+             euclidean__axioms.Point
+             (U:(sttfa.eta euclidean__axioms.Point) =>
+              logic.ex
+                euclidean__axioms.Point
+                (V:(sttfa.eta euclidean__axioms.Point) =>
+                 logic.and (Supp X Y U V Z) (logic.and (CongA A B C X Y U) (CongA D E F V Y Z))))))).
+
+def Meet :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          euclidean__axioms.Point
+          (sttfa.arrow
+             euclidean__axioms.Point
+             (sttfa.arrow euclidean__axioms.Point (sttfa.arrow euclidean__axioms.Point sttfa.bool)))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  D:(sttfa.eta euclidean__axioms.Point) =>
+  logic.ex
+    euclidean__axioms.Point
+    (X:(sttfa.eta euclidean__axioms.Point) =>
+     logic.and
+       (euclidean__axioms.neq A B)
+       (logic.and
+          (euclidean__axioms.neq C D)
+          (logic.and (euclidean__axioms.Col A B X) (euclidean__axioms.Col C D X)))).
+
+def CR :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          euclidean__axioms.Point
+          (sttfa.arrow
+             euclidean__axioms.Point
+             (sttfa.arrow euclidean__axioms.Point (sttfa.arrow euclidean__axioms.Point sttfa.bool)))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  D:(sttfa.eta euclidean__axioms.Point) =>
+  logic.ex
+    euclidean__axioms.Point
+    (X:(sttfa.eta euclidean__axioms.Point) =>
+     logic.and (euclidean__axioms.BetS A X B) (euclidean__axioms.BetS C X D)).
+
+def TP :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          euclidean__axioms.Point
+          (sttfa.arrow
+             euclidean__axioms.Point
+             (sttfa.arrow euclidean__axioms.Point (sttfa.arrow euclidean__axioms.Point sttfa.bool)))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  D:(sttfa.eta euclidean__axioms.Point) =>
+  logic.and
+    (euclidean__axioms.neq A B)
+    (logic.and (euclidean__axioms.neq C D) (logic.and (logic.not (Meet A B C D)) (OS C D A B))).
+
+def Par :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          euclidean__axioms.Point
+          (sttfa.arrow
+             euclidean__axioms.Point
+             (sttfa.arrow euclidean__axioms.Point (sttfa.arrow euclidean__axioms.Point sttfa.bool)))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  D:(sttfa.eta euclidean__axioms.Point) =>
+  logic.ex
+    euclidean__axioms.Point
+    (U:(sttfa.eta euclidean__axioms.Point) =>
+     logic.ex
+       euclidean__axioms.Point
+       (V:(sttfa.eta euclidean__axioms.Point) =>
+        logic.ex
+          euclidean__axioms.Point
+          (u:(sttfa.eta euclidean__axioms.Point) =>
+           logic.ex
+             euclidean__axioms.Point
+             (v:(sttfa.eta euclidean__axioms.Point) =>
+              logic.ex
+                euclidean__axioms.Point
+                (X:(sttfa.eta euclidean__axioms.Point) =>
+                 logic.and
+                   (euclidean__axioms.neq A B)
+                   (logic.and
+                      (euclidean__axioms.neq C D)
+                      (logic.and
+                         (euclidean__axioms.Col A B U)
+                         (logic.and
+                            (euclidean__axioms.Col A B V)
+                            (logic.and
+                               (euclidean__axioms.neq U V)
+                               (logic.and
+                                  (euclidean__axioms.Col C D u)
+                                  (logic.and
+                                     (euclidean__axioms.Col C D v)
+                                     (logic.and
+                                        (euclidean__axioms.neq u v)
+                                        (logic.and
+                                           (logic.not (Meet A B C D))
+                                           (logic.and
+                                              (euclidean__axioms.BetS U X v)
+                                              (euclidean__axioms.BetS u X V))))))))))))))).
+
+def SumA :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          euclidean__axioms.Point
+          (sttfa.arrow
+             euclidean__axioms.Point
+             (sttfa.arrow
+                euclidean__axioms.Point
+                (sttfa.arrow
+                   euclidean__axioms.Point
+                   (sttfa.arrow
+                      euclidean__axioms.Point
+                      (sttfa.arrow
+                         euclidean__axioms.Point
+                         (sttfa.arrow
+                            euclidean__axioms.Point
+                            (sttfa.arrow
+                               euclidean__axioms.Point
+                               (sttfa.arrow euclidean__axioms.Point sttfa.bool))))))))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  D:(sttfa.eta euclidean__axioms.Point) =>
+  E:(sttfa.eta euclidean__axioms.Point) =>
+  F:(sttfa.eta euclidean__axioms.Point) =>
+  P:(sttfa.eta euclidean__axioms.Point) =>
+  Q:(sttfa.eta euclidean__axioms.Point) =>
+  R:(sttfa.eta euclidean__axioms.Point) =>
+  logic.ex
+    euclidean__axioms.Point
+    (X:(sttfa.eta euclidean__axioms.Point) =>
+     logic.and (CongA A B C P Q X) (logic.and (CongA D E F X Q R) (euclidean__axioms.BetS P X R))).
+
+def PG :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          euclidean__axioms.Point
+          (sttfa.arrow
+             euclidean__axioms.Point
+             (sttfa.arrow euclidean__axioms.Point (sttfa.arrow euclidean__axioms.Point sttfa.bool)))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  D:(sttfa.eta euclidean__axioms.Point) => logic.and (Par A B C D) (Par A D B C).
+
+def SQ :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          euclidean__axioms.Point
+          (sttfa.arrow
+             euclidean__axioms.Point
+             (sttfa.arrow euclidean__axioms.Point (sttfa.arrow euclidean__axioms.Point sttfa.bool)))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  D:(sttfa.eta euclidean__axioms.Point) =>
+  logic.and
+    (euclidean__axioms.Cong A B C D)
+    (logic.and
+       (euclidean__axioms.Cong A B B C)
+       (logic.and
+          (euclidean__axioms.Cong A B D A)
+          (logic.and (Per D A B) (logic.and (Per A B C) (logic.and (Per B C D) (Per C D A)))))).
+
+def RE :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          euclidean__axioms.Point
+          (sttfa.arrow
+             euclidean__axioms.Point
+             (sttfa.arrow euclidean__axioms.Point (sttfa.arrow euclidean__axioms.Point sttfa.bool)))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  D:(sttfa.eta euclidean__axioms.Point) =>
+  logic.and
+    (Per D A B)
+    (logic.and (Per A B C) (logic.and (Per B C D) (logic.and (Per C D A) (CR A C B D)))).
+
+def RC :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          euclidean__axioms.Point
+          (sttfa.arrow
+             euclidean__axioms.Point
+             (sttfa.arrow
+                euclidean__axioms.Point
+                (sttfa.arrow
+                   euclidean__axioms.Point
+                   (sttfa.arrow
+                      euclidean__axioms.Point
+                      (sttfa.arrow
+                         euclidean__axioms.Point
+                         (sttfa.arrow
+                            euclidean__axioms.Point
+                            (sttfa.arrow euclidean__axioms.Point sttfa.bool)))))))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  D:(sttfa.eta euclidean__axioms.Point) =>
+  a:(sttfa.eta euclidean__axioms.Point) =>
+  b:(sttfa.eta euclidean__axioms.Point) =>
+  c:(sttfa.eta euclidean__axioms.Point) =>
+  d:(sttfa.eta euclidean__axioms.Point) =>
+  logic.and
+    (RE A B C D)
+    (logic.and
+       (RE a b c d)
+       (logic.and (euclidean__axioms.Cong A B a b) (euclidean__axioms.Cong B C b c))).
+
+def ER :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          euclidean__axioms.Point
+          (sttfa.arrow
+             euclidean__axioms.Point
+             (sttfa.arrow
+                euclidean__axioms.Point
+                (sttfa.arrow
+                   euclidean__axioms.Point
+                   (sttfa.arrow
+                      euclidean__axioms.Point
+                      (sttfa.arrow
+                         euclidean__axioms.Point
+                         (sttfa.arrow
+                            euclidean__axioms.Point
+                            (sttfa.arrow euclidean__axioms.Point sttfa.bool)))))))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  D:(sttfa.eta euclidean__axioms.Point) =>
+  a:(sttfa.eta euclidean__axioms.Point) =>
+  b:(sttfa.eta euclidean__axioms.Point) =>
+  c:(sttfa.eta euclidean__axioms.Point) =>
+  d:(sttfa.eta euclidean__axioms.Point) =>
+  logic.ex
+    euclidean__axioms.Point
+    (X:(sttfa.eta euclidean__axioms.Point) =>
+     logic.ex
+       euclidean__axioms.Point
+       (Y:(sttfa.eta euclidean__axioms.Point) =>
+        logic.ex
+          euclidean__axioms.Point
+          (Z:(sttfa.eta euclidean__axioms.Point) =>
+           logic.ex
+             euclidean__axioms.Point
+             (U:(sttfa.eta euclidean__axioms.Point) =>
+              logic.ex
+                euclidean__axioms.Point
+                (x:(sttfa.eta euclidean__axioms.Point) =>
+                 logic.ex
+                   euclidean__axioms.Point
+                   (z:(sttfa.eta euclidean__axioms.Point) =>
+                    logic.ex
+                      euclidean__axioms.Point
+                      (u:(sttfa.eta euclidean__axioms.Point) =>
+                       logic.ex
+                         euclidean__axioms.Point
+                         (w:(sttfa.eta euclidean__axioms.Point) =>
+                          logic.ex
+                            euclidean__axioms.Point
+                            (W:(sttfa.eta euclidean__axioms.Point) =>
+                             logic.and
+                               (RC A B C D X Y Z U)
+                               (logic.and
+                                  (RC a b c d x Y z u)
+                                  (logic.and
+                                     (euclidean__axioms.BetS x Y Z)
+                                     (logic.and
+                                        (euclidean__axioms.BetS X Y z)
+                                        (euclidean__axioms.BetS W U w))))))))))))).
+
+def equilateral :
+  sttfa.etap
+    (sttfa.p
+       (sttfa.arrow
+          euclidean__axioms.Point
+          (sttfa.arrow euclidean__axioms.Point (sttfa.arrow euclidean__axioms.Point sttfa.bool))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  logic.and (euclidean__axioms.Cong A B B C) (euclidean__axioms.Cong B C C A).
+

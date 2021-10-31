@@ -1,0 +1,1533 @@
+thm proposition__28B :
+  sttfa.eps
+    (sttfa.forall
+       euclidean__axioms.Point
+       (A:(sttfa.eta euclidean__axioms.Point) =>
+        sttfa.forall
+          euclidean__axioms.Point
+          (B:(sttfa.eta euclidean__axioms.Point) =>
+           sttfa.forall
+             euclidean__axioms.Point
+             (C:(sttfa.eta euclidean__axioms.Point) =>
+              sttfa.forall
+                euclidean__axioms.Point
+                (D:(sttfa.eta euclidean__axioms.Point) =>
+                 sttfa.forall
+                   euclidean__axioms.Point
+                   (G:(sttfa.eta euclidean__axioms.Point) =>
+                    sttfa.forall
+                      euclidean__axioms.Point
+                      (H:(sttfa.eta euclidean__axioms.Point) =>
+                       sttfa.impl
+                         (euclidean__axioms.BetS A G B)
+                         (sttfa.impl
+                            (euclidean__axioms.BetS C H D)
+                            (sttfa.impl
+                               (euclidean__defs.RT B G H G H D)
+                               (sttfa.impl
+                                  (euclidean__defs.OS B D G H)
+                                  (euclidean__defs.Par A B C D)))))))))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  D:(sttfa.eta euclidean__axioms.Point) =>
+  G:(sttfa.eta euclidean__axioms.Point) =>
+  H:(sttfa.eta euclidean__axioms.Point) =>
+  H0:(sttfa.eps (euclidean__axioms.BetS A G B)) =>
+  H1:(sttfa.eps (euclidean__axioms.BetS C H D)) =>
+  H2:(sttfa.eps (euclidean__defs.RT B G H G H D)) =>
+  H3:(sttfa.eps (euclidean__defs.OS B D G H)) =>
+  (H4:(sttfa.eps (euclidean__defs.OS D B G H)) =>
+   (H5:(sttfa.eps
+          (logic.ex
+             euclidean__axioms.Point
+             (a:(sttfa.eta euclidean__axioms.Point) =>
+              logic.ex
+                euclidean__axioms.Point
+                (b:(sttfa.eta euclidean__axioms.Point) =>
+                 logic.ex
+                   euclidean__axioms.Point
+                   (c:(sttfa.eta euclidean__axioms.Point) =>
+                    logic.ex
+                      euclidean__axioms.Point
+                      (d:(sttfa.eta euclidean__axioms.Point) =>
+                       logic.ex
+                         euclidean__axioms.Point
+                         (e:(sttfa.eta euclidean__axioms.Point) =>
+                          logic.and
+                            (euclidean__defs.Supp a b c e d)
+                            (logic.and
+                               (euclidean__defs.CongA B G H a b c)
+                               (euclidean__defs.CongA G H D e b d))))))))) =>
+    logic.ex__ind
+      euclidean__axioms.Point
+      (a:(sttfa.eta euclidean__axioms.Point) =>
+       logic.ex
+         euclidean__axioms.Point
+         (b:(sttfa.eta euclidean__axioms.Point) =>
+          logic.ex
+            euclidean__axioms.Point
+            (c:(sttfa.eta euclidean__axioms.Point) =>
+             logic.ex
+               euclidean__axioms.Point
+               (d:(sttfa.eta euclidean__axioms.Point) =>
+                logic.ex
+                  euclidean__axioms.Point
+                  (e:(sttfa.eta euclidean__axioms.Point) =>
+                   logic.and
+                     (euclidean__defs.Supp a b c e d)
+                     (logic.and
+                        (euclidean__defs.CongA B G H a b c)
+                        (euclidean__defs.CongA G H D e b d)))))))
+      (euclidean__defs.Par A B C D)
+      (a:(sttfa.eta euclidean__axioms.Point) =>
+       H6:(sttfa.eps
+             (logic.ex
+                euclidean__axioms.Point
+                (b:(sttfa.eta euclidean__axioms.Point) =>
+                 logic.ex
+                   euclidean__axioms.Point
+                   (c:(sttfa.eta euclidean__axioms.Point) =>
+                    logic.ex
+                      euclidean__axioms.Point
+                      (d:(sttfa.eta euclidean__axioms.Point) =>
+                       logic.ex
+                         euclidean__axioms.Point
+                         (e:(sttfa.eta euclidean__axioms.Point) =>
+                          logic.and
+                            (euclidean__defs.Supp a b c e d)
+                            (logic.and
+                               (euclidean__defs.CongA B G H a b c)
+                               (euclidean__defs.CongA G H D e b d)))))))) =>
+       logic.ex__ind
+         euclidean__axioms.Point
+         (b:(sttfa.eta euclidean__axioms.Point) =>
+          logic.ex
+            euclidean__axioms.Point
+            (c:(sttfa.eta euclidean__axioms.Point) =>
+             logic.ex
+               euclidean__axioms.Point
+               (d:(sttfa.eta euclidean__axioms.Point) =>
+                logic.ex
+                  euclidean__axioms.Point
+                  (e:(sttfa.eta euclidean__axioms.Point) =>
+                   logic.and
+                     (euclidean__defs.Supp a b c e d)
+                     (logic.and
+                        (euclidean__defs.CongA B G H a b c)
+                        (euclidean__defs.CongA G H D e b d))))))
+         (euclidean__defs.Par A B C D)
+         (b:(sttfa.eta euclidean__axioms.Point) =>
+          H7:(sttfa.eps
+                (logic.ex
+                   euclidean__axioms.Point
+                   (c:(sttfa.eta euclidean__axioms.Point) =>
+                    logic.ex
+                      euclidean__axioms.Point
+                      (d:(sttfa.eta euclidean__axioms.Point) =>
+                       logic.ex
+                         euclidean__axioms.Point
+                         (e:(sttfa.eta euclidean__axioms.Point) =>
+                          logic.and
+                            (euclidean__defs.Supp a b c e d)
+                            (logic.and
+                               (euclidean__defs.CongA B G H a b c)
+                               (euclidean__defs.CongA G H D e b d))))))) =>
+          logic.ex__ind
+            euclidean__axioms.Point
+            (c:(sttfa.eta euclidean__axioms.Point) =>
+             logic.ex
+               euclidean__axioms.Point
+               (d:(sttfa.eta euclidean__axioms.Point) =>
+                logic.ex
+                  euclidean__axioms.Point
+                  (e:(sttfa.eta euclidean__axioms.Point) =>
+                   logic.and
+                     (euclidean__defs.Supp a b c e d)
+                     (logic.and
+                        (euclidean__defs.CongA B G H a b c)
+                        (euclidean__defs.CongA G H D e b d)))))
+            (euclidean__defs.Par A B C D)
+            (c:(sttfa.eta euclidean__axioms.Point) =>
+             H8:(sttfa.eps
+                   (logic.ex
+                      euclidean__axioms.Point
+                      (d:(sttfa.eta euclidean__axioms.Point) =>
+                       logic.ex
+                         euclidean__axioms.Point
+                         (e:(sttfa.eta euclidean__axioms.Point) =>
+                          logic.and
+                            (euclidean__defs.Supp a b c e d)
+                            (logic.and
+                               (euclidean__defs.CongA B G H a b c)
+                               (euclidean__defs.CongA G H D e b d)))))) =>
+             logic.ex__ind
+               euclidean__axioms.Point
+               (d:(sttfa.eta euclidean__axioms.Point) =>
+                logic.ex
+                  euclidean__axioms.Point
+                  (e:(sttfa.eta euclidean__axioms.Point) =>
+                   logic.and
+                     (euclidean__defs.Supp a b c e d)
+                     (logic.and
+                        (euclidean__defs.CongA B G H a b c)
+                        (euclidean__defs.CongA G H D e b d))))
+               (euclidean__defs.Par A B C D)
+               (d:(sttfa.eta euclidean__axioms.Point) =>
+                H9:(sttfa.eps
+                      (logic.ex
+                         euclidean__axioms.Point
+                         (e:(sttfa.eta euclidean__axioms.Point) =>
+                          logic.and
+                            (euclidean__defs.Supp a b c e d)
+                            (logic.and
+                               (euclidean__defs.CongA B G H a b c)
+                               (euclidean__defs.CongA G H D e b d))))) =>
+                logic.ex__ind
+                  euclidean__axioms.Point
+                  (e:(sttfa.eta euclidean__axioms.Point) =>
+                   logic.and
+                     (euclidean__defs.Supp a b c e d)
+                     (logic.and
+                        (euclidean__defs.CongA B G H a b c)
+                        (euclidean__defs.CongA G H D e b d)))
+                  (euclidean__defs.Par A B C D)
+                  (e:(sttfa.eta euclidean__axioms.Point) =>
+                   H10:(sttfa.eps
+                          (logic.and
+                             (euclidean__defs.Supp a b c e d)
+                             (logic.and
+                                (euclidean__defs.CongA B G H a b c)
+                                (euclidean__defs.CongA G H D e b d)))) =>
+                   logic.and__ind
+                     (euclidean__defs.Supp a b c e d)
+                     (logic.and
+                        (euclidean__defs.CongA B G H a b c)
+                        (euclidean__defs.CongA G H D e b d))
+                     (euclidean__defs.Par A B C D)
+                     (H11:(sttfa.eps (euclidean__defs.Supp a b c e d)) =>
+                      H12:(sttfa.eps
+                             (logic.and
+                                (euclidean__defs.CongA B G H a b c)
+                                (euclidean__defs.CongA G H D e b d))) =>
+                      logic.and__ind
+                        (euclidean__defs.CongA B G H a b c)
+                        (euclidean__defs.CongA G H D e b d)
+                        (euclidean__defs.Par A B C D)
+                        (H13:(sttfa.eps (euclidean__defs.CongA B G H a b c)) =>
+                         H14:(sttfa.eps (euclidean__defs.CongA G H D e b d)) =>
+                         (H15:(sttfa.eps (euclidean__defs.CongA a b c B G H)) =>
+                          (H16:(sttfa.eps (euclidean__axioms.neq G H)) =>
+                           (H17:(sttfa.eps
+                                   (euclidean__defs.CongA e b d G H D)) =>
+                            (H18:(sttfa.eps (euclidean__axioms.eq H H)) =>
+                             (H19:(sttfa.eps
+                                     (euclidean__defs.Out G H H)) =>
+                              (H20:(sttfa.eps
+                                      (euclidean__defs.Supp
+                                         A
+                                         G
+                                         H
+                                         H
+                                         B)) =>
+                               (H21:(sttfa.eps
+                                       (euclidean__defs.Supp
+                                          B
+                                          G
+                                          H
+                                          H
+                                          A)) =>
+                                (H22:(sttfa.eps
+                                        (euclidean__defs.CongA
+                                           e
+                                           b
+                                           d
+                                           H
+                                           G
+                                           A)) =>
+                                 (H23:(sttfa.eps
+                                         (euclidean__defs.CongA
+                                            G
+                                            H
+                                            D
+                                            e
+                                            b
+                                            d)) =>
+                                  (H24:(sttfa.eps
+                                          (euclidean__defs.CongA
+                                             G
+                                             H
+                                             D
+                                             H
+                                             G
+                                             A)) =>
+                                   (H25:(sttfa.eps
+                                           (euclidean__axioms.nCol
+                                              H
+                                              G
+                                              A)) =>
+                                    (H26:(sttfa.eps
+                                            (euclidean__defs.CongA
+                                               H
+                                               G
+                                               A
+                                               A
+                                               G
+                                               H)) =>
+                                     (H27:(sttfa.eps
+                                             (euclidean__defs.CongA
+                                                G
+                                                H
+                                                D
+                                                A
+                                                G
+                                                H)) =>
+                                      (H28:(sttfa.eps
+                                              (euclidean__defs.CongA
+                                                 A
+                                                 G
+                                                 H
+                                                 G
+                                                 H
+                                                 D)) =>
+                                       (H29:(sttfa.eps
+                                               (euclidean__axioms.eq
+                                                  G
+                                                  G)) =>
+                                        (H30:(sttfa.eps
+                                                (euclidean__axioms.Col
+                                                   G
+                                                   H
+                                                   G)) =>
+                                         (H31:(sttfa.eps
+                                                 (euclidean__axioms.nCol
+                                                    A
+                                                    G
+                                                    H)) =>
+                                          (H32:(sttfa.eps
+                                                  (logic.not
+                                                     (euclidean__axioms.Col
+                                                        G
+                                                        H
+                                                        A))) =>
+                                           (H33:(sttfa.eps
+                                                   (euclidean__axioms.TS
+                                                      A
+                                                      G
+                                                      H
+                                                      B)) =>
+                                            (H34:(sttfa.eps
+                                                    (euclidean__axioms.TS
+                                                       B
+                                                       G
+                                                       H
+                                                       A)) =>
+                                             (H35:(sttfa.eps
+                                                     (euclidean__axioms.TS
+                                                        D
+                                                        G
+                                                        H
+                                                        A)) =>
+                                              (H36:(sttfa.eps
+                                                      (euclidean__axioms.TS
+                                                         A
+                                                         G
+                                                         H
+                                                         D)) =>
+                                               (H37:(sttfa.eps
+                                                       (euclidean__defs.Par
+                                                          A
+                                                          B
+                                                          C
+                                                          D)) =>
+                                                H37)
+                                                 (proposition__27.proposition__27
+                                                    A
+                                                    B
+                                                    C
+                                                    D
+                                                    G
+                                                    H
+                                                    H0
+                                                    H1
+                                                    H28
+                                                    H36))
+                                                (lemma__oppositesidesymmetric.lemma__oppositesidesymmetric
+                                                   G
+                                                   H
+                                                   D
+                                                   A
+                                                   H35))
+                                               (lemma__planeseparation.lemma__planeseparation
+                                                  G
+                                                  H
+                                                  D
+                                                  B
+                                                  A
+                                                  H4
+                                                  H34))
+                                              (lemma__oppositesidesymmetric.lemma__oppositesidesymmetric
+                                                 G
+                                                 H
+                                                 A
+                                                 B
+                                                 H33))
+                                             (logic.ex__intro
+                                                euclidean__axioms.Point
+                                                (X:(sttfa.eta
+                                                      euclidean__axioms.Point) =>
+                                                 logic.and
+                                                   (euclidean__axioms.BetS
+                                                      A
+                                                      X
+                                                      B)
+                                                   (logic.and
+                                                      (euclidean__axioms.Col
+                                                         G
+                                                         H
+                                                         X)
+                                                      (euclidean__axioms.nCol
+                                                         G
+                                                         H
+                                                         A)))
+                                                G
+                                                (logic.conj
+                                                   (euclidean__axioms.BetS
+                                                      A
+                                                      G
+                                                      B)
+                                                   (logic.and
+                                                      (euclidean__axioms.Col
+                                                         G
+                                                         H
+                                                         G)
+                                                      (euclidean__axioms.nCol
+                                                         G
+                                                         H
+                                                         A))
+                                                   H0
+                                                   (logic.conj
+                                                      (euclidean__axioms.Col
+                                                         G
+                                                         H
+                                                         G)
+                                                      (euclidean__axioms.nCol
+                                                         G
+                                                         H
+                                                         A)
+                                                      H30
+                                                      (euclidean__tactics.nCol__notCol
+                                                         G
+                                                         H
+                                                         A
+                                                         H32)))))
+                                            (H32:(sttfa.eps
+                                                    (euclidean__axioms.Col
+                                                       G
+                                                       H
+                                                       A)) =>
+                                             (H33:(sttfa.eps
+                                                     (euclidean__axioms.Col
+                                                        A
+                                                        G
+                                                        H)) =>
+                                              euclidean__tactics.Col__nCol__False
+                                                A
+                                                G
+                                                H
+                                                H31
+                                                H33)
+                                               ((H33:(sttfa.eps
+                                                        (logic.and
+                                                           (euclidean__axioms.Col
+                                                              H
+                                                              G
+                                                              A)
+                                                           (logic.and
+                                                              (euclidean__axioms.Col
+                                                                 H
+                                                                 A
+                                                                 G)
+                                                              (logic.and
+                                                                 (euclidean__axioms.Col
+                                                                    A
+                                                                    G
+                                                                    H)
+                                                                 (logic.and
+                                                                    (
+                                                                    euclidean__axioms.Col
+                                                                    G
+                                                                    A
+                                                                    H)
+                                                                    (
+                                                                    euclidean__axioms.Col
+                                                                    A
+                                                                    H
+                                                                    G)))))) =>
+                                                 logic.and__ind
+                                                   (euclidean__axioms.Col
+                                                      H
+                                                      G
+                                                      A)
+                                                   (logic.and
+                                                      (euclidean__axioms.Col
+                                                         H
+                                                         A
+                                                         G)
+                                                      (logic.and
+                                                         (euclidean__axioms.Col
+                                                            A
+                                                            G
+                                                            H)
+                                                         (logic.and
+                                                            (euclidean__axioms.Col
+                                                               G
+                                                               A
+                                                               H)
+                                                            (euclidean__axioms.Col
+                                                               A
+                                                               H
+                                                               G))))
+                                                   (euclidean__axioms.Col
+                                                      A
+                                                      G
+                                                      H)
+                                                   (H34:(sttfa.eps
+                                                           (euclidean__axioms.Col
+                                                              H
+                                                              G
+                                                              A)) =>
+                                                    H35:(sttfa.eps
+                                                           (logic.and
+                                                              (euclidean__axioms.Col
+                                                                 H
+                                                                 A
+                                                                 G)
+                                                              (logic.and
+                                                                 (euclidean__axioms.Col
+                                                                    A
+                                                                    G
+                                                                    H)
+                                                                 (logic.and
+                                                                    (
+                                                                    euclidean__axioms.Col
+                                                                    G
+                                                                    A
+                                                                    H)
+                                                                    (
+                                                                    euclidean__axioms.Col
+                                                                    A
+                                                                    H
+                                                                    G))))) =>
+                                                    logic.and__ind
+                                                      (euclidean__axioms.Col
+                                                         H
+                                                         A
+                                                         G)
+                                                      (logic.and
+                                                         (euclidean__axioms.Col
+                                                            A
+                                                            G
+                                                            H)
+                                                         (logic.and
+                                                            (euclidean__axioms.Col
+                                                               G
+                                                               A
+                                                               H)
+                                                            (euclidean__axioms.Col
+                                                               A
+                                                               H
+                                                               G)))
+                                                      (euclidean__axioms.Col
+                                                         A
+                                                         G
+                                                         H)
+                                                      (H36:(sttfa.eps
+                                                              (euclidean__axioms.Col
+                                                                 H
+                                                                 A
+                                                                 G)) =>
+                                                       H37:(sttfa.eps
+                                                              (logic.and
+                                                                 (euclidean__axioms.Col
+                                                                    A
+                                                                    G
+                                                                    H)
+                                                                 (logic.and
+                                                                    (
+                                                                    euclidean__axioms.Col
+                                                                    G
+                                                                    A
+                                                                    H)
+                                                                    (
+                                                                    euclidean__axioms.Col
+                                                                    A
+                                                                    H
+                                                                    G)))) =>
+                                                       logic.and__ind
+                                                         (euclidean__axioms.Col
+                                                            A
+                                                            G
+                                                            H)
+                                                         (logic.and
+                                                            (euclidean__axioms.Col
+                                                               G
+                                                               A
+                                                               H)
+                                                            (euclidean__axioms.Col
+                                                               A
+                                                               H
+                                                               G))
+                                                         (euclidean__axioms.Col
+                                                            A
+                                                            G
+                                                            H)
+                                                         (H38:(sttfa.eps
+                                                                 (euclidean__axioms.Col
+                                                                    A
+                                                                    G
+                                                                    H)) =>
+                                                          H39:(sttfa.eps
+                                                                 (logic.and
+                                                                    (
+                                                                    euclidean__axioms.Col
+                                                                    G
+                                                                    A
+                                                                    H)
+                                                                    (
+                                                                    euclidean__axioms.Col
+                                                                    A
+                                                                    H
+                                                                    G))) =>
+                                                          logic.and__ind
+                                                            (euclidean__axioms.Col
+                                                               G
+                                                               A
+                                                               H)
+                                                            (euclidean__axioms.Col
+                                                               A
+                                                               H
+                                                               G)
+                                                            (euclidean__axioms.Col
+                                                               A
+                                                               G
+                                                               H)
+                                                            (H40:(sttfa.eps
+                                                                    (
+                                                                    euclidean__axioms.Col
+                                                                    G
+                                                                    A
+                                                                    H)) =>
+                                                             H41:(sttfa.eps
+                                                                    (
+                                                                    euclidean__axioms.Col
+                                                                    A
+                                                                    H
+                                                                    G)) =>
+                                                             H38)
+                                                            H39)
+                                                         H37)
+                                                      H35)
+                                                   H33)
+                                                  (lemma__collinearorder.lemma__collinearorder
+                                                     G
+                                                     H
+                                                     A
+                                                     H32))))
+                                           (euclidean__tactics.nCol__notCol
+                                              A
+                                              G
+                                              H
+                                              (euclidean__tactics.nCol__not__Col
+                                                 A
+                                                 G
+                                                 H
+                                                 (lemma__equalanglesNC.lemma__equalanglesNC
+                                                    G
+                                                    H
+                                                    D
+                                                    A
+                                                    G
+                                                    H
+                                                    H27))))
+                                          (logic.or__intror
+                                             (euclidean__axioms.eq
+                                                G
+                                                H)
+                                             (logic.or
+                                                (euclidean__axioms.eq
+                                                   G
+                                                   G)
+                                                (logic.or
+                                                   (euclidean__axioms.eq
+                                                      H
+                                                      G)
+                                                   (logic.or
+                                                      (euclidean__axioms.BetS
+                                                         H
+                                                         G
+                                                         G)
+                                                      (logic.or
+                                                         (euclidean__axioms.BetS
+                                                            G
+                                                            H
+                                                            G)
+                                                         (euclidean__axioms.BetS
+                                                            G
+                                                            G
+                                                            H)))))
+                                             (logic.or__introl
+                                                (euclidean__axioms.eq
+                                                   G
+                                                   G)
+                                                (logic.or
+                                                   (euclidean__axioms.eq
+                                                      H
+                                                      G)
+                                                   (logic.or
+                                                      (euclidean__axioms.BetS
+                                                         H
+                                                         G
+                                                         G)
+                                                      (logic.or
+                                                         (euclidean__axioms.BetS
+                                                            G
+                                                            H
+                                                            G)
+                                                         (euclidean__axioms.BetS
+                                                            G
+                                                            G
+                                                            H))))
+                                                H29)))
+                                         (logic.eq__refl
+                                            euclidean__axioms.Point
+                                            G))
+                                        (lemma__equalanglessymmetric.lemma__equalanglessymmetric
+                                           G
+                                           H
+                                           D
+                                           A
+                                           G
+                                           H
+                                           H27))
+                                       (lemma__equalanglestransitive.lemma__equalanglestransitive
+                                          G
+                                          H
+                                          D
+                                          H
+                                          G
+                                          A
+                                          A
+                                          G
+                                          H
+                                          H24
+                                          H26))
+                                      (lemma__ABCequalsCBA.lemma__ABCequalsCBA
+                                         H
+                                         G
+                                         A
+                                         H25))
+                                     (euclidean__tactics.nCol__notCol
+                                        H
+                                        G
+                                        A
+                                        (euclidean__tactics.nCol__not__Col
+                                           H
+                                           G
+                                           A
+                                           (lemma__equalanglesNC.lemma__equalanglesNC
+                                              G
+                                              H
+                                              D
+                                              H
+                                              G
+                                              A
+                                              H24))))
+                                    (lemma__equalanglestransitive.lemma__equalanglestransitive
+                                       G
+                                       H
+                                       D
+                                       e
+                                       b
+                                       d
+                                       H
+                                       G
+                                       A
+                                       H23
+                                       H22))
+                                   H14)
+                                  (lemma__supplements.lemma__supplements
+                                     a
+                                     b
+                                     c
+                                     e
+                                     d
+                                     B
+                                     G
+                                     H
+                                     H
+                                     A
+                                     H15
+                                     H11
+                                     H21))
+                                 (lemma__supplementsymmetric.lemma__supplementsymmetric
+                                    A
+                                    G
+                                    H
+                                    B
+                                    H
+                                    H20))
+                                (logic.conj
+                                   (euclidean__defs.Out G H H)
+                                   (euclidean__axioms.BetS A G B)
+                                   H19
+                                   H0))
+                               (lemma__ray4.lemma__ray4
+                                  G
+                                  H
+                                  H
+                                  (logic.or__intror
+                                     (euclidean__axioms.BetS G H H)
+                                     (logic.or
+                                        (euclidean__axioms.eq H H)
+                                        (euclidean__axioms.BetS G H H))
+                                     (logic.or__introl
+                                        (euclidean__axioms.eq H H)
+                                        (euclidean__axioms.BetS G H H)
+                                        H18))
+                                  H16))
+                              (logic.eq__refl euclidean__axioms.Point H))
+                             (lemma__equalanglessymmetric.lemma__equalanglessymmetric
+                                G
+                                H
+                                D
+                                e
+                                b
+                                d
+                                H14))
+                            ((H16:(sttfa.eps
+                                     (logic.and
+                                        (euclidean__axioms.neq a b)
+                                        (logic.and
+                                           (euclidean__axioms.neq b c)
+                                           (logic.and
+                                              (euclidean__axioms.neq a c)
+                                              (logic.and
+                                                 (euclidean__axioms.neq
+                                                    B
+                                                    G)
+                                                 (logic.and
+                                                    (euclidean__axioms.neq
+                                                       G
+                                                       H)
+                                                    (euclidean__axioms.neq
+                                                       B
+                                                       H))))))) =>
+                              logic.and__ind
+                                (euclidean__axioms.neq a b)
+                                (logic.and
+                                   (euclidean__axioms.neq b c)
+                                   (logic.and
+                                      (euclidean__axioms.neq a c)
+                                      (logic.and
+                                         (euclidean__axioms.neq B G)
+                                         (logic.and
+                                            (euclidean__axioms.neq G H)
+                                            (euclidean__axioms.neq B H)))))
+                                (euclidean__axioms.neq G H)
+                                (H17:(sttfa.eps (euclidean__axioms.neq a b)) =>
+                                 H18:(sttfa.eps
+                                        (logic.and
+                                           (euclidean__axioms.neq b c)
+                                           (logic.and
+                                              (euclidean__axioms.neq a c)
+                                              (logic.and
+                                                 (euclidean__axioms.neq
+                                                    B
+                                                    G)
+                                                 (logic.and
+                                                    (euclidean__axioms.neq
+                                                       G
+                                                       H)
+                                                    (euclidean__axioms.neq
+                                                       B
+                                                       H)))))) =>
+                                 logic.and__ind
+                                   (euclidean__axioms.neq b c)
+                                   (logic.and
+                                      (euclidean__axioms.neq a c)
+                                      (logic.and
+                                         (euclidean__axioms.neq B G)
+                                         (logic.and
+                                            (euclidean__axioms.neq G H)
+                                            (euclidean__axioms.neq B H))))
+                                   (euclidean__axioms.neq G H)
+                                   (H19:(sttfa.eps
+                                           (euclidean__axioms.neq b c)) =>
+                                    H20:(sttfa.eps
+                                           (logic.and
+                                              (euclidean__axioms.neq a c)
+                                              (logic.and
+                                                 (euclidean__axioms.neq
+                                                    B
+                                                    G)
+                                                 (logic.and
+                                                    (euclidean__axioms.neq
+                                                       G
+                                                       H)
+                                                    (euclidean__axioms.neq
+                                                       B
+                                                       H))))) =>
+                                    logic.and__ind
+                                      (euclidean__axioms.neq a c)
+                                      (logic.and
+                                         (euclidean__axioms.neq B G)
+                                         (logic.and
+                                            (euclidean__axioms.neq G H)
+                                            (euclidean__axioms.neq B H)))
+                                      (euclidean__axioms.neq G H)
+                                      (H21:(sttfa.eps
+                                              (euclidean__axioms.neq a c)) =>
+                                       H22:(sttfa.eps
+                                              (logic.and
+                                                 (euclidean__axioms.neq
+                                                    B
+                                                    G)
+                                                 (logic.and
+                                                    (euclidean__axioms.neq
+                                                       G
+                                                       H)
+                                                    (euclidean__axioms.neq
+                                                       B
+                                                       H)))) =>
+                                       logic.and__ind
+                                         (euclidean__axioms.neq B G)
+                                         (logic.and
+                                            (euclidean__axioms.neq G H)
+                                            (euclidean__axioms.neq B H))
+                                         (euclidean__axioms.neq G H)
+                                         (H23:(sttfa.eps
+                                                 (euclidean__axioms.neq
+                                                    B
+                                                    G)) =>
+                                          H24:(sttfa.eps
+                                                 (logic.and
+                                                    (euclidean__axioms.neq
+                                                       G
+                                                       H)
+                                                    (euclidean__axioms.neq
+                                                       B
+                                                       H))) =>
+                                          logic.and__ind
+                                            (euclidean__axioms.neq G H)
+                                            (euclidean__axioms.neq B H)
+                                            (euclidean__axioms.neq G H)
+                                            (H25:(sttfa.eps
+                                                    (euclidean__axioms.neq
+                                                       G
+                                                       H)) =>
+                                             H26:(sttfa.eps
+                                                    (euclidean__axioms.neq
+                                                       B
+                                                       H)) =>
+                                             H25)
+                                            H24)
+                                         H22)
+                                      H20)
+                                   H18)
+                                H16)
+                               (lemma__angledistinct.lemma__angledistinct
+                                  a
+                                  b
+                                  c
+                                  B
+                                  G
+                                  H
+                                  H15)))
+                           (lemma__equalanglessymmetric.lemma__equalanglessymmetric
+                              B
+                              G
+                              H
+                              a
+                              b
+                              c
+                              H13))
+                        H12)
+                     H10)
+                  H9)
+               H8)
+            H7)
+         H6)
+      H5)
+     ((H5:(sttfa.eps
+             (logic.ex
+                euclidean__axioms.Point
+                (X:(sttfa.eta euclidean__axioms.Point) =>
+                 logic.ex
+                   euclidean__axioms.Point
+                   (Y:(sttfa.eta euclidean__axioms.Point) =>
+                    logic.ex
+                      euclidean__axioms.Point
+                      (Z:(sttfa.eta euclidean__axioms.Point) =>
+                       logic.ex
+                         euclidean__axioms.Point
+                         (U:(sttfa.eta euclidean__axioms.Point) =>
+                          logic.ex
+                            euclidean__axioms.Point
+                            (V:(sttfa.eta euclidean__axioms.Point) =>
+                             logic.and
+                               (euclidean__defs.Supp X Y U V Z)
+                               (logic.and
+                                  (euclidean__defs.CongA B G H X Y U)
+                                  (euclidean__defs.CongA G H D V Y Z))))))))) =>
+       (__TmpHyp:(sttfa.eps
+                    (logic.ex
+                       euclidean__axioms.Point
+                       (X:(sttfa.eta euclidean__axioms.Point) =>
+                        logic.ex
+                          euclidean__axioms.Point
+                          (Y:(sttfa.eta euclidean__axioms.Point) =>
+                           logic.ex
+                             euclidean__axioms.Point
+                             (Z:(sttfa.eta euclidean__axioms.Point) =>
+                              logic.ex
+                                euclidean__axioms.Point
+                                (U:(sttfa.eta euclidean__axioms.Point) =>
+                                 logic.ex
+                                   euclidean__axioms.Point
+                                   (V:(sttfa.eta euclidean__axioms.Point) =>
+                                    logic.and
+                                      (euclidean__defs.Supp X Y U V Z)
+                                      (logic.and
+                                         (euclidean__defs.CongA B G H X Y U)
+                                         (euclidean__defs.CongA G H D V Y Z))))))))) =>
+        logic.ex__ind
+          euclidean__axioms.Point
+          (X:(sttfa.eta euclidean__axioms.Point) =>
+           logic.ex
+             euclidean__axioms.Point
+             (Y:(sttfa.eta euclidean__axioms.Point) =>
+              logic.ex
+                euclidean__axioms.Point
+                (Z:(sttfa.eta euclidean__axioms.Point) =>
+                 logic.ex
+                   euclidean__axioms.Point
+                   (U:(sttfa.eta euclidean__axioms.Point) =>
+                    logic.ex
+                      euclidean__axioms.Point
+                      (V:(sttfa.eta euclidean__axioms.Point) =>
+                       logic.and
+                         (euclidean__defs.Supp X Y U V Z)
+                         (logic.and
+                            (euclidean__defs.CongA B G H X Y U)
+                            (euclidean__defs.CongA G H D V Y Z)))))))
+          (logic.ex
+             euclidean__axioms.Point
+             (a:(sttfa.eta euclidean__axioms.Point) =>
+              logic.ex
+                euclidean__axioms.Point
+                (b:(sttfa.eta euclidean__axioms.Point) =>
+                 logic.ex
+                   euclidean__axioms.Point
+                   (c:(sttfa.eta euclidean__axioms.Point) =>
+                    logic.ex
+                      euclidean__axioms.Point
+                      (d:(sttfa.eta euclidean__axioms.Point) =>
+                       logic.ex
+                         euclidean__axioms.Point
+                         (e:(sttfa.eta euclidean__axioms.Point) =>
+                          logic.and
+                            (euclidean__defs.Supp a b c e d)
+                            (logic.and
+                               (euclidean__defs.CongA B G H a b c)
+                               (euclidean__defs.CongA G H D e b d))))))))
+          (x:(sttfa.eta euclidean__axioms.Point) =>
+           H6:(sttfa.eps
+                 (logic.ex
+                    euclidean__axioms.Point
+                    (Y:(sttfa.eta euclidean__axioms.Point) =>
+                     logic.ex
+                       euclidean__axioms.Point
+                       (Z:(sttfa.eta euclidean__axioms.Point) =>
+                        logic.ex
+                          euclidean__axioms.Point
+                          (U:(sttfa.eta euclidean__axioms.Point) =>
+                           logic.ex
+                             euclidean__axioms.Point
+                             (V:(sttfa.eta euclidean__axioms.Point) =>
+                              logic.and
+                                (euclidean__defs.Supp x Y U V Z)
+                                (logic.and
+                                   (euclidean__defs.CongA B G H x Y U)
+                                   (euclidean__defs.CongA G H D V Y Z)))))))) =>
+           logic.ex__ind
+             euclidean__axioms.Point
+             (Y:(sttfa.eta euclidean__axioms.Point) =>
+              logic.ex
+                euclidean__axioms.Point
+                (Z:(sttfa.eta euclidean__axioms.Point) =>
+                 logic.ex
+                   euclidean__axioms.Point
+                   (U:(sttfa.eta euclidean__axioms.Point) =>
+                    logic.ex
+                      euclidean__axioms.Point
+                      (V:(sttfa.eta euclidean__axioms.Point) =>
+                       logic.and
+                         (euclidean__defs.Supp x Y U V Z)
+                         (logic.and
+                            (euclidean__defs.CongA B G H x Y U)
+                            (euclidean__defs.CongA G H D V Y Z))))))
+             (logic.ex
+                euclidean__axioms.Point
+                (a:(sttfa.eta euclidean__axioms.Point) =>
+                 logic.ex
+                   euclidean__axioms.Point
+                   (b:(sttfa.eta euclidean__axioms.Point) =>
+                    logic.ex
+                      euclidean__axioms.Point
+                      (c:(sttfa.eta euclidean__axioms.Point) =>
+                       logic.ex
+                         euclidean__axioms.Point
+                         (d:(sttfa.eta euclidean__axioms.Point) =>
+                          logic.ex
+                            euclidean__axioms.Point
+                            (e:(sttfa.eta euclidean__axioms.Point) =>
+                             logic.and
+                               (euclidean__defs.Supp a b c e d)
+                               (logic.and
+                                  (euclidean__defs.CongA B G H a b c)
+                                  (euclidean__defs.CongA G H D e b d))))))))
+             (x0:(sttfa.eta euclidean__axioms.Point) =>
+              H7:(sttfa.eps
+                    (logic.ex
+                       euclidean__axioms.Point
+                       (Z:(sttfa.eta euclidean__axioms.Point) =>
+                        logic.ex
+                          euclidean__axioms.Point
+                          (U:(sttfa.eta euclidean__axioms.Point) =>
+                           logic.ex
+                             euclidean__axioms.Point
+                             (V:(sttfa.eta euclidean__axioms.Point) =>
+                              logic.and
+                                (euclidean__defs.Supp x x0 U V Z)
+                                (logic.and
+                                   (euclidean__defs.CongA B G H x x0 U)
+                                   (euclidean__defs.CongA G H D V x0 Z))))))) =>
+              logic.ex__ind
+                euclidean__axioms.Point
+                (Z:(sttfa.eta euclidean__axioms.Point) =>
+                 logic.ex
+                   euclidean__axioms.Point
+                   (U:(sttfa.eta euclidean__axioms.Point) =>
+                    logic.ex
+                      euclidean__axioms.Point
+                      (V:(sttfa.eta euclidean__axioms.Point) =>
+                       logic.and
+                         (euclidean__defs.Supp x x0 U V Z)
+                         (logic.and
+                            (euclidean__defs.CongA B G H x x0 U)
+                            (euclidean__defs.CongA G H D V x0 Z)))))
+                (logic.ex
+                   euclidean__axioms.Point
+                   (a:(sttfa.eta euclidean__axioms.Point) =>
+                    logic.ex
+                      euclidean__axioms.Point
+                      (b:(sttfa.eta euclidean__axioms.Point) =>
+                       logic.ex
+                         euclidean__axioms.Point
+                         (c:(sttfa.eta euclidean__axioms.Point) =>
+                          logic.ex
+                            euclidean__axioms.Point
+                            (d:(sttfa.eta euclidean__axioms.Point) =>
+                             logic.ex
+                               euclidean__axioms.Point
+                               (e:(sttfa.eta euclidean__axioms.Point) =>
+                                logic.and
+                                  (euclidean__defs.Supp a b c e d)
+                                  (logic.and
+                                     (euclidean__defs.CongA B G H a b c)
+                                     (euclidean__defs.CongA G H D e b d))))))))
+                (x1:(sttfa.eta euclidean__axioms.Point) =>
+                 H8:(sttfa.eps
+                       (logic.ex
+                          euclidean__axioms.Point
+                          (U:(sttfa.eta euclidean__axioms.Point) =>
+                           logic.ex
+                             euclidean__axioms.Point
+                             (V:(sttfa.eta euclidean__axioms.Point) =>
+                              logic.and
+                                (euclidean__defs.Supp x x0 U V x1)
+                                (logic.and
+                                   (euclidean__defs.CongA B G H x x0 U)
+                                   (euclidean__defs.CongA G H D V x0 x1)))))) =>
+                 logic.ex__ind
+                   euclidean__axioms.Point
+                   (U:(sttfa.eta euclidean__axioms.Point) =>
+                    logic.ex
+                      euclidean__axioms.Point
+                      (V:(sttfa.eta euclidean__axioms.Point) =>
+                       logic.and
+                         (euclidean__defs.Supp x x0 U V x1)
+                         (logic.and
+                            (euclidean__defs.CongA B G H x x0 U)
+                            (euclidean__defs.CongA G H D V x0 x1))))
+                   (logic.ex
+                      euclidean__axioms.Point
+                      (a:(sttfa.eta euclidean__axioms.Point) =>
+                       logic.ex
+                         euclidean__axioms.Point
+                         (b:(sttfa.eta euclidean__axioms.Point) =>
+                          logic.ex
+                            euclidean__axioms.Point
+                            (c:(sttfa.eta euclidean__axioms.Point) =>
+                             logic.ex
+                               euclidean__axioms.Point
+                               (d:(sttfa.eta euclidean__axioms.Point) =>
+                                logic.ex
+                                  euclidean__axioms.Point
+                                  (e:(sttfa.eta euclidean__axioms.Point) =>
+                                   logic.and
+                                     (euclidean__defs.Supp a b c e d)
+                                     (logic.and
+                                        (euclidean__defs.CongA B G H a b c)
+                                        (euclidean__defs.CongA G H D e b d))))))))
+                   (x2:(sttfa.eta euclidean__axioms.Point) =>
+                    H9:(sttfa.eps
+                          (logic.ex
+                             euclidean__axioms.Point
+                             (V:(sttfa.eta euclidean__axioms.Point) =>
+                              logic.and
+                                (euclidean__defs.Supp x x0 x2 V x1)
+                                (logic.and
+                                   (euclidean__defs.CongA B G H x x0 x2)
+                                   (euclidean__defs.CongA G H D V x0 x1))))) =>
+                    logic.ex__ind
+                      euclidean__axioms.Point
+                      (V:(sttfa.eta euclidean__axioms.Point) =>
+                       logic.and
+                         (euclidean__defs.Supp x x0 x2 V x1)
+                         (logic.and
+                            (euclidean__defs.CongA B G H x x0 x2)
+                            (euclidean__defs.CongA G H D V x0 x1)))
+                      (logic.ex
+                         euclidean__axioms.Point
+                         (a:(sttfa.eta euclidean__axioms.Point) =>
+                          logic.ex
+                            euclidean__axioms.Point
+                            (b:(sttfa.eta euclidean__axioms.Point) =>
+                             logic.ex
+                               euclidean__axioms.Point
+                               (c:(sttfa.eta euclidean__axioms.Point) =>
+                                logic.ex
+                                  euclidean__axioms.Point
+                                  (d:(sttfa.eta euclidean__axioms.Point) =>
+                                   logic.ex
+                                     euclidean__axioms.Point
+                                     (e:(sttfa.eta euclidean__axioms.Point) =>
+                                      logic.and
+                                        (euclidean__defs.Supp a b c e d)
+                                        (logic.and
+                                           (euclidean__defs.CongA B G H a b c)
+                                           (euclidean__defs.CongA G H D e b d))))))))
+                      (x3:(sttfa.eta euclidean__axioms.Point) =>
+                       H10:(sttfa.eps
+                              (logic.and
+                                 (euclidean__defs.Supp x x0 x2 x3 x1)
+                                 (logic.and
+                                    (euclidean__defs.CongA B G H x x0 x2)
+                                    (euclidean__defs.CongA G H D x3 x0 x1)))) =>
+                       logic.and__ind
+                         (euclidean__defs.Supp x x0 x2 x3 x1)
+                         (logic.and
+                            (euclidean__defs.CongA B G H x x0 x2)
+                            (euclidean__defs.CongA G H D x3 x0 x1))
+                         (logic.ex
+                            euclidean__axioms.Point
+                            (a:(sttfa.eta euclidean__axioms.Point) =>
+                             logic.ex
+                               euclidean__axioms.Point
+                               (b:(sttfa.eta euclidean__axioms.Point) =>
+                                logic.ex
+                                  euclidean__axioms.Point
+                                  (c:(sttfa.eta euclidean__axioms.Point) =>
+                                   logic.ex
+                                     euclidean__axioms.Point
+                                     (d:(sttfa.eta euclidean__axioms.Point) =>
+                                      logic.ex
+                                        euclidean__axioms.Point
+                                        (e:(sttfa.eta euclidean__axioms.Point) =>
+                                         logic.and
+                                           (euclidean__defs.Supp a b c e d)
+                                           (logic.and
+                                              (euclidean__defs.CongA
+                                                 B
+                                                 G
+                                                 H
+                                                 a
+                                                 b
+                                                 c)
+                                              (euclidean__defs.CongA
+                                                 G
+                                                 H
+                                                 D
+                                                 e
+                                                 b
+                                                 d))))))))
+                         (H11:(sttfa.eps (euclidean__defs.Supp x x0 x2 x3 x1)) =>
+                          H12:(sttfa.eps
+                                 (logic.and
+                                    (euclidean__defs.CongA B G H x x0 x2)
+                                    (euclidean__defs.CongA G H D x3 x0 x1))) =>
+                          logic.and__ind
+                            (euclidean__defs.CongA B G H x x0 x2)
+                            (euclidean__defs.CongA G H D x3 x0 x1)
+                            (logic.ex
+                               euclidean__axioms.Point
+                               (a:(sttfa.eta euclidean__axioms.Point) =>
+                                logic.ex
+                                  euclidean__axioms.Point
+                                  (b:(sttfa.eta euclidean__axioms.Point) =>
+                                   logic.ex
+                                     euclidean__axioms.Point
+                                     (c:(sttfa.eta euclidean__axioms.Point) =>
+                                      logic.ex
+                                        euclidean__axioms.Point
+                                        (d:(sttfa.eta euclidean__axioms.Point) =>
+                                         logic.ex
+                                           euclidean__axioms.Point
+                                           (e:(sttfa.eta
+                                                 euclidean__axioms.Point) =>
+                                            logic.and
+                                              (euclidean__defs.Supp a b c e d)
+                                              (logic.and
+                                                 (euclidean__defs.CongA
+                                                    B
+                                                    G
+                                                    H
+                                                    a
+                                                    b
+                                                    c)
+                                                 (euclidean__defs.CongA
+                                                    G
+                                                    H
+                                                    D
+                                                    e
+                                                    b
+                                                    d))))))))
+                            (H13:(sttfa.eps (euclidean__defs.CongA B G H x x0 x2)) =>
+                             H14:(sttfa.eps (euclidean__defs.CongA G H D x3 x0 x1)) =>
+                             logic.ex__intro
+                               euclidean__axioms.Point
+                               (a:(sttfa.eta euclidean__axioms.Point) =>
+                                logic.ex
+                                  euclidean__axioms.Point
+                                  (b:(sttfa.eta euclidean__axioms.Point) =>
+                                   logic.ex
+                                     euclidean__axioms.Point
+                                     (c:(sttfa.eta euclidean__axioms.Point) =>
+                                      logic.ex
+                                        euclidean__axioms.Point
+                                        (d:(sttfa.eta euclidean__axioms.Point) =>
+                                         logic.ex
+                                           euclidean__axioms.Point
+                                           (e:(sttfa.eta
+                                                 euclidean__axioms.Point) =>
+                                            logic.and
+                                              (euclidean__defs.Supp a b c e d)
+                                              (logic.and
+                                                 (euclidean__defs.CongA
+                                                    B
+                                                    G
+                                                    H
+                                                    a
+                                                    b
+                                                    c)
+                                                 (euclidean__defs.CongA
+                                                    G
+                                                    H
+                                                    D
+                                                    e
+                                                    b
+                                                    d)))))))
+                               x
+                               (logic.ex__intro
+                                  euclidean__axioms.Point
+                                  (b:(sttfa.eta euclidean__axioms.Point) =>
+                                   logic.ex
+                                     euclidean__axioms.Point
+                                     (c:(sttfa.eta euclidean__axioms.Point) =>
+                                      logic.ex
+                                        euclidean__axioms.Point
+                                        (d:(sttfa.eta euclidean__axioms.Point) =>
+                                         logic.ex
+                                           euclidean__axioms.Point
+                                           (e:(sttfa.eta
+                                                 euclidean__axioms.Point) =>
+                                            logic.and
+                                              (euclidean__defs.Supp x b c e d)
+                                              (logic.and
+                                                 (euclidean__defs.CongA
+                                                    B
+                                                    G
+                                                    H
+                                                    x
+                                                    b
+                                                    c)
+                                                 (euclidean__defs.CongA
+                                                    G
+                                                    H
+                                                    D
+                                                    e
+                                                    b
+                                                    d))))))
+                                  x0
+                                  (logic.ex__intro
+                                     euclidean__axioms.Point
+                                     (c:(sttfa.eta euclidean__axioms.Point) =>
+                                      logic.ex
+                                        euclidean__axioms.Point
+                                        (d:(sttfa.eta euclidean__axioms.Point) =>
+                                         logic.ex
+                                           euclidean__axioms.Point
+                                           (e:(sttfa.eta
+                                                 euclidean__axioms.Point) =>
+                                            logic.and
+                                              (euclidean__defs.Supp x x0 c e d)
+                                              (logic.and
+                                                 (euclidean__defs.CongA
+                                                    B
+                                                    G
+                                                    H
+                                                    x
+                                                    x0
+                                                    c)
+                                                 (euclidean__defs.CongA
+                                                    G
+                                                    H
+                                                    D
+                                                    e
+                                                    x0
+                                                    d)))))
+                                     x2
+                                     (logic.ex__intro
+                                        euclidean__axioms.Point
+                                        (d:(sttfa.eta euclidean__axioms.Point) =>
+                                         logic.ex
+                                           euclidean__axioms.Point
+                                           (e:(sttfa.eta
+                                                 euclidean__axioms.Point) =>
+                                            logic.and
+                                              (euclidean__defs.Supp x x0 x2 e d)
+                                              (logic.and
+                                                 (euclidean__defs.CongA
+                                                    B
+                                                    G
+                                                    H
+                                                    x
+                                                    x0
+                                                    x2)
+                                                 (euclidean__defs.CongA
+                                                    G
+                                                    H
+                                                    D
+                                                    e
+                                                    x0
+                                                    d))))
+                                        x1
+                                        (logic.ex__intro
+                                           euclidean__axioms.Point
+                                           (e:(sttfa.eta
+                                                 euclidean__axioms.Point) =>
+                                            logic.and
+                                              (euclidean__defs.Supp
+                                                 x
+                                                 x0
+                                                 x2
+                                                 e
+                                                 x1)
+                                              (logic.and
+                                                 (euclidean__defs.CongA
+                                                    B
+                                                    G
+                                                    H
+                                                    x
+                                                    x0
+                                                    x2)
+                                                 (euclidean__defs.CongA
+                                                    G
+                                                    H
+                                                    D
+                                                    e
+                                                    x0
+                                                    x1)))
+                                           x3
+                                           (logic.conj
+                                              (euclidean__defs.Supp
+                                                 x
+                                                 x0
+                                                 x2
+                                                 x3
+                                                 x1)
+                                              (logic.and
+                                                 (euclidean__defs.CongA
+                                                    B
+                                                    G
+                                                    H
+                                                    x
+                                                    x0
+                                                    x2)
+                                                 (euclidean__defs.CongA
+                                                    G
+                                                    H
+                                                    D
+                                                    x3
+                                                    x0
+                                                    x1))
+                                              H11
+                                              (logic.conj
+                                                 (euclidean__defs.CongA
+                                                    B
+                                                    G
+                                                    H
+                                                    x
+                                                    x0
+                                                    x2)
+                                                 (euclidean__defs.CongA
+                                                    G
+                                                    H
+                                                    D
+                                                    x3
+                                                    x0
+                                                    x1)
+                                                 H13
+                                                 H14)))))))
+                            H12)
+                         H10)
+                      H9)
+                   H8)
+                H7)
+             H6)
+          __TmpHyp)
+         H5)
+        H2))
+    ((H4:(sttfa.eps
+            (logic.and
+               (euclidean__defs.OS D B G H)
+               (logic.and (euclidean__defs.OS B D H G) (euclidean__defs.OS D B H G)))) =>
+      logic.and__ind
+        (euclidean__defs.OS D B G H)
+        (logic.and (euclidean__defs.OS B D H G) (euclidean__defs.OS D B H G))
+        (euclidean__defs.OS D B G H)
+        (H5:(sttfa.eps (euclidean__defs.OS D B G H)) =>
+         H6:(sttfa.eps (logic.and (euclidean__defs.OS B D H G) (euclidean__defs.OS D B H G))) =>
+         logic.and__ind
+           (euclidean__defs.OS B D H G)
+           (euclidean__defs.OS D B H G)
+           (euclidean__defs.OS D B G H)
+           (H7:(sttfa.eps (euclidean__defs.OS B D H G)) =>
+            H8:(sttfa.eps (euclidean__defs.OS D B H G)) => H5)
+           H6)
+        H4)
+       (lemma__samesidesymmetric.lemma__samesidesymmetric G H B D H3)).
+

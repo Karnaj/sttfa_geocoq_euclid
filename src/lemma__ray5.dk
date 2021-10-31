@@ -1,0 +1,82 @@
+thm lemma__ray5 :
+  sttfa.eps
+    (sttfa.forall
+       euclidean__axioms.Point
+       (A:(sttfa.eta euclidean__axioms.Point) =>
+        sttfa.forall
+          euclidean__axioms.Point
+          (B:(sttfa.eta euclidean__axioms.Point) =>
+           sttfa.forall
+             euclidean__axioms.Point
+             (C:(sttfa.eta euclidean__axioms.Point) =>
+              sttfa.impl (euclidean__defs.Out A B C) (euclidean__defs.Out A C B)))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  H:(sttfa.eps (euclidean__defs.Out A B C)) =>
+  (H0:(sttfa.eps
+         (logic.or
+            (euclidean__axioms.BetS A C B)
+            (logic.or (euclidean__axioms.eq B C) (euclidean__axioms.BetS A B C)))) =>
+   (H1:(sttfa.eps (euclidean__axioms.neq A C)) =>
+    (H2:(sttfa.eps (euclidean__defs.Out A C B)) => H2)
+      (lemma__ray4.lemma__ray4
+         A
+         C
+         B
+         (logic.or__ind
+            (euclidean__axioms.BetS A C B)
+            (logic.or (euclidean__axioms.eq B C) (euclidean__axioms.BetS A B C))
+            (logic.or
+               (euclidean__axioms.BetS A B C)
+               (logic.or (euclidean__axioms.eq B C) (euclidean__axioms.BetS A C B)))
+            (H2:(sttfa.eps (euclidean__axioms.BetS A C B)) =>
+             logic.or__intror
+               (euclidean__axioms.BetS A B C)
+               (logic.or (euclidean__axioms.eq B C) (euclidean__axioms.BetS A C B))
+               (logic.or__intror
+                  (euclidean__axioms.eq B C)
+                  (euclidean__axioms.BetS A C B)
+                  H2))
+            (H2:(sttfa.eps
+                   (logic.or (euclidean__axioms.eq B C) (euclidean__axioms.BetS A B C))) =>
+             logic.or__ind
+               (euclidean__axioms.eq B C)
+               (euclidean__axioms.BetS A B C)
+               (logic.or
+                  (euclidean__axioms.BetS A B C)
+                  (logic.or (euclidean__axioms.eq B C) (euclidean__axioms.BetS A C B)))
+               (H3:(sttfa.eps (euclidean__axioms.eq B C)) =>
+                logic.or__intror
+                  (euclidean__axioms.BetS A B C)
+                  (logic.or (euclidean__axioms.eq B C) (euclidean__axioms.BetS A C B))
+                  (logic.or__introl
+                     (euclidean__axioms.eq B C)
+                     (euclidean__axioms.BetS A C B)
+                     H3))
+               (H3:(sttfa.eps (euclidean__axioms.BetS A B C)) =>
+                logic.or__introl
+                  (euclidean__axioms.BetS A B C)
+                  (logic.or (euclidean__axioms.eq B C) (euclidean__axioms.BetS A C B))
+                  H3)
+               H2)
+            H0)
+         (logic.or__ind
+            (euclidean__axioms.BetS A C B)
+            (logic.or (euclidean__axioms.eq B C) (euclidean__axioms.BetS A B C))
+            (euclidean__axioms.neq A C)
+            (H2:(sttfa.eps (euclidean__axioms.BetS A C B)) => H1)
+            (H2:(sttfa.eps
+                   (logic.or (euclidean__axioms.eq B C) (euclidean__axioms.BetS A B C))) =>
+             logic.or__ind
+               (euclidean__axioms.eq B C)
+               (euclidean__axioms.BetS A B C)
+               (euclidean__axioms.neq A C)
+               (H3:(sttfa.eps (euclidean__axioms.eq B C)) => H1)
+               (H3:(sttfa.eps (euclidean__axioms.BetS A B C)) => H1)
+               H2)
+            H0)))
+     (lemma__raystrict.lemma__raystrict A B C H))
+    (lemma__ray1.lemma__ray1 A B C H).
+

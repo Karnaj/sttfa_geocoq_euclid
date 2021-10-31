@@ -1,0 +1,24 @@
+thm lemma__ETreflexive :
+  sttfa.eps
+    (sttfa.forall
+       euclidean__axioms.Point
+       (A:(sttfa.eta euclidean__axioms.Point) =>
+        sttfa.forall
+          euclidean__axioms.Point
+          (B:(sttfa.eta euclidean__axioms.Point) =>
+           sttfa.forall
+             euclidean__axioms.Point
+             (C:(sttfa.eta euclidean__axioms.Point) =>
+              sttfa.impl (euclidean__axioms.Triangle A B C) (euclidean__axioms.ET A B C A B C)))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  H:(sttfa.eps (euclidean__axioms.Triangle A B C)) =>
+  (H0:(sttfa.eps (euclidean__axioms.nCol A B C)) =>
+   (H1:(sttfa.eps (euclidean__axioms.Cong__3 A B C A B C)) =>
+    (H2:(sttfa.eps (euclidean__axioms.ET A B C A B C)) => H2)
+      (euclidean__axioms.axiom__congruentequal A B C A B C H1))
+     (lemma__TCreflexive.lemma__TCreflexive A B C H0))
+    H.
+

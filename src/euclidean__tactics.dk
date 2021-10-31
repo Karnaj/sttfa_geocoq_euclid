@@ -1,0 +1,2752 @@
+classic :
+  sttfa.eps (sttfa.forall sttfa.bool (x:(sttfa.eta sttfa.bool) => logic.or x (logic.not x))).
+
+thm NNPP :
+  sttfa.eps
+    (sttfa.forall sttfa.bool (p:(sttfa.eta sttfa.bool) => sttfa.impl (logic.not (logic.not p)) p))
+  :=
+  p:(sttfa.eta sttfa.bool) =>
+  H:(sttfa.eps (sttfa.impl (sttfa.impl p logic.false) logic.false)) =>
+  logic.or__ind
+    p
+    (logic.not p)
+    p
+    (H0:(sttfa.eps p) => H0)
+    (NP:(sttfa.eps (logic.not p)) => logic.False__ind p (H NP))
+    (classic p).
+
+thm Col__or__nCol :
+  sttfa.eps
+    (sttfa.forall
+       euclidean__axioms.Point
+       (A:(sttfa.eta euclidean__axioms.Point) =>
+        sttfa.forall
+          euclidean__axioms.Point
+          (B:(sttfa.eta euclidean__axioms.Point) =>
+           sttfa.forall
+             euclidean__axioms.Point
+             (C:(sttfa.eta euclidean__axioms.Point) =>
+              logic.or (euclidean__axioms.Col A B C) (euclidean__axioms.nCol A B C)))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  NNPP
+    (logic.or
+       (logic.or
+          (euclidean__axioms.eq A B)
+          (logic.or
+             (euclidean__axioms.eq A C)
+             (logic.or
+                (euclidean__axioms.eq B C)
+                (logic.or
+                   (euclidean__axioms.BetS B A C)
+                   (logic.or (euclidean__axioms.BetS A B C) (euclidean__axioms.BetS A C B))))))
+       (logic.and
+          (euclidean__axioms.neq A B)
+          (logic.and
+             (euclidean__axioms.neq A C)
+             (logic.and
+                (euclidean__axioms.neq B C)
+                (logic.and
+                   (logic.not (euclidean__axioms.BetS A B C))
+                   (logic.and
+                      (logic.not (euclidean__axioms.BetS A C B))
+                      (logic.not (euclidean__axioms.BetS B A C))))))))
+    (H:(sttfa.eps
+          (logic.not
+             (logic.or
+                (logic.or
+                   (euclidean__axioms.eq A B)
+                   (logic.or
+                      (euclidean__axioms.eq A C)
+                      (logic.or
+                         (euclidean__axioms.eq B C)
+                         (logic.or
+                            (euclidean__axioms.BetS B A C)
+                            (logic.or
+                               (euclidean__axioms.BetS A B C)
+                               (euclidean__axioms.BetS A C B))))))
+                (logic.and
+                   (euclidean__axioms.neq A B)
+                   (logic.and
+                      (euclidean__axioms.neq A C)
+                      (logic.and
+                         (euclidean__axioms.neq B C)
+                         (logic.and
+                            (logic.not (euclidean__axioms.BetS A B C))
+                            (logic.and
+                               (logic.not (euclidean__axioms.BetS A C B))
+                               (logic.not (euclidean__axioms.BetS B A C)))))))))) =>
+     (H0:(sttfa.eps
+            (sttfa.impl
+               (logic.or
+                  (euclidean__axioms.eq A B)
+                  (logic.or
+                     (euclidean__axioms.eq A C)
+                     (logic.or
+                        (euclidean__axioms.eq B C)
+                        (logic.or
+                           (euclidean__axioms.BetS B A C)
+                           (logic.or
+                              (euclidean__axioms.BetS A B C)
+                              (euclidean__axioms.BetS A C B))))))
+               logic.false)) =>
+      (H1:(sttfa.eps
+             (sttfa.impl
+                (logic.and
+                   (euclidean__axioms.neq A B)
+                   (logic.and
+                      (euclidean__axioms.neq A C)
+                      (logic.and
+                         (euclidean__axioms.neq B C)
+                         (logic.and
+                            (logic.not (euclidean__axioms.BetS A B C))
+                            (logic.and
+                               (logic.not (euclidean__axioms.BetS A C B))
+                               (logic.not (euclidean__axioms.BetS B A C)))))))
+                logic.false)) =>
+       (H2:(sttfa.eps
+              (sttfa.impl
+                 (euclidean__axioms.neq A B)
+                 (sttfa.impl
+                    (logic.and
+                       (euclidean__axioms.neq A C)
+                       (logic.and
+                          (euclidean__axioms.neq B C)
+                          (logic.and
+                             (logic.not (euclidean__axioms.BetS A B C))
+                             (logic.and
+                                (logic.not (euclidean__axioms.BetS A C B))
+                                (logic.not (euclidean__axioms.BetS B A C))))))
+                    logic.false))) =>
+        (H3:(sttfa.eps (sttfa.impl (euclidean__axioms.eq A B) logic.false)) =>
+         (H4:(sttfa.eps
+                (sttfa.impl
+                   (logic.or
+                      (euclidean__axioms.eq A C)
+                      (logic.or
+                         (euclidean__axioms.eq B C)
+                         (logic.or
+                            (euclidean__axioms.BetS B A C)
+                            (logic.or
+                               (euclidean__axioms.BetS A B C)
+                               (euclidean__axioms.BetS A C B)))))
+                   logic.false)) =>
+          (H5:(sttfa.eps
+                 (sttfa.impl
+                    (logic.and
+                       (euclidean__axioms.neq A C)
+                       (logic.and
+                          (euclidean__axioms.neq B C)
+                          (logic.and
+                             (logic.not (euclidean__axioms.BetS A B C))
+                             (logic.and
+                                (logic.not (euclidean__axioms.BetS A C B))
+                                (logic.not (euclidean__axioms.BetS B A C))))))
+                    logic.false)) =>
+           (H6:(sttfa.eps
+                  (sttfa.impl
+                     (euclidean__axioms.neq A C)
+                     (sttfa.impl
+                        (logic.and
+                           (euclidean__axioms.neq B C)
+                           (logic.and
+                              (logic.not (euclidean__axioms.BetS A B C))
+                              (logic.and
+                                 (logic.not
+                                    (euclidean__axioms.BetS A C B))
+                                 (logic.not
+                                    (euclidean__axioms.BetS B A C)))))
+                        logic.false))) =>
+            (H7:(sttfa.eps
+                   (sttfa.impl (euclidean__axioms.eq A C) logic.false)) =>
+             (H8:(sttfa.eps
+                    (sttfa.impl
+                       (logic.or
+                          (euclidean__axioms.eq B C)
+                          (logic.or
+                             (euclidean__axioms.BetS B A C)
+                             (logic.or
+                                (euclidean__axioms.BetS A B C)
+                                (euclidean__axioms.BetS A C B))))
+                       logic.false)) =>
+              (H9:(sttfa.eps
+                     (sttfa.impl
+                        (logic.and
+                           (euclidean__axioms.neq B C)
+                           (logic.and
+                              (logic.not
+                                 (euclidean__axioms.BetS A B C))
+                              (logic.and
+                                 (logic.not
+                                    (euclidean__axioms.BetS
+                                       A
+                                       C
+                                       B))
+                                 (logic.not
+                                    (euclidean__axioms.BetS
+                                       B
+                                       A
+                                       C)))))
+                        logic.false)) =>
+               (H10:(sttfa.eps
+                       (sttfa.impl
+                          (euclidean__axioms.neq B C)
+                          (sttfa.impl
+                             (logic.and
+                                (logic.not
+                                   (euclidean__axioms.BetS
+                                      A
+                                      B
+                                      C))
+                                (logic.and
+                                   (logic.not
+                                      (euclidean__axioms.BetS
+                                         A
+                                         C
+                                         B))
+                                   (logic.not
+                                      (euclidean__axioms.BetS
+                                         B
+                                         A
+                                         C))))
+                             logic.false))) =>
+                (H11:(sttfa.eps
+                        (sttfa.impl
+                           (euclidean__axioms.eq B C)
+                           logic.false)) =>
+                 (H12:(sttfa.eps
+                         (sttfa.impl
+                            (logic.or
+                               (euclidean__axioms.BetS
+                                  B
+                                  A
+                                  C)
+                               (logic.or
+                                  (euclidean__axioms.BetS
+                                     A
+                                     B
+                                     C)
+                                  (euclidean__axioms.BetS
+                                     A
+                                     C
+                                     B)))
+                            logic.false)) =>
+                  (H13:(sttfa.eps
+                          (sttfa.impl
+                             (logic.and
+                                (logic.not
+                                   (euclidean__axioms.BetS
+                                      A
+                                      B
+                                      C))
+                                (logic.and
+                                   (logic.not
+                                      (euclidean__axioms.BetS
+                                         A
+                                         C
+                                         B))
+                                   (logic.not
+                                      (euclidean__axioms.BetS
+                                         B
+                                         A
+                                         C))))
+                             logic.false)) =>
+                   (H14:(sttfa.eps
+                           (sttfa.impl
+                              (logic.not
+                                 (euclidean__axioms.BetS
+                                    A
+                                    B
+                                    C))
+                              (sttfa.impl
+                                 (logic.and
+                                    (logic.not
+                                       (euclidean__axioms.BetS
+                                          A
+                                          C
+                                          B))
+                                    (logic.not
+                                       (euclidean__axioms.BetS
+                                          B
+                                          A
+                                          C)))
+                                 logic.false))) =>
+                    (H15:(sttfa.eps
+                            (sttfa.impl
+                               (euclidean__axioms.BetS
+                                  B
+                                  A
+                                  C)
+                               logic.false)) =>
+                     (H16:(sttfa.eps
+                             (sttfa.impl
+                                (logic.or
+                                   (euclidean__axioms.BetS
+                                      A
+                                      B
+                                      C)
+                                   (euclidean__axioms.BetS
+                                      A
+                                      C
+                                      B))
+                                logic.false)) =>
+                      (H17:(sttfa.eps
+                              (sttfa.impl
+                                 (euclidean__axioms.BetS
+                                    A
+                                    B
+                                    C)
+                                 logic.false)) =>
+                       (H18:(sttfa.eps
+                               (sttfa.impl
+                                  (euclidean__axioms.BetS
+                                     A
+                                     C
+                                     B)
+                                  logic.false)) =>
+                        (H19:(sttfa.eps
+                                (sttfa.impl
+                                   (logic.and
+                                      (logic.not
+                                         (euclidean__axioms.BetS
+                                            A
+                                            C
+                                            B))
+                                      (logic.not
+                                         (euclidean__axioms.BetS
+                                            B
+                                            A
+                                            C)))
+                                   logic.false)) =>
+                         (H20:(sttfa.eps
+                                 (sttfa.impl
+                                    (logic.not
+                                       (euclidean__axioms.BetS
+                                          A
+                                          C
+                                          B))
+                                    (sttfa.impl
+                                       (logic.not
+                                          (euclidean__axioms.BetS
+                                             B
+                                             A
+                                             C))
+                                       logic.false))) =>
+                          (H21:(sttfa.eps
+                                  (sttfa.impl
+                                     (logic.not
+                                        (euclidean__axioms.BetS
+                                           B
+                                           A
+                                           C))
+                                     logic.false)) =>
+                           (H22:(sttfa.eps
+                                   logic.false) =>
+                            logic.False__ind
+                              logic.false
+                              H22)
+                             (H21
+                                H15))
+                            (H20 H18))
+                           (H20:(sttfa.eps
+                                   (logic.not
+                                      (euclidean__axioms.BetS
+                                         A
+                                         C
+                                         B))) =>
+                            H21:(sttfa.eps
+                                   (logic.not
+                                      (euclidean__axioms.BetS
+                                         B
+                                         A
+                                         C))) =>
+                            H19
+                              (logic.conj
+                                 (logic.not
+                                    (euclidean__axioms.BetS
+                                       A
+                                       C
+                                       B))
+                                 (logic.not
+                                    (euclidean__axioms.BetS
+                                       B
+                                       A
+                                       C))
+                                 H20
+                                 H21)))
+                          (H14 H17))
+                         (H18:(sttfa.eps
+                                 (euclidean__axioms.BetS
+                                    A
+                                    C
+                                    B)) =>
+                          H16
+                            (logic.or__intror
+                               (euclidean__axioms.BetS
+                                  A
+                                  B
+                                  C)
+                               (euclidean__axioms.BetS
+                                  A
+                                  C
+                                  B)
+                               H18)))
+                        (H17:(sttfa.eps
+                                (euclidean__axioms.BetS
+                                   A
+                                   B
+                                   C)) =>
+                         H16
+                           (logic.or__introl
+                              (euclidean__axioms.BetS
+                                 A
+                                 B
+                                 C)
+                              (euclidean__axioms.BetS
+                                 A
+                                 C
+                                 B)
+                              H17)))
+                       (H16:(sttfa.eps
+                               (logic.or
+                                  (euclidean__axioms.BetS
+                                     A
+                                     B
+                                     C)
+                                  (euclidean__axioms.BetS
+                                     A
+                                     C
+                                     B))) =>
+                        H12
+                          (logic.or__intror
+                             (euclidean__axioms.BetS
+                                B
+                                A
+                                C)
+                             (logic.or
+                                (euclidean__axioms.BetS
+                                   A
+                                   B
+                                   C)
+                                (euclidean__axioms.BetS
+                                   A
+                                   C
+                                   B))
+                             H16)))
+                      (H15:(sttfa.eps
+                              (euclidean__axioms.BetS
+                                 B
+                                 A
+                                 C)) =>
+                       H12
+                         (logic.or__introl
+                            (euclidean__axioms.BetS
+                               B
+                               A
+                               C)
+                            (logic.or
+                               (euclidean__axioms.BetS
+                                  A
+                                  B
+                                  C)
+                               (euclidean__axioms.BetS
+                                  A
+                                  C
+                                  B))
+                            H15)))
+                     (H14:(sttfa.eps
+                             (logic.not
+                                (euclidean__axioms.BetS
+                                   A
+                                   B
+                                   C))) =>
+                      H15:(sttfa.eps
+                             (logic.and
+                                (logic.not
+                                   (euclidean__axioms.BetS
+                                      A
+                                      C
+                                      B))
+                                (logic.not
+                                   (euclidean__axioms.BetS
+                                      B
+                                      A
+                                      C)))) =>
+                      H13
+                        (logic.conj
+                           (logic.not
+                              (euclidean__axioms.BetS
+                                 A
+                                 B
+                                 C))
+                           (logic.and
+                              (logic.not
+                                 (euclidean__axioms.BetS
+                                    A
+                                    C
+                                    B))
+                              (logic.not
+                                 (euclidean__axioms.BetS
+                                    B
+                                    A
+                                    C)))
+                           H14
+                           H15)))
+                    (H10 H11))
+                   (H12:(sttfa.eps
+                           (logic.or
+                              (euclidean__axioms.BetS B A C)
+                              (logic.or
+                                 (euclidean__axioms.BetS
+                                    A
+                                    B
+                                    C)
+                                 (euclidean__axioms.BetS
+                                    A
+                                    C
+                                    B)))) =>
+                    H8
+                      (logic.or__intror
+                         (euclidean__axioms.eq B C)
+                         (logic.or
+                            (euclidean__axioms.BetS B A C)
+                            (logic.or
+                               (euclidean__axioms.BetS A B C)
+                               (euclidean__axioms.BetS A C B)))
+                         H12)))
+                  (H11:(sttfa.eps (euclidean__axioms.eq B C)) =>
+                   H8
+                     (logic.or__introl
+                        (euclidean__axioms.eq B C)
+                        (logic.or
+                           (euclidean__axioms.BetS B A C)
+                           (logic.or
+                              (euclidean__axioms.BetS A B C)
+                              (euclidean__axioms.BetS A C B)))
+                        H11)))
+                 (H10:(sttfa.eps (euclidean__axioms.neq B C)) =>
+                  H11:(sttfa.eps
+                         (logic.and
+                            (logic.not
+                               (euclidean__axioms.BetS A B C))
+                            (logic.and
+                               (logic.not
+                                  (euclidean__axioms.BetS A C B))
+                               (logic.not
+                                  (euclidean__axioms.BetS B A C))))) =>
+                  H9
+                    (logic.conj
+                       (euclidean__axioms.neq B C)
+                       (logic.and
+                          (logic.not (euclidean__axioms.BetS A B C))
+                          (logic.and
+                             (logic.not
+                                (euclidean__axioms.BetS A C B))
+                             (logic.not
+                                (euclidean__axioms.BetS B A C))))
+                       H10
+                       H11)))
+                (H6 H7))
+               (H8:(sttfa.eps
+                      (logic.or
+                         (euclidean__axioms.eq B C)
+                         (logic.or
+                            (euclidean__axioms.BetS B A C)
+                            (logic.or
+                               (euclidean__axioms.BetS A B C)
+                               (euclidean__axioms.BetS A C B))))) =>
+                H4
+                  (logic.or__intror
+                     (euclidean__axioms.eq A C)
+                     (logic.or
+                        (euclidean__axioms.eq B C)
+                        (logic.or
+                           (euclidean__axioms.BetS B A C)
+                           (logic.or
+                              (euclidean__axioms.BetS A B C)
+                              (euclidean__axioms.BetS A C B))))
+                     H8)))
+              (H7:(sttfa.eps (euclidean__axioms.eq A C)) =>
+               H4
+                 (logic.or__introl
+                    (euclidean__axioms.eq A C)
+                    (logic.or
+                       (euclidean__axioms.eq B C)
+                       (logic.or
+                          (euclidean__axioms.BetS B A C)
+                          (logic.or
+                             (euclidean__axioms.BetS A B C)
+                             (euclidean__axioms.BetS A C B))))
+                    H7)))
+             (H6:(sttfa.eps (euclidean__axioms.neq A C)) =>
+              H7:(sttfa.eps
+                    (logic.and
+                       (euclidean__axioms.neq B C)
+                       (logic.and
+                          (logic.not (euclidean__axioms.BetS A B C))
+                          (logic.and
+                             (logic.not (euclidean__axioms.BetS A C B))
+                             (logic.not (euclidean__axioms.BetS B A C)))))) =>
+              H5
+                (logic.conj
+                   (euclidean__axioms.neq A C)
+                   (logic.and
+                      (euclidean__axioms.neq B C)
+                      (logic.and
+                         (logic.not (euclidean__axioms.BetS A B C))
+                         (logic.and
+                            (logic.not (euclidean__axioms.BetS A C B))
+                            (logic.not (euclidean__axioms.BetS B A C)))))
+                   H6
+                   H7)))
+            (H2 H3))
+           (H4:(sttfa.eps
+                  (logic.or
+                     (euclidean__axioms.eq A C)
+                     (logic.or
+                        (euclidean__axioms.eq B C)
+                        (logic.or
+                           (euclidean__axioms.BetS B A C)
+                           (logic.or
+                              (euclidean__axioms.BetS A B C)
+                              (euclidean__axioms.BetS A C B)))))) =>
+            H0
+              (logic.or__intror
+                 (euclidean__axioms.eq A B)
+                 (logic.or
+                    (euclidean__axioms.eq A C)
+                    (logic.or
+                       (euclidean__axioms.eq B C)
+                       (logic.or
+                          (euclidean__axioms.BetS B A C)
+                          (logic.or
+                             (euclidean__axioms.BetS A B C)
+                             (euclidean__axioms.BetS A C B)))))
+                 H4)))
+          (H3:(sttfa.eps (euclidean__axioms.eq A B)) =>
+           H0
+             (logic.or__introl
+                (euclidean__axioms.eq A B)
+                (logic.or
+                   (euclidean__axioms.eq A C)
+                   (logic.or
+                      (euclidean__axioms.eq B C)
+                      (logic.or
+                         (euclidean__axioms.BetS B A C)
+                         (logic.or
+                            (euclidean__axioms.BetS A B C)
+                            (euclidean__axioms.BetS A C B)))))
+                H3)))
+         (H2:(sttfa.eps (euclidean__axioms.neq A B)) =>
+          H3:(sttfa.eps
+                (logic.and
+                   (euclidean__axioms.neq A C)
+                   (logic.and
+                      (euclidean__axioms.neq B C)
+                      (logic.and
+                         (logic.not (euclidean__axioms.BetS A B C))
+                         (logic.and
+                            (logic.not (euclidean__axioms.BetS A C B))
+                            (logic.not (euclidean__axioms.BetS B A C))))))) =>
+          H1
+            (logic.conj
+               (euclidean__axioms.neq A B)
+               (logic.and
+                  (euclidean__axioms.neq A C)
+                  (logic.and
+                     (euclidean__axioms.neq B C)
+                     (logic.and
+                        (logic.not (euclidean__axioms.BetS A B C))
+                        (logic.and
+                           (logic.not (euclidean__axioms.BetS A C B))
+                           (logic.not (euclidean__axioms.BetS B A C))))))
+               H2
+               H3)))
+        (H1:(sttfa.eps
+               (logic.and
+                  (euclidean__axioms.neq A B)
+                  (logic.and
+                     (euclidean__axioms.neq A C)
+                     (logic.and
+                        (euclidean__axioms.neq B C)
+                        (logic.and
+                           (logic.not (euclidean__axioms.BetS A B C))
+                           (logic.and
+                              (logic.not (euclidean__axioms.BetS A C B))
+                              (logic.not (euclidean__axioms.BetS B A C)))))))) =>
+         H
+           (logic.or__intror
+              (logic.or
+                 (euclidean__axioms.eq A B)
+                 (logic.or
+                    (euclidean__axioms.eq A C)
+                    (logic.or
+                       (euclidean__axioms.eq B C)
+                       (logic.or
+                          (euclidean__axioms.BetS B A C)
+                          (logic.or
+                             (euclidean__axioms.BetS A B C)
+                             (euclidean__axioms.BetS A C B))))))
+              (logic.and
+                 (euclidean__axioms.neq A B)
+                 (logic.and
+                    (euclidean__axioms.neq A C)
+                    (logic.and
+                       (euclidean__axioms.neq B C)
+                       (logic.and
+                          (logic.not (euclidean__axioms.BetS A B C))
+                          (logic.and
+                             (logic.not (euclidean__axioms.BetS A C B))
+                             (logic.not (euclidean__axioms.BetS B A C)))))))
+              H1)))
+       (H0:(sttfa.eps
+              (logic.or
+                 (euclidean__axioms.eq A B)
+                 (logic.or
+                    (euclidean__axioms.eq A C)
+                    (logic.or
+                       (euclidean__axioms.eq B C)
+                       (logic.or
+                          (euclidean__axioms.BetS B A C)
+                          (logic.or
+                             (euclidean__axioms.BetS A B C)
+                             (euclidean__axioms.BetS A C B))))))) =>
+        H
+          (logic.or__introl
+             (logic.or
+                (euclidean__axioms.eq A B)
+                (logic.or
+                   (euclidean__axioms.eq A C)
+                   (logic.or
+                      (euclidean__axioms.eq B C)
+                      (logic.or
+                         (euclidean__axioms.BetS B A C)
+                         (logic.or
+                            (euclidean__axioms.BetS A B C)
+                            (euclidean__axioms.BetS A C B))))))
+             (logic.and
+                (euclidean__axioms.neq A B)
+                (logic.and
+                   (euclidean__axioms.neq A C)
+                   (logic.and
+                      (euclidean__axioms.neq B C)
+                      (logic.and
+                         (logic.not (euclidean__axioms.BetS A B C))
+                         (logic.and
+                            (logic.not (euclidean__axioms.BetS A C B))
+                            (logic.not (euclidean__axioms.BetS B A C)))))))
+             H0))).
+
+thm nCol__or__Col :
+  sttfa.eps
+    (sttfa.forall
+       euclidean__axioms.Point
+       (A:(sttfa.eta euclidean__axioms.Point) =>
+        sttfa.forall
+          euclidean__axioms.Point
+          (B:(sttfa.eta euclidean__axioms.Point) =>
+           sttfa.forall
+             euclidean__axioms.Point
+             (C:(sttfa.eta euclidean__axioms.Point) =>
+              logic.or (euclidean__axioms.nCol A B C) (euclidean__axioms.Col A B C)))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  NNPP
+    (logic.or
+       (logic.and
+          (euclidean__axioms.neq A B)
+          (logic.and
+             (euclidean__axioms.neq A C)
+             (logic.and
+                (euclidean__axioms.neq B C)
+                (logic.and
+                   (logic.not (euclidean__axioms.BetS A B C))
+                   (logic.and
+                      (logic.not (euclidean__axioms.BetS A C B))
+                      (logic.not (euclidean__axioms.BetS B A C)))))))
+       (logic.or
+          (euclidean__axioms.eq A B)
+          (logic.or
+             (euclidean__axioms.eq A C)
+             (logic.or
+                (euclidean__axioms.eq B C)
+                (logic.or
+                   (euclidean__axioms.BetS B A C)
+                   (logic.or (euclidean__axioms.BetS A B C) (euclidean__axioms.BetS A C B)))))))
+    (H:(sttfa.eps
+          (logic.not
+             (logic.or
+                (logic.and
+                   (euclidean__axioms.neq A B)
+                   (logic.and
+                      (euclidean__axioms.neq A C)
+                      (logic.and
+                         (euclidean__axioms.neq B C)
+                         (logic.and
+                            (logic.not (euclidean__axioms.BetS A B C))
+                            (logic.and
+                               (logic.not (euclidean__axioms.BetS A C B))
+                               (logic.not (euclidean__axioms.BetS B A C)))))))
+                (logic.or
+                   (euclidean__axioms.eq A B)
+                   (logic.or
+                      (euclidean__axioms.eq A C)
+                      (logic.or
+                         (euclidean__axioms.eq B C)
+                         (logic.or
+                            (euclidean__axioms.BetS B A C)
+                            (logic.or
+                               (euclidean__axioms.BetS A B C)
+                               (euclidean__axioms.BetS A C B))))))))) =>
+     (H0:(sttfa.eps
+            (sttfa.impl
+               (logic.and
+                  (euclidean__axioms.neq A B)
+                  (logic.and
+                     (euclidean__axioms.neq A C)
+                     (logic.and
+                        (euclidean__axioms.neq B C)
+                        (logic.and
+                           (logic.not (euclidean__axioms.BetS A B C))
+                           (logic.and
+                              (logic.not (euclidean__axioms.BetS A C B))
+                              (logic.not (euclidean__axioms.BetS B A C)))))))
+               logic.false)) =>
+      (H1:(sttfa.eps
+             (sttfa.impl
+                (logic.or
+                   (euclidean__axioms.eq A B)
+                   (logic.or
+                      (euclidean__axioms.eq A C)
+                      (logic.or
+                         (euclidean__axioms.eq B C)
+                         (logic.or
+                            (euclidean__axioms.BetS B A C)
+                            (logic.or
+                               (euclidean__axioms.BetS A B C)
+                               (euclidean__axioms.BetS A C B))))))
+                logic.false)) =>
+       (H2:(sttfa.eps
+              (sttfa.impl
+                 (euclidean__axioms.neq A B)
+                 (sttfa.impl
+                    (logic.and
+                       (euclidean__axioms.neq A C)
+                       (logic.and
+                          (euclidean__axioms.neq B C)
+                          (logic.and
+                             (logic.not (euclidean__axioms.BetS A B C))
+                             (logic.and
+                                (logic.not (euclidean__axioms.BetS A C B))
+                                (logic.not (euclidean__axioms.BetS B A C))))))
+                    logic.false))) =>
+        (H3:(sttfa.eps (sttfa.impl (euclidean__axioms.eq A B) logic.false)) =>
+         (H4:(sttfa.eps
+                (sttfa.impl
+                   (logic.or
+                      (euclidean__axioms.eq A C)
+                      (logic.or
+                         (euclidean__axioms.eq B C)
+                         (logic.or
+                            (euclidean__axioms.BetS B A C)
+                            (logic.or
+                               (euclidean__axioms.BetS A B C)
+                               (euclidean__axioms.BetS A C B)))))
+                   logic.false)) =>
+          (H5:(sttfa.eps
+                 (sttfa.impl
+                    (logic.and
+                       (euclidean__axioms.neq A C)
+                       (logic.and
+                          (euclidean__axioms.neq B C)
+                          (logic.and
+                             (logic.not (euclidean__axioms.BetS A B C))
+                             (logic.and
+                                (logic.not (euclidean__axioms.BetS A C B))
+                                (logic.not (euclidean__axioms.BetS B A C))))))
+                    logic.false)) =>
+           (H6:(sttfa.eps
+                  (sttfa.impl
+                     (euclidean__axioms.neq A C)
+                     (sttfa.impl
+                        (logic.and
+                           (euclidean__axioms.neq B C)
+                           (logic.and
+                              (logic.not (euclidean__axioms.BetS A B C))
+                              (logic.and
+                                 (logic.not
+                                    (euclidean__axioms.BetS A C B))
+                                 (logic.not
+                                    (euclidean__axioms.BetS B A C)))))
+                        logic.false))) =>
+            (H7:(sttfa.eps
+                   (sttfa.impl (euclidean__axioms.eq A C) logic.false)) =>
+             (H8:(sttfa.eps
+                    (sttfa.impl
+                       (logic.or
+                          (euclidean__axioms.eq B C)
+                          (logic.or
+                             (euclidean__axioms.BetS B A C)
+                             (logic.or
+                                (euclidean__axioms.BetS A B C)
+                                (euclidean__axioms.BetS A C B))))
+                       logic.false)) =>
+              (H9:(sttfa.eps
+                     (sttfa.impl
+                        (logic.and
+                           (euclidean__axioms.neq B C)
+                           (logic.and
+                              (logic.not
+                                 (euclidean__axioms.BetS A B C))
+                              (logic.and
+                                 (logic.not
+                                    (euclidean__axioms.BetS
+                                       A
+                                       C
+                                       B))
+                                 (logic.not
+                                    (euclidean__axioms.BetS
+                                       B
+                                       A
+                                       C)))))
+                        logic.false)) =>
+               (H10:(sttfa.eps
+                       (sttfa.impl
+                          (euclidean__axioms.neq B C)
+                          (sttfa.impl
+                             (logic.and
+                                (logic.not
+                                   (euclidean__axioms.BetS
+                                      A
+                                      B
+                                      C))
+                                (logic.and
+                                   (logic.not
+                                      (euclidean__axioms.BetS
+                                         A
+                                         C
+                                         B))
+                                   (logic.not
+                                      (euclidean__axioms.BetS
+                                         B
+                                         A
+                                         C))))
+                             logic.false))) =>
+                (H11:(sttfa.eps
+                        (sttfa.impl
+                           (euclidean__axioms.eq B C)
+                           logic.false)) =>
+                 (H12:(sttfa.eps
+                         (sttfa.impl
+                            (logic.or
+                               (euclidean__axioms.BetS
+                                  B
+                                  A
+                                  C)
+                               (logic.or
+                                  (euclidean__axioms.BetS
+                                     A
+                                     B
+                                     C)
+                                  (euclidean__axioms.BetS
+                                     A
+                                     C
+                                     B)))
+                            logic.false)) =>
+                  (H13:(sttfa.eps
+                          (sttfa.impl
+                             (logic.and
+                                (logic.not
+                                   (euclidean__axioms.BetS
+                                      A
+                                      B
+                                      C))
+                                (logic.and
+                                   (logic.not
+                                      (euclidean__axioms.BetS
+                                         A
+                                         C
+                                         B))
+                                   (logic.not
+                                      (euclidean__axioms.BetS
+                                         B
+                                         A
+                                         C))))
+                             logic.false)) =>
+                   (H14:(sttfa.eps
+                           (sttfa.impl
+                              (logic.not
+                                 (euclidean__axioms.BetS
+                                    A
+                                    B
+                                    C))
+                              (sttfa.impl
+                                 (logic.and
+                                    (logic.not
+                                       (euclidean__axioms.BetS
+                                          A
+                                          C
+                                          B))
+                                    (logic.not
+                                       (euclidean__axioms.BetS
+                                          B
+                                          A
+                                          C)))
+                                 logic.false))) =>
+                    (H15:(sttfa.eps
+                            (sttfa.impl
+                               (euclidean__axioms.BetS
+                                  B
+                                  A
+                                  C)
+                               logic.false)) =>
+                     (H16:(sttfa.eps
+                             (sttfa.impl
+                                (logic.or
+                                   (euclidean__axioms.BetS
+                                      A
+                                      B
+                                      C)
+                                   (euclidean__axioms.BetS
+                                      A
+                                      C
+                                      B))
+                                logic.false)) =>
+                      (H17:(sttfa.eps
+                              (sttfa.impl
+                                 (euclidean__axioms.BetS
+                                    A
+                                    B
+                                    C)
+                                 logic.false)) =>
+                       (H18:(sttfa.eps
+                               (sttfa.impl
+                                  (euclidean__axioms.BetS
+                                     A
+                                     C
+                                     B)
+                                  logic.false)) =>
+                        (H19:(sttfa.eps
+                                (sttfa.impl
+                                   (logic.and
+                                      (logic.not
+                                         (euclidean__axioms.BetS
+                                            A
+                                            C
+                                            B))
+                                      (logic.not
+                                         (euclidean__axioms.BetS
+                                            B
+                                            A
+                                            C)))
+                                   logic.false)) =>
+                         (H20:(sttfa.eps
+                                 (sttfa.impl
+                                    (logic.not
+                                       (euclidean__axioms.BetS
+                                          A
+                                          C
+                                          B))
+                                    (sttfa.impl
+                                       (logic.not
+                                          (euclidean__axioms.BetS
+                                             B
+                                             A
+                                             C))
+                                       logic.false))) =>
+                          (H21:(sttfa.eps
+                                  (sttfa.impl
+                                     (logic.not
+                                        (euclidean__axioms.BetS
+                                           B
+                                           A
+                                           C))
+                                     logic.false)) =>
+                           (H22:(sttfa.eps
+                                   logic.false) =>
+                            logic.False__ind
+                              logic.false
+                              H22)
+                             (H21
+                                H15))
+                            (H20 H18))
+                           (H20:(sttfa.eps
+                                   (logic.not
+                                      (euclidean__axioms.BetS
+                                         A
+                                         C
+                                         B))) =>
+                            H21:(sttfa.eps
+                                   (logic.not
+                                      (euclidean__axioms.BetS
+                                         B
+                                         A
+                                         C))) =>
+                            H19
+                              (logic.conj
+                                 (logic.not
+                                    (euclidean__axioms.BetS
+                                       A
+                                       C
+                                       B))
+                                 (logic.not
+                                    (euclidean__axioms.BetS
+                                       B
+                                       A
+                                       C))
+                                 H20
+                                 H21)))
+                          (H14 H17))
+                         (H18:(sttfa.eps
+                                 (euclidean__axioms.BetS
+                                    A
+                                    C
+                                    B)) =>
+                          H16
+                            (logic.or__intror
+                               (euclidean__axioms.BetS
+                                  A
+                                  B
+                                  C)
+                               (euclidean__axioms.BetS
+                                  A
+                                  C
+                                  B)
+                               H18)))
+                        (H17:(sttfa.eps
+                                (euclidean__axioms.BetS
+                                   A
+                                   B
+                                   C)) =>
+                         H16
+                           (logic.or__introl
+                              (euclidean__axioms.BetS
+                                 A
+                                 B
+                                 C)
+                              (euclidean__axioms.BetS
+                                 A
+                                 C
+                                 B)
+                              H17)))
+                       (H16:(sttfa.eps
+                               (logic.or
+                                  (euclidean__axioms.BetS
+                                     A
+                                     B
+                                     C)
+                                  (euclidean__axioms.BetS
+                                     A
+                                     C
+                                     B))) =>
+                        H12
+                          (logic.or__intror
+                             (euclidean__axioms.BetS
+                                B
+                                A
+                                C)
+                             (logic.or
+                                (euclidean__axioms.BetS
+                                   A
+                                   B
+                                   C)
+                                (euclidean__axioms.BetS
+                                   A
+                                   C
+                                   B))
+                             H16)))
+                      (H15:(sttfa.eps
+                              (euclidean__axioms.BetS
+                                 B
+                                 A
+                                 C)) =>
+                       H12
+                         (logic.or__introl
+                            (euclidean__axioms.BetS
+                               B
+                               A
+                               C)
+                            (logic.or
+                               (euclidean__axioms.BetS
+                                  A
+                                  B
+                                  C)
+                               (euclidean__axioms.BetS
+                                  A
+                                  C
+                                  B))
+                            H15)))
+                     (H14:(sttfa.eps
+                             (logic.not
+                                (euclidean__axioms.BetS
+                                   A
+                                   B
+                                   C))) =>
+                      H15:(sttfa.eps
+                             (logic.and
+                                (logic.not
+                                   (euclidean__axioms.BetS
+                                      A
+                                      C
+                                      B))
+                                (logic.not
+                                   (euclidean__axioms.BetS
+                                      B
+                                      A
+                                      C)))) =>
+                      H13
+                        (logic.conj
+                           (logic.not
+                              (euclidean__axioms.BetS
+                                 A
+                                 B
+                                 C))
+                           (logic.and
+                              (logic.not
+                                 (euclidean__axioms.BetS
+                                    A
+                                    C
+                                    B))
+                              (logic.not
+                                 (euclidean__axioms.BetS
+                                    B
+                                    A
+                                    C)))
+                           H14
+                           H15)))
+                    (H10 H11))
+                   (H12:(sttfa.eps
+                           (logic.or
+                              (euclidean__axioms.BetS B A C)
+                              (logic.or
+                                 (euclidean__axioms.BetS
+                                    A
+                                    B
+                                    C)
+                                 (euclidean__axioms.BetS
+                                    A
+                                    C
+                                    B)))) =>
+                    H8
+                      (logic.or__intror
+                         (euclidean__axioms.eq B C)
+                         (logic.or
+                            (euclidean__axioms.BetS B A C)
+                            (logic.or
+                               (euclidean__axioms.BetS A B C)
+                               (euclidean__axioms.BetS A C B)))
+                         H12)))
+                  (H11:(sttfa.eps (euclidean__axioms.eq B C)) =>
+                   H8
+                     (logic.or__introl
+                        (euclidean__axioms.eq B C)
+                        (logic.or
+                           (euclidean__axioms.BetS B A C)
+                           (logic.or
+                              (euclidean__axioms.BetS A B C)
+                              (euclidean__axioms.BetS A C B)))
+                        H11)))
+                 (H10:(sttfa.eps (euclidean__axioms.neq B C)) =>
+                  H11:(sttfa.eps
+                         (logic.and
+                            (logic.not
+                               (euclidean__axioms.BetS A B C))
+                            (logic.and
+                               (logic.not
+                                  (euclidean__axioms.BetS A C B))
+                               (logic.not
+                                  (euclidean__axioms.BetS B A C))))) =>
+                  H9
+                    (logic.conj
+                       (euclidean__axioms.neq B C)
+                       (logic.and
+                          (logic.not (euclidean__axioms.BetS A B C))
+                          (logic.and
+                             (logic.not
+                                (euclidean__axioms.BetS A C B))
+                             (logic.not
+                                (euclidean__axioms.BetS B A C))))
+                       H10
+                       H11)))
+                (H6 H7))
+               (H8:(sttfa.eps
+                      (logic.or
+                         (euclidean__axioms.eq B C)
+                         (logic.or
+                            (euclidean__axioms.BetS B A C)
+                            (logic.or
+                               (euclidean__axioms.BetS A B C)
+                               (euclidean__axioms.BetS A C B))))) =>
+                H4
+                  (logic.or__intror
+                     (euclidean__axioms.eq A C)
+                     (logic.or
+                        (euclidean__axioms.eq B C)
+                        (logic.or
+                           (euclidean__axioms.BetS B A C)
+                           (logic.or
+                              (euclidean__axioms.BetS A B C)
+                              (euclidean__axioms.BetS A C B))))
+                     H8)))
+              (H7:(sttfa.eps (euclidean__axioms.eq A C)) =>
+               H4
+                 (logic.or__introl
+                    (euclidean__axioms.eq A C)
+                    (logic.or
+                       (euclidean__axioms.eq B C)
+                       (logic.or
+                          (euclidean__axioms.BetS B A C)
+                          (logic.or
+                             (euclidean__axioms.BetS A B C)
+                             (euclidean__axioms.BetS A C B))))
+                    H7)))
+             (H6:(sttfa.eps (euclidean__axioms.neq A C)) =>
+              H7:(sttfa.eps
+                    (logic.and
+                       (euclidean__axioms.neq B C)
+                       (logic.and
+                          (logic.not (euclidean__axioms.BetS A B C))
+                          (logic.and
+                             (logic.not (euclidean__axioms.BetS A C B))
+                             (logic.not (euclidean__axioms.BetS B A C)))))) =>
+              H5
+                (logic.conj
+                   (euclidean__axioms.neq A C)
+                   (logic.and
+                      (euclidean__axioms.neq B C)
+                      (logic.and
+                         (logic.not (euclidean__axioms.BetS A B C))
+                         (logic.and
+                            (logic.not (euclidean__axioms.BetS A C B))
+                            (logic.not (euclidean__axioms.BetS B A C)))))
+                   H6
+                   H7)))
+            (H2 H3))
+           (H4:(sttfa.eps
+                  (logic.or
+                     (euclidean__axioms.eq A C)
+                     (logic.or
+                        (euclidean__axioms.eq B C)
+                        (logic.or
+                           (euclidean__axioms.BetS B A C)
+                           (logic.or
+                              (euclidean__axioms.BetS A B C)
+                              (euclidean__axioms.BetS A C B)))))) =>
+            H1
+              (logic.or__intror
+                 (euclidean__axioms.eq A B)
+                 (logic.or
+                    (euclidean__axioms.eq A C)
+                    (logic.or
+                       (euclidean__axioms.eq B C)
+                       (logic.or
+                          (euclidean__axioms.BetS B A C)
+                          (logic.or
+                             (euclidean__axioms.BetS A B C)
+                             (euclidean__axioms.BetS A C B)))))
+                 H4)))
+          (H3:(sttfa.eps (euclidean__axioms.eq A B)) =>
+           H1
+             (logic.or__introl
+                (euclidean__axioms.eq A B)
+                (logic.or
+                   (euclidean__axioms.eq A C)
+                   (logic.or
+                      (euclidean__axioms.eq B C)
+                      (logic.or
+                         (euclidean__axioms.BetS B A C)
+                         (logic.or
+                            (euclidean__axioms.BetS A B C)
+                            (euclidean__axioms.BetS A C B)))))
+                H3)))
+         (H2:(sttfa.eps (euclidean__axioms.neq A B)) =>
+          H3:(sttfa.eps
+                (logic.and
+                   (euclidean__axioms.neq A C)
+                   (logic.and
+                      (euclidean__axioms.neq B C)
+                      (logic.and
+                         (logic.not (euclidean__axioms.BetS A B C))
+                         (logic.and
+                            (logic.not (euclidean__axioms.BetS A C B))
+                            (logic.not (euclidean__axioms.BetS B A C))))))) =>
+          H0
+            (logic.conj
+               (euclidean__axioms.neq A B)
+               (logic.and
+                  (euclidean__axioms.neq A C)
+                  (logic.and
+                     (euclidean__axioms.neq B C)
+                     (logic.and
+                        (logic.not (euclidean__axioms.BetS A B C))
+                        (logic.and
+                           (logic.not (euclidean__axioms.BetS A C B))
+                           (logic.not (euclidean__axioms.BetS B A C))))))
+               H2
+               H3)))
+        (H1:(sttfa.eps
+               (logic.or
+                  (euclidean__axioms.eq A B)
+                  (logic.or
+                     (euclidean__axioms.eq A C)
+                     (logic.or
+                        (euclidean__axioms.eq B C)
+                        (logic.or
+                           (euclidean__axioms.BetS B A C)
+                           (logic.or
+                              (euclidean__axioms.BetS A B C)
+                              (euclidean__axioms.BetS A C B))))))) =>
+         H
+           (logic.or__intror
+              (logic.and
+                 (euclidean__axioms.neq A B)
+                 (logic.and
+                    (euclidean__axioms.neq A C)
+                    (logic.and
+                       (euclidean__axioms.neq B C)
+                       (logic.and
+                          (logic.not (euclidean__axioms.BetS A B C))
+                          (logic.and
+                             (logic.not (euclidean__axioms.BetS A C B))
+                             (logic.not (euclidean__axioms.BetS B A C)))))))
+              (logic.or
+                 (euclidean__axioms.eq A B)
+                 (logic.or
+                    (euclidean__axioms.eq A C)
+                    (logic.or
+                       (euclidean__axioms.eq B C)
+                       (logic.or
+                          (euclidean__axioms.BetS B A C)
+                          (logic.or
+                             (euclidean__axioms.BetS A B C)
+                             (euclidean__axioms.BetS A C B))))))
+              H1)))
+       (H0:(sttfa.eps
+              (logic.and
+                 (euclidean__axioms.neq A B)
+                 (logic.and
+                    (euclidean__axioms.neq A C)
+                    (logic.and
+                       (euclidean__axioms.neq B C)
+                       (logic.and
+                          (logic.not (euclidean__axioms.BetS A B C))
+                          (logic.and
+                             (logic.not (euclidean__axioms.BetS A C B))
+                             (logic.not (euclidean__axioms.BetS B A C)))))))) =>
+        H
+          (logic.or__introl
+             (logic.and
+                (euclidean__axioms.neq A B)
+                (logic.and
+                   (euclidean__axioms.neq A C)
+                   (logic.and
+                      (euclidean__axioms.neq B C)
+                      (logic.and
+                         (logic.not (euclidean__axioms.BetS A B C))
+                         (logic.and
+                            (logic.not (euclidean__axioms.BetS A C B))
+                            (logic.not (euclidean__axioms.BetS B A C)))))))
+             (logic.or
+                (euclidean__axioms.eq A B)
+                (logic.or
+                   (euclidean__axioms.eq A C)
+                   (logic.or
+                      (euclidean__axioms.eq B C)
+                      (logic.or
+                         (euclidean__axioms.BetS B A C)
+                         (logic.or
+                            (euclidean__axioms.BetS A B C)
+                            (euclidean__axioms.BetS A C B))))))
+             H0))).
+
+thm eq__or__neq :
+  sttfa.eps
+    (sttfa.forall
+       euclidean__axioms.Point
+       (A:(sttfa.eta euclidean__axioms.Point) =>
+        sttfa.forall
+          euclidean__axioms.Point
+          (B:(sttfa.eta euclidean__axioms.Point) =>
+           logic.or (euclidean__axioms.eq A B) (euclidean__axioms.neq A B))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  NNPP
+    (logic.or (euclidean__axioms.eq A B) (logic.not (euclidean__axioms.eq A B)))
+    (H:(sttfa.eps
+          (logic.not (logic.or (euclidean__axioms.eq A B) (logic.not (euclidean__axioms.eq A B))))) =>
+     (H0:(sttfa.eps (sttfa.impl (euclidean__axioms.eq A B) logic.false)) =>
+      (H1:(sttfa.eps (sttfa.impl (logic.not (euclidean__axioms.eq A B)) logic.false)) =>
+       (H2:(sttfa.eps logic.false) => logic.False__ind logic.false H2) (H1 H0))
+        (H1:(sttfa.eps (logic.not (euclidean__axioms.eq A B))) =>
+         H
+           (logic.or__intror
+              (euclidean__axioms.eq A B)
+              (logic.not (euclidean__axioms.eq A B))
+              H1)))
+       (H0:(sttfa.eps (euclidean__axioms.eq A B)) =>
+        H (logic.or__introl (euclidean__axioms.eq A B) (logic.not (euclidean__axioms.eq A B)) H0))).
+
+thm neq__or__eq :
+  sttfa.eps
+    (sttfa.forall
+       euclidean__axioms.Point
+       (A:(sttfa.eta euclidean__axioms.Point) =>
+        sttfa.forall
+          euclidean__axioms.Point
+          (B:(sttfa.eta euclidean__axioms.Point) =>
+           logic.or (euclidean__axioms.neq A B) (euclidean__axioms.eq A B))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  NNPP
+    (logic.or (logic.not (euclidean__axioms.eq A B)) (euclidean__axioms.eq A B))
+    (H:(sttfa.eps
+          (logic.not (logic.or (logic.not (euclidean__axioms.eq A B)) (euclidean__axioms.eq A B)))) =>
+     (H0:(sttfa.eps (sttfa.impl (logic.not (euclidean__axioms.eq A B)) logic.false)) =>
+      (H1:(sttfa.eps (sttfa.impl (euclidean__axioms.eq A B) logic.false)) =>
+       (H2:(sttfa.eps logic.false) => logic.False__ind logic.false H2) (H0 H1))
+        (H1:(sttfa.eps (euclidean__axioms.eq A B)) =>
+         H
+           (logic.or__intror
+              (logic.not (euclidean__axioms.eq A B))
+              (euclidean__axioms.eq A B)
+              H1)))
+       (H0:(sttfa.eps (logic.not (euclidean__axioms.eq A B))) =>
+        H (logic.or__introl (logic.not (euclidean__axioms.eq A B)) (euclidean__axioms.eq A B) H0))).
+
+thm Col__nCol__False :
+  sttfa.eps
+    (sttfa.forall
+       euclidean__axioms.Point
+       (A:(sttfa.eta euclidean__axioms.Point) =>
+        sttfa.forall
+          euclidean__axioms.Point
+          (B:(sttfa.eta euclidean__axioms.Point) =>
+           sttfa.forall
+             euclidean__axioms.Point
+             (C:(sttfa.eta euclidean__axioms.Point) =>
+              sttfa.impl
+                (euclidean__axioms.nCol A B C)
+                (sttfa.impl (euclidean__axioms.Col A B C) logic.false)))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  H:(sttfa.eps
+       (logic.and
+          (euclidean__axioms.neq A B)
+          (logic.and
+             (euclidean__axioms.neq A C)
+             (logic.and
+                (euclidean__axioms.neq B C)
+                (logic.and
+                   (logic.not (euclidean__axioms.BetS A B C))
+                   (logic.and
+                      (logic.not (euclidean__axioms.BetS A C B))
+                      (logic.not (euclidean__axioms.BetS B A C)))))))) =>
+  H0:(sttfa.eps
+        (logic.or
+           (euclidean__axioms.eq A B)
+           (logic.or
+              (euclidean__axioms.eq A C)
+              (logic.or
+                 (euclidean__axioms.eq B C)
+                 (logic.or
+                    (euclidean__axioms.BetS B A C)
+                    (logic.or (euclidean__axioms.BetS A B C) (euclidean__axioms.BetS A C B))))))) =>
+  logic.and__ind
+    (euclidean__axioms.neq A B)
+    (logic.and
+       (euclidean__axioms.neq A C)
+       (logic.and
+          (euclidean__axioms.neq B C)
+          (logic.and
+             (logic.not (euclidean__axioms.BetS A B C))
+             (logic.and
+                (logic.not (euclidean__axioms.BetS A C B))
+                (logic.not (euclidean__axioms.BetS B A C))))))
+    logic.false
+    (H1:(sttfa.eps (euclidean__axioms.neq A B)) =>
+     H2:(sttfa.eps
+           (logic.and
+              (euclidean__axioms.neq A C)
+              (logic.and
+                 (euclidean__axioms.neq B C)
+                 (logic.and
+                    (logic.not (euclidean__axioms.BetS A B C))
+                    (logic.and
+                       (logic.not (euclidean__axioms.BetS A C B))
+                       (logic.not (euclidean__axioms.BetS B A C))))))) =>
+     logic.and__ind
+       (euclidean__axioms.neq A C)
+       (logic.and
+          (euclidean__axioms.neq B C)
+          (logic.and
+             (logic.not (euclidean__axioms.BetS A B C))
+             (logic.and
+                (logic.not (euclidean__axioms.BetS A C B))
+                (logic.not (euclidean__axioms.BetS B A C)))))
+       logic.false
+       (H3:(sttfa.eps (euclidean__axioms.neq A C)) =>
+        H4:(sttfa.eps
+              (logic.and
+                 (euclidean__axioms.neq B C)
+                 (logic.and
+                    (logic.not (euclidean__axioms.BetS A B C))
+                    (logic.and
+                       (logic.not (euclidean__axioms.BetS A C B))
+                       (logic.not (euclidean__axioms.BetS B A C)))))) =>
+        logic.and__ind
+          (euclidean__axioms.neq B C)
+          (logic.and
+             (logic.not (euclidean__axioms.BetS A B C))
+             (logic.and
+                (logic.not (euclidean__axioms.BetS A C B))
+                (logic.not (euclidean__axioms.BetS B A C))))
+          logic.false
+          (H5:(sttfa.eps (euclidean__axioms.neq B C)) =>
+           H6:(sttfa.eps
+                 (logic.and
+                    (logic.not (euclidean__axioms.BetS A B C))
+                    (logic.and
+                       (logic.not (euclidean__axioms.BetS A C B))
+                       (logic.not (euclidean__axioms.BetS B A C))))) =>
+           logic.and__ind
+             (logic.not (euclidean__axioms.BetS A B C))
+             (logic.and
+                (logic.not (euclidean__axioms.BetS A C B))
+                (logic.not (euclidean__axioms.BetS B A C)))
+             logic.false
+             (H7:(sttfa.eps (logic.not (euclidean__axioms.BetS A B C))) =>
+              H8:(sttfa.eps
+                    (logic.and
+                       (logic.not (euclidean__axioms.BetS A C B))
+                       (logic.not (euclidean__axioms.BetS B A C)))) =>
+              logic.and__ind
+                (logic.not (euclidean__axioms.BetS A C B))
+                (logic.not (euclidean__axioms.BetS B A C))
+                logic.false
+                (H9:(sttfa.eps (logic.not (euclidean__axioms.BetS A C B))) =>
+                 H10:(sttfa.eps (logic.not (euclidean__axioms.BetS B A C))) =>
+                 logic.or__ind
+                   (euclidean__axioms.eq A B)
+                   (logic.or
+                      (euclidean__axioms.eq A C)
+                      (logic.or
+                         (euclidean__axioms.eq B C)
+                         (logic.or
+                            (euclidean__axioms.BetS B A C)
+                            (logic.or
+                               (euclidean__axioms.BetS A B C)
+                               (euclidean__axioms.BetS A C B)))))
+                   logic.false
+                   (H11:(sttfa.eps (euclidean__axioms.eq A B)) => H1 H11)
+                   (H11:(sttfa.eps
+                           (logic.or
+                              (euclidean__axioms.eq A C)
+                              (logic.or
+                                 (euclidean__axioms.eq B C)
+                                 (logic.or
+                                    (euclidean__axioms.BetS B A C)
+                                    (logic.or
+                                       (euclidean__axioms.BetS A B C)
+                                       (euclidean__axioms.BetS A C B)))))) =>
+                    logic.or__ind
+                      (euclidean__axioms.eq A C)
+                      (logic.or
+                         (euclidean__axioms.eq B C)
+                         (logic.or
+                            (euclidean__axioms.BetS B A C)
+                            (logic.or
+                               (euclidean__axioms.BetS A B C)
+                               (euclidean__axioms.BetS A C B))))
+                      logic.false
+                      (H12:(sttfa.eps (euclidean__axioms.eq A C)) => H3 H12)
+                      (H12:(sttfa.eps
+                              (logic.or
+                                 (euclidean__axioms.eq B C)
+                                 (logic.or
+                                    (euclidean__axioms.BetS B A C)
+                                    (logic.or
+                                       (euclidean__axioms.BetS A B C)
+                                       (euclidean__axioms.BetS A C B))))) =>
+                       logic.or__ind
+                         (euclidean__axioms.eq B C)
+                         (logic.or
+                            (euclidean__axioms.BetS B A C)
+                            (logic.or
+                               (euclidean__axioms.BetS A B C)
+                               (euclidean__axioms.BetS A C B)))
+                         logic.false
+                         (H13:(sttfa.eps (euclidean__axioms.eq B C)) => H5 H13)
+                         (H13:(sttfa.eps
+                                 (logic.or
+                                    (euclidean__axioms.BetS B A C)
+                                    (logic.or
+                                       (euclidean__axioms.BetS A B C)
+                                       (euclidean__axioms.BetS A C B)))) =>
+                          logic.or__ind
+                            (euclidean__axioms.BetS B A C)
+                            (logic.or
+                               (euclidean__axioms.BetS A B C)
+                               (euclidean__axioms.BetS A C B))
+                            logic.false
+                            (H14:(sttfa.eps (euclidean__axioms.BetS B A C)) =>
+                             (H15:(sttfa.eps logic.false) =>
+                              logic.False__ind logic.false H15)
+                               (H10 H14))
+                            (H14:(sttfa.eps
+                                    (logic.or
+                                       (euclidean__axioms.BetS A B C)
+                                       (euclidean__axioms.BetS A C B))) =>
+                             logic.or__ind
+                               (euclidean__axioms.BetS A B C)
+                               (euclidean__axioms.BetS A C B)
+                               logic.false
+                               (H15:(sttfa.eps (euclidean__axioms.BetS A B C)) =>
+                                (H16:(sttfa.eps logic.false) =>
+                                 logic.False__ind logic.false H16)
+                                  (H7 H15))
+                               (H15:(sttfa.eps (euclidean__axioms.BetS A C B)) =>
+                                (H16:(sttfa.eps logic.false) =>
+                                 logic.False__ind logic.false H16)
+                                  (H9 H15))
+                               H14)
+                            H13)
+                         H12)
+                      H11)
+                   H0)
+                H8)
+             H6)
+          H4)
+       H2)
+    H.
+
+thm nCol__notCol :
+  sttfa.eps
+    (sttfa.forall
+       euclidean__axioms.Point
+       (A:(sttfa.eta euclidean__axioms.Point) =>
+        sttfa.forall
+          euclidean__axioms.Point
+          (B:(sttfa.eta euclidean__axioms.Point) =>
+           sttfa.forall
+             euclidean__axioms.Point
+             (C:(sttfa.eta euclidean__axioms.Point) =>
+              sttfa.impl (logic.not (euclidean__axioms.Col A B C)) (euclidean__axioms.nCol A B C)))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  H:(sttfa.eps (logic.not (euclidean__axioms.Col A B C))) =>
+  (H0:(sttfa.eps (sttfa.impl (euclidean__axioms.eq A B) logic.false)) =>
+   (H1:(sttfa.eps
+          (sttfa.impl
+             (logic.or
+                (euclidean__axioms.eq A C)
+                (logic.or
+                   (euclidean__axioms.eq B C)
+                   (logic.or
+                      (euclidean__axioms.BetS B A C)
+                      (logic.or
+                         (euclidean__axioms.BetS A B C)
+                         (euclidean__axioms.BetS A C B)))))
+             logic.false)) =>
+    (H2:(sttfa.eps (sttfa.impl (euclidean__axioms.eq A C) logic.false)) =>
+     (H3:(sttfa.eps
+            (sttfa.impl
+               (logic.or
+                  (euclidean__axioms.eq B C)
+                  (logic.or
+                     (euclidean__axioms.BetS B A C)
+                     (logic.or
+                        (euclidean__axioms.BetS A B C)
+                        (euclidean__axioms.BetS A C B))))
+               logic.false)) =>
+      (H4:(sttfa.eps (sttfa.impl (euclidean__axioms.eq B C) logic.false)) =>
+       (H5:(sttfa.eps
+              (sttfa.impl
+                 (logic.or
+                    (euclidean__axioms.BetS B A C)
+                    (logic.or
+                       (euclidean__axioms.BetS A B C)
+                       (euclidean__axioms.BetS A C B)))
+                 logic.false)) =>
+        (H6:(sttfa.eps (sttfa.impl (euclidean__axioms.BetS B A C) logic.false)) =>
+         (H7:(sttfa.eps
+                (sttfa.impl
+                   (logic.or
+                      (euclidean__axioms.BetS A B C)
+                      (euclidean__axioms.BetS A C B))
+                   logic.false)) =>
+          (H8:(sttfa.eps
+                 (sttfa.impl (euclidean__axioms.BetS A B C) logic.false)) =>
+           (H9:(sttfa.eps
+                  (sttfa.impl
+                     (euclidean__axioms.BetS A C B)
+                     logic.false)) =>
+            logic.conj
+              (logic.not (euclidean__axioms.eq A B))
+              (logic.and
+                 (logic.not (euclidean__axioms.eq A C))
+                 (logic.and
+                    (logic.not (euclidean__axioms.eq B C))
+                    (logic.and
+                       (logic.not (euclidean__axioms.BetS A B C))
+                       (logic.and
+                          (logic.not (euclidean__axioms.BetS A C B))
+                          (logic.not (euclidean__axioms.BetS B A C))))))
+              (H10:(sttfa.eps (euclidean__axioms.eq A B)) =>
+               (H11:(sttfa.eps logic.false) =>
+                logic.False__ind logic.false H11)
+                 (H0 H10))
+              (logic.conj
+                 (logic.not (euclidean__axioms.eq A C))
+                 (logic.and
+                    (logic.not (euclidean__axioms.eq B C))
+                    (logic.and
+                       (logic.not (euclidean__axioms.BetS A B C))
+                       (logic.and
+                          (logic.not (euclidean__axioms.BetS A C B))
+                          (logic.not (euclidean__axioms.BetS B A C)))))
+                 (H10:(sttfa.eps (euclidean__axioms.eq A C)) =>
+                  (H11:(sttfa.eps logic.false) =>
+                   logic.False__ind logic.false H11)
+                    (H2 H10))
+                 (logic.conj
+                    (logic.not (euclidean__axioms.eq B C))
+                    (logic.and
+                       (logic.not (euclidean__axioms.BetS A B C))
+                       (logic.and
+                          (logic.not (euclidean__axioms.BetS A C B))
+                          (logic.not (euclidean__axioms.BetS B A C))))
+                    (H10:(sttfa.eps (euclidean__axioms.eq B C)) =>
+                     (H11:(sttfa.eps logic.false) =>
+                      logic.False__ind logic.false H11)
+                       (H4 H10))
+                    (logic.conj
+                       (logic.not (euclidean__axioms.BetS A B C))
+                       (logic.and
+                          (logic.not (euclidean__axioms.BetS A C B))
+                          (logic.not (euclidean__axioms.BetS B A C)))
+                       (H10:(sttfa.eps
+                               (euclidean__axioms.BetS A B C)) =>
+                        (H11:(sttfa.eps logic.false) =>
+                         logic.False__ind logic.false H11)
+                          (H8 H10))
+                       (logic.conj
+                          (logic.not (euclidean__axioms.BetS A C B))
+                          (logic.not (euclidean__axioms.BetS B A C))
+                          (H10:(sttfa.eps
+                                  (euclidean__axioms.BetS A C B)) =>
+                           (H11:(sttfa.eps logic.false) =>
+                            logic.False__ind logic.false H11)
+                             (H9 H10))
+                          (H10:(sttfa.eps
+                                  (euclidean__axioms.BetS B A C)) =>
+                           (H11:(sttfa.eps logic.false) =>
+                            logic.False__ind logic.false H11)
+                             (H6 H10)))))))
+             (H9:(sttfa.eps (euclidean__axioms.BetS A C B)) =>
+              H7
+                (logic.or__intror
+                   (euclidean__axioms.BetS A B C)
+                   (euclidean__axioms.BetS A C B)
+                   H9)))
+            (H8:(sttfa.eps (euclidean__axioms.BetS A B C)) =>
+             H7
+               (logic.or__introl
+                  (euclidean__axioms.BetS A B C)
+                  (euclidean__axioms.BetS A C B)
+                  H8)))
+           (H7:(sttfa.eps
+                  (logic.or
+                     (euclidean__axioms.BetS A B C)
+                     (euclidean__axioms.BetS A C B))) =>
+            H5
+              (logic.or__intror
+                 (euclidean__axioms.BetS B A C)
+                 (logic.or
+                    (euclidean__axioms.BetS A B C)
+                    (euclidean__axioms.BetS A C B))
+                 H7)))
+          (H6:(sttfa.eps (euclidean__axioms.BetS B A C)) =>
+           H5
+             (logic.or__introl
+                (euclidean__axioms.BetS B A C)
+                (logic.or
+                   (euclidean__axioms.BetS A B C)
+                   (euclidean__axioms.BetS A C B))
+                H6)))
+         (H5:(sttfa.eps
+                (logic.or
+                   (euclidean__axioms.BetS B A C)
+                   (logic.or
+                      (euclidean__axioms.BetS A B C)
+                      (euclidean__axioms.BetS A C B)))) =>
+          H3
+            (logic.or__intror
+               (euclidean__axioms.eq B C)
+               (logic.or
+                  (euclidean__axioms.BetS B A C)
+                  (logic.or
+                     (euclidean__axioms.BetS A B C)
+                     (euclidean__axioms.BetS A C B)))
+               H5)))
+        (H4:(sttfa.eps (euclidean__axioms.eq B C)) =>
+         H3
+           (logic.or__introl
+              (euclidean__axioms.eq B C)
+              (logic.or
+                 (euclidean__axioms.BetS B A C)
+                 (logic.or
+                    (euclidean__axioms.BetS A B C)
+                    (euclidean__axioms.BetS A C B)))
+              H4)))
+       (H3:(sttfa.eps
+              (logic.or
+                 (euclidean__axioms.eq B C)
+                 (logic.or
+                    (euclidean__axioms.BetS B A C)
+                    (logic.or
+                       (euclidean__axioms.BetS A B C)
+                       (euclidean__axioms.BetS A C B))))) =>
+        H1
+          (logic.or__intror
+             (euclidean__axioms.eq A C)
+             (logic.or
+                (euclidean__axioms.eq B C)
+                (logic.or
+                   (euclidean__axioms.BetS B A C)
+                   (logic.or
+                      (euclidean__axioms.BetS A B C)
+                      (euclidean__axioms.BetS A C B))))
+             H3)))
+      (H2:(sttfa.eps (euclidean__axioms.eq A C)) =>
+       H1
+         (logic.or__introl
+            (euclidean__axioms.eq A C)
+            (logic.or
+               (euclidean__axioms.eq B C)
+               (logic.or
+                  (euclidean__axioms.BetS B A C)
+                  (logic.or (euclidean__axioms.BetS A B C) (euclidean__axioms.BetS A C B))))
+            H2)))
+     (H1:(sttfa.eps
+            (logic.or
+               (euclidean__axioms.eq A C)
+               (logic.or
+                  (euclidean__axioms.eq B C)
+                  (logic.or
+                     (euclidean__axioms.BetS B A C)
+                     (logic.or
+                        (euclidean__axioms.BetS A B C)
+                        (euclidean__axioms.BetS A C B)))))) =>
+      H
+        (logic.or__intror
+           (euclidean__axioms.eq A B)
+           (logic.or
+              (euclidean__axioms.eq A C)
+              (logic.or
+                 (euclidean__axioms.eq B C)
+                 (logic.or
+                    (euclidean__axioms.BetS B A C)
+                    (logic.or (euclidean__axioms.BetS A B C) (euclidean__axioms.BetS A C B)))))
+           H1)))
+    (H0:(sttfa.eps (euclidean__axioms.eq A B)) =>
+     H
+       (logic.or__introl
+          (euclidean__axioms.eq A B)
+          (logic.or
+             (euclidean__axioms.eq A C)
+             (logic.or
+                (euclidean__axioms.eq B C)
+                (logic.or
+                   (euclidean__axioms.BetS B A C)
+                   (logic.or (euclidean__axioms.BetS A B C) (euclidean__axioms.BetS A C B)))))
+          H0)).
+
+thm not__nCol__Col :
+  sttfa.eps
+    (sttfa.forall
+       euclidean__axioms.Point
+       (A:(sttfa.eta euclidean__axioms.Point) =>
+        sttfa.forall
+          euclidean__axioms.Point
+          (B:(sttfa.eta euclidean__axioms.Point) =>
+           sttfa.forall
+             euclidean__axioms.Point
+             (C:(sttfa.eta euclidean__axioms.Point) =>
+              sttfa.impl (logic.not (euclidean__axioms.nCol A B C)) (euclidean__axioms.Col A B C)))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  H:(sttfa.eps (logic.not (euclidean__axioms.nCol A B C))) =>
+  NNPP
+    (logic.or
+       (euclidean__axioms.eq A B)
+       (logic.or
+          (euclidean__axioms.eq A C)
+          (logic.or
+             (euclidean__axioms.eq B C)
+             (logic.or
+                (euclidean__axioms.BetS B A C)
+                (logic.or (euclidean__axioms.BetS A B C) (euclidean__axioms.BetS A C B))))))
+    (H0:(sttfa.eps
+           (logic.not
+              (logic.or
+                 (euclidean__axioms.eq A B)
+                 (logic.or
+                    (euclidean__axioms.eq A C)
+                    (logic.or
+                       (euclidean__axioms.eq B C)
+                       (logic.or
+                          (euclidean__axioms.BetS B A C)
+                          (logic.or
+                             (euclidean__axioms.BetS A B C)
+                             (euclidean__axioms.BetS A C B)))))))) =>
+     (H1:(sttfa.eps
+            (sttfa.impl
+               (logic.not (euclidean__axioms.eq A B))
+               (sttfa.impl
+                  (logic.and
+                     (logic.not (euclidean__axioms.eq A C))
+                     (logic.and
+                        (logic.not (euclidean__axioms.eq B C))
+                        (logic.and
+                           (logic.not (euclidean__axioms.BetS A B C))
+                           (logic.and
+                              (logic.not (euclidean__axioms.BetS A C B))
+                              (logic.not (euclidean__axioms.BetS B A C))))))
+                  logic.false))) =>
+      (H2:(sttfa.eps (sttfa.impl (euclidean__axioms.eq A B) logic.false)) =>
+       (H3:(sttfa.eps
+              (sttfa.impl
+                 (logic.or
+                    (euclidean__axioms.eq A C)
+                    (logic.or
+                       (euclidean__axioms.eq B C)
+                       (logic.or
+                          (euclidean__axioms.BetS B A C)
+                          (logic.or
+                             (euclidean__axioms.BetS A B C)
+                             (euclidean__axioms.BetS A C B)))))
+                 logic.false)) =>
+        (H4:(sttfa.eps
+               (sttfa.impl
+                  (logic.and
+                     (logic.not (euclidean__axioms.eq A C))
+                     (logic.and
+                        (logic.not (euclidean__axioms.eq B C))
+                        (logic.and
+                           (logic.not (euclidean__axioms.BetS A B C))
+                           (logic.and
+                              (logic.not (euclidean__axioms.BetS A C B))
+                              (logic.not (euclidean__axioms.BetS B A C))))))
+                  logic.false)) =>
+         (H5:(sttfa.eps
+                (sttfa.impl
+                   (logic.not (euclidean__axioms.eq A C))
+                   (sttfa.impl
+                      (logic.and
+                         (logic.not (euclidean__axioms.eq B C))
+                         (logic.and
+                            (logic.not (euclidean__axioms.BetS A B C))
+                            (logic.and
+                               (logic.not (euclidean__axioms.BetS A C B))
+                               (logic.not (euclidean__axioms.BetS B A C)))))
+                      logic.false))) =>
+          (H6:(sttfa.eps (sttfa.impl (euclidean__axioms.eq A C) logic.false)) =>
+           (H7:(sttfa.eps
+                  (sttfa.impl
+                     (logic.or
+                        (euclidean__axioms.eq B C)
+                        (logic.or
+                           (euclidean__axioms.BetS B A C)
+                           (logic.or
+                              (euclidean__axioms.BetS A B C)
+                              (euclidean__axioms.BetS A C B))))
+                     logic.false)) =>
+            (H8:(sttfa.eps
+                   (sttfa.impl
+                      (logic.and
+                         (logic.not (euclidean__axioms.eq B C))
+                         (logic.and
+                            (logic.not (euclidean__axioms.BetS A B C))
+                            (logic.and
+                               (logic.not
+                                  (euclidean__axioms.BetS A C B))
+                               (logic.not
+                                  (euclidean__axioms.BetS B A C)))))
+                      logic.false)) =>
+             (H9:(sttfa.eps
+                    (sttfa.impl
+                       (logic.not (euclidean__axioms.eq B C))
+                       (sttfa.impl
+                          (logic.and
+                             (logic.not
+                                (euclidean__axioms.BetS A B C))
+                             (logic.and
+                                (logic.not
+                                   (euclidean__axioms.BetS A C B))
+                                (logic.not
+                                   (euclidean__axioms.BetS B A C))))
+                          logic.false))) =>
+              (H10:(sttfa.eps
+                      (sttfa.impl
+                         (euclidean__axioms.eq B C)
+                         logic.false)) =>
+               (H11:(sttfa.eps
+                       (sttfa.impl
+                          (logic.or
+                             (euclidean__axioms.BetS B A C)
+                             (logic.or
+                                (euclidean__axioms.BetS A B C)
+                                (euclidean__axioms.BetS A C B)))
+                          logic.false)) =>
+                (H12:(sttfa.eps
+                        (sttfa.impl
+                           (logic.and
+                              (logic.not
+                                 (euclidean__axioms.BetS
+                                    A
+                                    B
+                                    C))
+                              (logic.and
+                                 (logic.not
+                                    (euclidean__axioms.BetS
+                                       A
+                                       C
+                                       B))
+                                 (logic.not
+                                    (euclidean__axioms.BetS
+                                       B
+                                       A
+                                       C))))
+                           logic.false)) =>
+                 (H13:(sttfa.eps
+                         (sttfa.impl
+                            (logic.not
+                               (euclidean__axioms.BetS
+                                  A
+                                  B
+                                  C))
+                            (sttfa.impl
+                               (logic.and
+                                  (logic.not
+                                     (euclidean__axioms.BetS
+                                        A
+                                        C
+                                        B))
+                                  (logic.not
+                                     (euclidean__axioms.BetS
+                                        B
+                                        A
+                                        C)))
+                               logic.false))) =>
+                  (H14:(sttfa.eps
+                          (sttfa.impl
+                             (euclidean__axioms.BetS
+                                B
+                                A
+                                C)
+                             logic.false)) =>
+                   (H15:(sttfa.eps
+                           (sttfa.impl
+                              (logic.or
+                                 (euclidean__axioms.BetS
+                                    A
+                                    B
+                                    C)
+                                 (euclidean__axioms.BetS
+                                    A
+                                    C
+                                    B))
+                              logic.false)) =>
+                    (H16:(sttfa.eps
+                            (sttfa.impl
+                               (euclidean__axioms.BetS
+                                  A
+                                  B
+                                  C)
+                               logic.false)) =>
+                     (H17:(sttfa.eps
+                             (sttfa.impl
+                                (euclidean__axioms.BetS
+                                   A
+                                   C
+                                   B)
+                                logic.false)) =>
+                      (H18:(sttfa.eps
+                              (sttfa.impl
+                                 (logic.and
+                                    (logic.not
+                                       (euclidean__axioms.BetS
+                                          A
+                                          C
+                                          B))
+                                    (logic.not
+                                       (euclidean__axioms.BetS
+                                          B
+                                          A
+                                          C)))
+                                 logic.false)) =>
+                       (H19:(sttfa.eps
+                               (sttfa.impl
+                                  (logic.not
+                                     (euclidean__axioms.BetS
+                                        A
+                                        C
+                                        B))
+                                  (sttfa.impl
+                                     (logic.not
+                                        (euclidean__axioms.BetS
+                                           B
+                                           A
+                                           C))
+                                     logic.false))) =>
+                        (H20:(sttfa.eps
+                                (sttfa.impl
+                                   (logic.not
+                                      (euclidean__axioms.BetS
+                                         B
+                                         A
+                                         C))
+                                   logic.false)) =>
+                         (H21:(sttfa.eps
+                                 logic.false) =>
+                          logic.False__ind
+                            logic.false
+                            H21)
+                           (H20 H14))
+                          (H19 H17))
+                         (H19:(sttfa.eps
+                                 (logic.not
+                                    (euclidean__axioms.BetS
+                                       A
+                                       C
+                                       B))) =>
+                          H20:(sttfa.eps
+                                 (logic.not
+                                    (euclidean__axioms.BetS
+                                       B
+                                       A
+                                       C))) =>
+                          H18
+                            (logic.conj
+                               (logic.not
+                                  (euclidean__axioms.BetS
+                                     A
+                                     C
+                                     B))
+                               (logic.not
+                                  (euclidean__axioms.BetS
+                                     B
+                                     A
+                                     C))
+                               H19
+                               H20)))
+                        (H13 H16))
+                       (H17:(sttfa.eps
+                               (euclidean__axioms.BetS
+                                  A
+                                  C
+                                  B)) =>
+                        H15
+                          (logic.or__intror
+                             (euclidean__axioms.BetS
+                                A
+                                B
+                                C)
+                             (euclidean__axioms.BetS
+                                A
+                                C
+                                B)
+                             H17)))
+                      (H16:(sttfa.eps
+                              (euclidean__axioms.BetS
+                                 A
+                                 B
+                                 C)) =>
+                       H15
+                         (logic.or__introl
+                            (euclidean__axioms.BetS
+                               A
+                               B
+                               C)
+                            (euclidean__axioms.BetS
+                               A
+                               C
+                               B)
+                            H16)))
+                     (H15:(sttfa.eps
+                             (logic.or
+                                (euclidean__axioms.BetS
+                                   A
+                                   B
+                                   C)
+                                (euclidean__axioms.BetS
+                                   A
+                                   C
+                                   B))) =>
+                      H11
+                        (logic.or__intror
+                           (euclidean__axioms.BetS B A C)
+                           (logic.or
+                              (euclidean__axioms.BetS
+                                 A
+                                 B
+                                 C)
+                              (euclidean__axioms.BetS
+                                 A
+                                 C
+                                 B))
+                           H15)))
+                    (H14:(sttfa.eps
+                            (euclidean__axioms.BetS B A C)) =>
+                     H11
+                       (logic.or__introl
+                          (euclidean__axioms.BetS B A C)
+                          (logic.or
+                             (euclidean__axioms.BetS A B C)
+                             (euclidean__axioms.BetS A C B))
+                          H14)))
+                   (H13:(sttfa.eps
+                           (logic.not
+                              (euclidean__axioms.BetS A B C))) =>
+                    H14:(sttfa.eps
+                           (logic.and
+                              (logic.not
+                                 (euclidean__axioms.BetS
+                                    A
+                                    C
+                                    B))
+                              (logic.not
+                                 (euclidean__axioms.BetS
+                                    B
+                                    A
+                                    C)))) =>
+                    H12
+                      (logic.conj
+                         (logic.not
+                            (euclidean__axioms.BetS A B C))
+                         (logic.and
+                            (logic.not
+                               (euclidean__axioms.BetS A C B))
+                            (logic.not
+                               (euclidean__axioms.BetS B A C)))
+                         H13
+                         H14)))
+                  (H9 H10))
+                 (H11:(sttfa.eps
+                         (logic.or
+                            (euclidean__axioms.BetS B A C)
+                            (logic.or
+                               (euclidean__axioms.BetS A B C)
+                               (euclidean__axioms.BetS A C B)))) =>
+                  H7
+                    (logic.or__intror
+                       (euclidean__axioms.eq B C)
+                       (logic.or
+                          (euclidean__axioms.BetS B A C)
+                          (logic.or
+                             (euclidean__axioms.BetS A B C)
+                             (euclidean__axioms.BetS A C B)))
+                       H11)))
+                (H10:(sttfa.eps (euclidean__axioms.eq B C)) =>
+                 H7
+                   (logic.or__introl
+                      (euclidean__axioms.eq B C)
+                      (logic.or
+                         (euclidean__axioms.BetS B A C)
+                         (logic.or
+                            (euclidean__axioms.BetS A B C)
+                            (euclidean__axioms.BetS A C B)))
+                      H10)))
+               (H9:(sttfa.eps (logic.not (euclidean__axioms.eq B C))) =>
+                H10:(sttfa.eps
+                       (logic.and
+                          (logic.not (euclidean__axioms.BetS A B C))
+                          (logic.and
+                             (logic.not (euclidean__axioms.BetS A C B))
+                             (logic.not (euclidean__axioms.BetS B A C))))) =>
+                H8
+                  (logic.conj
+                     (logic.not (euclidean__axioms.eq B C))
+                     (logic.and
+                        (logic.not (euclidean__axioms.BetS A B C))
+                        (logic.and
+                           (logic.not (euclidean__axioms.BetS A C B))
+                           (logic.not (euclidean__axioms.BetS B A C))))
+                     H9
+                     H10)))
+              (H5 H6))
+             (H7:(sttfa.eps
+                    (logic.or
+                       (euclidean__axioms.eq B C)
+                       (logic.or
+                          (euclidean__axioms.BetS B A C)
+                          (logic.or
+                             (euclidean__axioms.BetS A B C)
+                             (euclidean__axioms.BetS A C B))))) =>
+              H3
+                (logic.or__intror
+                   (euclidean__axioms.eq A C)
+                   (logic.or
+                      (euclidean__axioms.eq B C)
+                      (logic.or
+                         (euclidean__axioms.BetS B A C)
+                         (logic.or
+                            (euclidean__axioms.BetS A B C)
+                            (euclidean__axioms.BetS A C B))))
+                   H7)))
+            (H6:(sttfa.eps (euclidean__axioms.eq A C)) =>
+             H3
+               (logic.or__introl
+                  (euclidean__axioms.eq A C)
+                  (logic.or
+                     (euclidean__axioms.eq B C)
+                     (logic.or
+                        (euclidean__axioms.BetS B A C)
+                        (logic.or
+                           (euclidean__axioms.BetS A B C)
+                           (euclidean__axioms.BetS A C B))))
+                  H6)))
+           (H5:(sttfa.eps (logic.not (euclidean__axioms.eq A C))) =>
+            H6:(sttfa.eps
+                  (logic.and
+                     (logic.not (euclidean__axioms.eq B C))
+                     (logic.and
+                        (logic.not (euclidean__axioms.BetS A B C))
+                        (logic.and
+                           (logic.not (euclidean__axioms.BetS A C B))
+                           (logic.not (euclidean__axioms.BetS B A C)))))) =>
+            H4
+              (logic.conj
+                 (logic.not (euclidean__axioms.eq A C))
+                 (logic.and
+                    (logic.not (euclidean__axioms.eq B C))
+                    (logic.and
+                       (logic.not (euclidean__axioms.BetS A B C))
+                       (logic.and
+                          (logic.not (euclidean__axioms.BetS A C B))
+                          (logic.not (euclidean__axioms.BetS B A C)))))
+                 H5
+                 H6)))
+          (H1 H2))
+         (H3:(sttfa.eps
+                (logic.or
+                   (euclidean__axioms.eq A C)
+                   (logic.or
+                      (euclidean__axioms.eq B C)
+                      (logic.or
+                         (euclidean__axioms.BetS B A C)
+                         (logic.or
+                            (euclidean__axioms.BetS A B C)
+                            (euclidean__axioms.BetS A C B)))))) =>
+          H0
+            (logic.or__intror
+               (euclidean__axioms.eq A B)
+               (logic.or
+                  (euclidean__axioms.eq A C)
+                  (logic.or
+                     (euclidean__axioms.eq B C)
+                     (logic.or
+                        (euclidean__axioms.BetS B A C)
+                        (logic.or
+                           (euclidean__axioms.BetS A B C)
+                           (euclidean__axioms.BetS A C B)))))
+               H3)))
+        (H2:(sttfa.eps (euclidean__axioms.eq A B)) =>
+         H0
+           (logic.or__introl
+              (euclidean__axioms.eq A B)
+              (logic.or
+                 (euclidean__axioms.eq A C)
+                 (logic.or
+                    (euclidean__axioms.eq B C)
+                    (logic.or
+                       (euclidean__axioms.BetS B A C)
+                       (logic.or
+                          (euclidean__axioms.BetS A B C)
+                          (euclidean__axioms.BetS A C B)))))
+              H2)))
+       (H1:(sttfa.eps (logic.not (euclidean__axioms.eq A B))) =>
+        H2:(sttfa.eps
+              (logic.and
+                 (logic.not (euclidean__axioms.eq A C))
+                 (logic.and
+                    (logic.not (euclidean__axioms.eq B C))
+                    (logic.and
+                       (logic.not (euclidean__axioms.BetS A B C))
+                       (logic.and
+                          (logic.not (euclidean__axioms.BetS A C B))
+                          (logic.not (euclidean__axioms.BetS B A C))))))) =>
+        H
+          (logic.conj
+             (logic.not (euclidean__axioms.eq A B))
+             (logic.and
+                (logic.not (euclidean__axioms.eq A C))
+                (logic.and
+                   (logic.not (euclidean__axioms.eq B C))
+                   (logic.and
+                      (logic.not (euclidean__axioms.BetS A B C))
+                      (logic.and
+                         (logic.not (euclidean__axioms.BetS A C B))
+                         (logic.not (euclidean__axioms.BetS B A C))))))
+             H1
+             H2))).
+
+thm nCol__not__Col :
+  sttfa.eps
+    (sttfa.forall
+       euclidean__axioms.Point
+       (A:(sttfa.eta euclidean__axioms.Point) =>
+        sttfa.forall
+          euclidean__axioms.Point
+          (B:(sttfa.eta euclidean__axioms.Point) =>
+           sttfa.forall
+             euclidean__axioms.Point
+             (C:(sttfa.eta euclidean__axioms.Point) =>
+              sttfa.impl (euclidean__axioms.nCol A B C) (logic.not (euclidean__axioms.Col A B C))))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  H:(sttfa.eps (euclidean__axioms.nCol A B C)) =>
+  NNPP
+    (logic.not
+       (logic.or
+          (euclidean__axioms.eq A B)
+          (logic.or
+             (euclidean__axioms.eq A C)
+             (logic.or
+                (euclidean__axioms.eq B C)
+                (logic.or
+                   (euclidean__axioms.BetS B A C)
+                   (logic.or (euclidean__axioms.BetS A B C) (euclidean__axioms.BetS A C B)))))))
+    (H0:(sttfa.eps
+           (logic.not
+              (logic.not
+                 (logic.or
+                    (euclidean__axioms.eq A B)
+                    (logic.or
+                       (euclidean__axioms.eq A C)
+                       (logic.or
+                          (euclidean__axioms.eq B C)
+                          (logic.or
+                             (euclidean__axioms.BetS B A C)
+                             (logic.or
+                                (euclidean__axioms.BetS A B C)
+                                (euclidean__axioms.BetS A C B))))))))) =>
+     logic.and__ind
+       (logic.not (euclidean__axioms.eq A B))
+       (logic.and
+          (logic.not (euclidean__axioms.eq A C))
+          (logic.and
+             (logic.not (euclidean__axioms.eq B C))
+             (logic.and
+                (logic.not (euclidean__axioms.BetS A B C))
+                (logic.and
+                   (logic.not (euclidean__axioms.BetS A C B))
+                   (logic.not (euclidean__axioms.BetS B A C))))))
+       logic.false
+       (H1:(sttfa.eps (logic.not (euclidean__axioms.eq A B))) =>
+        H2:(sttfa.eps
+              (logic.and
+                 (logic.not (euclidean__axioms.eq A C))
+                 (logic.and
+                    (logic.not (euclidean__axioms.eq B C))
+                    (logic.and
+                       (logic.not (euclidean__axioms.BetS A B C))
+                       (logic.and
+                          (logic.not (euclidean__axioms.BetS A C B))
+                          (logic.not (euclidean__axioms.BetS B A C))))))) =>
+        logic.and__ind
+          (logic.not (euclidean__axioms.eq A C))
+          (logic.and
+             (logic.not (euclidean__axioms.eq B C))
+             (logic.and
+                (logic.not (euclidean__axioms.BetS A B C))
+                (logic.and
+                   (logic.not (euclidean__axioms.BetS A C B))
+                   (logic.not (euclidean__axioms.BetS B A C)))))
+          logic.false
+          (H3:(sttfa.eps (logic.not (euclidean__axioms.eq A C))) =>
+           H4:(sttfa.eps
+                 (logic.and
+                    (logic.not (euclidean__axioms.eq B C))
+                    (logic.and
+                       (logic.not (euclidean__axioms.BetS A B C))
+                       (logic.and
+                          (logic.not (euclidean__axioms.BetS A C B))
+                          (logic.not (euclidean__axioms.BetS B A C)))))) =>
+           logic.and__ind
+             (logic.not (euclidean__axioms.eq B C))
+             (logic.and
+                (logic.not (euclidean__axioms.BetS A B C))
+                (logic.and
+                   (logic.not (euclidean__axioms.BetS A C B))
+                   (logic.not (euclidean__axioms.BetS B A C))))
+             logic.false
+             (H5:(sttfa.eps (logic.not (euclidean__axioms.eq B C))) =>
+              H6:(sttfa.eps
+                    (logic.and
+                       (logic.not (euclidean__axioms.BetS A B C))
+                       (logic.and
+                          (logic.not (euclidean__axioms.BetS A C B))
+                          (logic.not (euclidean__axioms.BetS B A C))))) =>
+              logic.and__ind
+                (logic.not (euclidean__axioms.BetS A B C))
+                (logic.and
+                   (logic.not (euclidean__axioms.BetS A C B))
+                   (logic.not (euclidean__axioms.BetS B A C)))
+                logic.false
+                (H7:(sttfa.eps (logic.not (euclidean__axioms.BetS A B C))) =>
+                 H8:(sttfa.eps
+                       (logic.and
+                          (logic.not (euclidean__axioms.BetS A C B))
+                          (logic.not (euclidean__axioms.BetS B A C)))) =>
+                 logic.and__ind
+                   (logic.not (euclidean__axioms.BetS A C B))
+                   (logic.not (euclidean__axioms.BetS B A C))
+                   logic.false
+                   (H9:(sttfa.eps (logic.not (euclidean__axioms.BetS A C B))) =>
+                    H10:(sttfa.eps (logic.not (euclidean__axioms.BetS B A C))) =>
+                    (H11:(sttfa.eps logic.false) =>
+                     (H12:(sttfa.eps logic.false) => logic.False__ind logic.false H12) H11)
+                      ((H11:(sttfa.eps
+                               (logic.not
+                                  (logic.or
+                                     (euclidean__axioms.eq A B)
+                                     (logic.or
+                                        (euclidean__axioms.eq A C)
+                                        (logic.or
+                                           (euclidean__axioms.eq B C)
+                                           (logic.or
+                                              (euclidean__axioms.BetS B A C)
+                                              (logic.or
+                                                 (euclidean__axioms.BetS A B C)
+                                                 (euclidean__axioms.BetS A C B)))))))) =>
+                        H0 H11)
+                         (H11:(sttfa.eps
+                                 (logic.or
+                                    (euclidean__axioms.eq A B)
+                                    (logic.or
+                                       (euclidean__axioms.eq A C)
+                                       (logic.or
+                                          (euclidean__axioms.eq B C)
+                                          (logic.or
+                                             (euclidean__axioms.BetS B A C)
+                                             (logic.or
+                                                (euclidean__axioms.BetS A B C)
+                                                (euclidean__axioms.BetS A C B))))))) =>
+                          logic.or__ind
+                            (euclidean__axioms.eq A B)
+                            (logic.or
+                               (euclidean__axioms.eq A C)
+                               (logic.or
+                                  (euclidean__axioms.eq B C)
+                                  (logic.or
+                                     (euclidean__axioms.BetS B A C)
+                                     (logic.or
+                                        (euclidean__axioms.BetS A B C)
+                                        (euclidean__axioms.BetS A C B)))))
+                            logic.false
+                            (H12:(sttfa.eps (euclidean__axioms.eq A B)) =>
+                             (H13:(sttfa.eps logic.false) =>
+                              logic.False__ind logic.false H13)
+                               (H1 H12))
+                            (H12:(sttfa.eps
+                                    (logic.or
+                                       (euclidean__axioms.eq A C)
+                                       (logic.or
+                                          (euclidean__axioms.eq B C)
+                                          (logic.or
+                                             (euclidean__axioms.BetS B A C)
+                                             (logic.or
+                                                (euclidean__axioms.BetS A B C)
+                                                (euclidean__axioms.BetS A C B)))))) =>
+                             logic.or__ind
+                               (euclidean__axioms.eq A C)
+                               (logic.or
+                                  (euclidean__axioms.eq B C)
+                                  (logic.or
+                                     (euclidean__axioms.BetS B A C)
+                                     (logic.or
+                                        (euclidean__axioms.BetS A B C)
+                                        (euclidean__axioms.BetS A C B))))
+                               logic.false
+                               (H13:(sttfa.eps (euclidean__axioms.eq A C)) =>
+                                (H14:(sttfa.eps logic.false) =>
+                                 logic.False__ind logic.false H14)
+                                  (H3 H13))
+                               (H13:(sttfa.eps
+                                       (logic.or
+                                          (euclidean__axioms.eq B C)
+                                          (logic.or
+                                             (euclidean__axioms.BetS B A C)
+                                             (logic.or
+                                                (euclidean__axioms.BetS A B C)
+                                                (euclidean__axioms.BetS A C B))))) =>
+                                logic.or__ind
+                                  (euclidean__axioms.eq B C)
+                                  (logic.or
+                                     (euclidean__axioms.BetS B A C)
+                                     (logic.or
+                                        (euclidean__axioms.BetS A B C)
+                                        (euclidean__axioms.BetS A C B)))
+                                  logic.false
+                                  (H14:(sttfa.eps (euclidean__axioms.eq B C)) =>
+                                   (H15:(sttfa.eps logic.false) =>
+                                    logic.False__ind logic.false H15)
+                                     (H5 H14))
+                                  (H14:(sttfa.eps
+                                          (logic.or
+                                             (euclidean__axioms.BetS B A C)
+                                             (logic.or
+                                                (euclidean__axioms.BetS A B C)
+                                                (euclidean__axioms.BetS A C B)))) =>
+                                   logic.or__ind
+                                     (euclidean__axioms.BetS B A C)
+                                     (logic.or
+                                        (euclidean__axioms.BetS A B C)
+                                        (euclidean__axioms.BetS A C B))
+                                     logic.false
+                                     (H15:(sttfa.eps (euclidean__axioms.BetS B A C)) =>
+                                      (H16:(sttfa.eps logic.false) =>
+                                       logic.False__ind logic.false H16)
+                                        (H10 H15))
+                                     (H15:(sttfa.eps
+                                             (logic.or
+                                                (euclidean__axioms.BetS A B C)
+                                                (euclidean__axioms.BetS A C B))) =>
+                                      logic.or__ind
+                                        (euclidean__axioms.BetS A B C)
+                                        (euclidean__axioms.BetS A C B)
+                                        logic.false
+                                        (H16:(sttfa.eps (euclidean__axioms.BetS A B C)) =>
+                                         (H17:(sttfa.eps logic.false) =>
+                                          logic.False__ind logic.false H17)
+                                           (H7 H16))
+                                        (H16:(sttfa.eps (euclidean__axioms.BetS A C B)) =>
+                                         (H17:(sttfa.eps logic.false) =>
+                                          logic.False__ind logic.false H17)
+                                           (H9 H16))
+                                        H15)
+                                     H14)
+                                  H13)
+                               H12)
+                            H11)))
+                   H8)
+                H6)
+             H4)
+          H2)
+       H).
+

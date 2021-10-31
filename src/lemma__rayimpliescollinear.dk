@@ -1,0 +1,146 @@
+thm lemma__rayimpliescollinear :
+  sttfa.eps
+    (sttfa.forall
+       euclidean__axioms.Point
+       (A:(sttfa.eta euclidean__axioms.Point) =>
+        sttfa.forall
+          euclidean__axioms.Point
+          (B:(sttfa.eta euclidean__axioms.Point) =>
+           sttfa.forall
+             euclidean__axioms.Point
+             (C:(sttfa.eta euclidean__axioms.Point) =>
+              sttfa.impl (euclidean__defs.Out A B C) (euclidean__axioms.Col A B C)))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  H:(sttfa.eps (euclidean__defs.Out A B C)) =>
+  (H0:(sttfa.eps
+         (logic.ex
+            euclidean__axioms.Point
+            (J:(sttfa.eta euclidean__axioms.Point) =>
+             logic.and (euclidean__axioms.BetS J A C) (euclidean__axioms.BetS J A B)))) =>
+   logic.ex__ind
+     euclidean__axioms.Point
+     (J:(sttfa.eta euclidean__axioms.Point) =>
+      logic.and (euclidean__axioms.BetS J A C) (euclidean__axioms.BetS J A B))
+     (euclidean__axioms.Col A B C)
+     (J:(sttfa.eta euclidean__axioms.Point) =>
+      H1:(sttfa.eps (logic.and (euclidean__axioms.BetS J A C) (euclidean__axioms.BetS J A B))) =>
+      logic.and__ind
+        (euclidean__axioms.BetS J A C)
+        (euclidean__axioms.BetS J A B)
+        (euclidean__axioms.Col A B C)
+        (H2:(sttfa.eps (euclidean__axioms.BetS J A C)) =>
+         H3:(sttfa.eps (euclidean__axioms.BetS J A B)) =>
+         (H4:(sttfa.eps (euclidean__axioms.neq J A)) =>
+          (H5:(sttfa.eps (euclidean__axioms.Col J A B)) =>
+           (H6:(sttfa.eps (euclidean__axioms.Col J A C)) =>
+            (H7:(sttfa.eps (euclidean__axioms.Col A B C)) => H7)
+              (euclidean__tactics.not__nCol__Col
+                 A
+                 B
+                 C
+                 (H7:(sttfa.eps (euclidean__axioms.nCol A B C)) =>
+                  euclidean__tactics.Col__nCol__False
+                    A
+                    B
+                    C
+                    H7
+                    (lemma__collinear4.lemma__collinear4 J A B C H5 H6 H4))))
+             (logic.or__intror
+                (euclidean__axioms.eq J A)
+                (logic.or
+                   (euclidean__axioms.eq J C)
+                   (logic.or
+                      (euclidean__axioms.eq A C)
+                      (logic.or
+                         (euclidean__axioms.BetS A J C)
+                         (logic.or
+                            (euclidean__axioms.BetS J A C)
+                            (euclidean__axioms.BetS J C A)))))
+                (logic.or__intror
+                   (euclidean__axioms.eq J C)
+                   (logic.or
+                      (euclidean__axioms.eq A C)
+                      (logic.or
+                         (euclidean__axioms.BetS A J C)
+                         (logic.or
+                            (euclidean__axioms.BetS J A C)
+                            (euclidean__axioms.BetS J C A))))
+                   (logic.or__intror
+                      (euclidean__axioms.eq A C)
+                      (logic.or
+                         (euclidean__axioms.BetS A J C)
+                         (logic.or
+                            (euclidean__axioms.BetS J A C)
+                            (euclidean__axioms.BetS J C A)))
+                      (logic.or__intror
+                         (euclidean__axioms.BetS A J C)
+                         (logic.or
+                            (euclidean__axioms.BetS J A C)
+                            (euclidean__axioms.BetS J C A))
+                         (logic.or__introl
+                            (euclidean__axioms.BetS J A C)
+                            (euclidean__axioms.BetS J C A)
+                            H2))))))
+            (logic.or__intror
+               (euclidean__axioms.eq J A)
+               (logic.or
+                  (euclidean__axioms.eq J B)
+                  (logic.or
+                     (euclidean__axioms.eq A B)
+                     (logic.or
+                        (euclidean__axioms.BetS A J B)
+                        (logic.or
+                           (euclidean__axioms.BetS J A B)
+                           (euclidean__axioms.BetS J B A)))))
+               (logic.or__intror
+                  (euclidean__axioms.eq J B)
+                  (logic.or
+                     (euclidean__axioms.eq A B)
+                     (logic.or
+                        (euclidean__axioms.BetS A J B)
+                        (logic.or
+                           (euclidean__axioms.BetS J A B)
+                           (euclidean__axioms.BetS J B A))))
+                  (logic.or__intror
+                     (euclidean__axioms.eq A B)
+                     (logic.or
+                        (euclidean__axioms.BetS A J B)
+                        (logic.or
+                           (euclidean__axioms.BetS J A B)
+                           (euclidean__axioms.BetS J B A)))
+                     (logic.or__intror
+                        (euclidean__axioms.BetS A J B)
+                        (logic.or
+                           (euclidean__axioms.BetS J A B)
+                           (euclidean__axioms.BetS J B A))
+                        (logic.or__introl
+                           (euclidean__axioms.BetS J A B)
+                           (euclidean__axioms.BetS J B A)
+                           H3))))))
+           ((H4:(sttfa.eps
+                   (logic.and
+                      (euclidean__axioms.neq A B)
+                      (logic.and (euclidean__axioms.neq J A) (euclidean__axioms.neq J B)))) =>
+             logic.and__ind
+               (euclidean__axioms.neq A B)
+               (logic.and (euclidean__axioms.neq J A) (euclidean__axioms.neq J B))
+               (euclidean__axioms.neq J A)
+               (H5:(sttfa.eps (euclidean__axioms.neq A B)) =>
+                H6:(sttfa.eps
+                      (logic.and (euclidean__axioms.neq J A) (euclidean__axioms.neq J B))) =>
+                logic.and__ind
+                  (euclidean__axioms.neq J A)
+                  (euclidean__axioms.neq J B)
+                  (euclidean__axioms.neq J A)
+                  (H7:(sttfa.eps (euclidean__axioms.neq J A)) =>
+                   H8:(sttfa.eps (euclidean__axioms.neq J B)) => H7)
+                  H6)
+               H4)
+              (lemma__betweennotequal.lemma__betweennotequal J A B H3)))
+        H1)
+     H0)
+    H.
+

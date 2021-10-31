@@ -1,0 +1,39 @@
+thm lemma__congruencetransitive :
+  sttfa.eps
+    (sttfa.forall
+       euclidean__axioms.Point
+       (A:(sttfa.eta euclidean__axioms.Point) =>
+        sttfa.forall
+          euclidean__axioms.Point
+          (B:(sttfa.eta euclidean__axioms.Point) =>
+           sttfa.forall
+             euclidean__axioms.Point
+             (C:(sttfa.eta euclidean__axioms.Point) =>
+              sttfa.forall
+                euclidean__axioms.Point
+                (D:(sttfa.eta euclidean__axioms.Point) =>
+                 sttfa.forall
+                   euclidean__axioms.Point
+                   (E:(sttfa.eta euclidean__axioms.Point) =>
+                    sttfa.forall
+                      euclidean__axioms.Point
+                      (F:(sttfa.eta euclidean__axioms.Point) =>
+                       sttfa.impl
+                         (euclidean__axioms.Cong A B C D)
+                         (sttfa.impl
+                            (euclidean__axioms.Cong C D E F)
+                            (euclidean__axioms.Cong A B E F)))))))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  D:(sttfa.eta euclidean__axioms.Point) =>
+  E:(sttfa.eta euclidean__axioms.Point) =>
+  F:(sttfa.eta euclidean__axioms.Point) =>
+  H:(sttfa.eps (euclidean__axioms.Cong A B C D)) =>
+  H0:(sttfa.eps (euclidean__axioms.Cong C D E F)) =>
+  (H1:(sttfa.eps (euclidean__axioms.Cong C D A B)) =>
+   (H2:(sttfa.eps (euclidean__axioms.Cong A B E F)) => H2)
+     (euclidean__axioms.cn__congruencetransitive A B E F C D H1 H0))
+    (lemma__congruencesymmetric.lemma__congruencesymmetric C A B D H).
+

@@ -1,0 +1,34 @@
+thm lemma__equalanglesreflexive :
+  sttfa.eps
+    (sttfa.forall
+       euclidean__axioms.Point
+       (A:(sttfa.eta euclidean__axioms.Point) =>
+        sttfa.forall
+          euclidean__axioms.Point
+          (B:(sttfa.eta euclidean__axioms.Point) =>
+           sttfa.forall
+             euclidean__axioms.Point
+             (C:(sttfa.eta euclidean__axioms.Point) =>
+              sttfa.impl (euclidean__axioms.nCol A B C) (euclidean__defs.CongA A B C A B C)))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  H:(sttfa.eps (euclidean__axioms.nCol A B C)) =>
+  (H0:(sttfa.eps (euclidean__defs.CongA A B C C B A)) =>
+   (H1:(sttfa.eps (euclidean__axioms.nCol C B A)) =>
+    (H2:(sttfa.eps (euclidean__defs.CongA C B A A B C)) =>
+     (H3:(sttfa.eps (euclidean__defs.CongA A B C A B C)) => H3)
+       (lemma__equalanglestransitive.lemma__equalanglestransitive A B C C B A A B C H0 H2))
+      (lemma__ABCequalsCBA.lemma__ABCequalsCBA C B A H1))
+     (euclidean__tactics.nCol__notCol
+        C
+        B
+        A
+        (euclidean__tactics.nCol__not__Col
+           C
+           B
+           A
+           (lemma__equalanglesNC.lemma__equalanglesNC A B C C B A H0))))
+    (lemma__ABCequalsCBA.lemma__ABCequalsCBA A B C H).
+

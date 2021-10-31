@@ -1,0 +1,61 @@
+thm lemma__extensionunique :
+  sttfa.eps
+    (sttfa.forall
+       euclidean__axioms.Point
+       (A:(sttfa.eta euclidean__axioms.Point) =>
+        sttfa.forall
+          euclidean__axioms.Point
+          (B:(sttfa.eta euclidean__axioms.Point) =>
+           sttfa.forall
+             euclidean__axioms.Point
+             (E:(sttfa.eta euclidean__axioms.Point) =>
+              sttfa.forall
+                euclidean__axioms.Point
+                (F:(sttfa.eta euclidean__axioms.Point) =>
+                 sttfa.impl
+                   (euclidean__axioms.BetS A B E)
+                   (sttfa.impl
+                      (euclidean__axioms.BetS A B F)
+                      (sttfa.impl (euclidean__axioms.Cong B E B F) (euclidean__axioms.eq E F))))))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  E:(sttfa.eta euclidean__axioms.Point) =>
+  F:(sttfa.eta euclidean__axioms.Point) =>
+  H:(sttfa.eps (euclidean__axioms.BetS A B E)) =>
+  H0:(sttfa.eps (euclidean__axioms.BetS A B F)) =>
+  H1:(sttfa.eps (euclidean__axioms.Cong B E B F)) =>
+  (H2:(sttfa.eps (euclidean__axioms.Cong B E B E)) =>
+   (H3:(sttfa.eps (euclidean__axioms.Cong B F B E)) =>
+    (H4:(sttfa.eps (euclidean__axioms.Cong A E A E)) =>
+     (H5:(sttfa.eps (euclidean__axioms.Cong A B A B)) =>
+      (H6:(sttfa.eps (euclidean__axioms.Cong B E B F)) =>
+       (H7:(sttfa.eps (euclidean__axioms.Cong E E E F)) =>
+        (H8:(sttfa.eps (euclidean__axioms.Cong E F E E)) =>
+         (H9:(sttfa.eps (logic.not (euclidean__axioms.neq E F))) =>
+          euclidean__tactics.NNPP
+            (euclidean__axioms.eq E F)
+            (H10:(sttfa.eps (logic.not (euclidean__axioms.eq E F))) =>
+             (H11:(sttfa.eps logic.false) =>
+              logic.False__ind logic.false H11)
+               (H9 H10)))
+           (H9:(sttfa.eps (euclidean__axioms.neq E F)) =>
+            (H10:(sttfa.eps (euclidean__axioms.neq E E)) =>
+             (H11:(sttfa.eps (euclidean__axioms.eq E E)) => H10 H11)
+               ((H11:(sttfa.eps logic.false) =>
+                 (H12:(sttfa.eps logic.false) =>
+                  logic.eq__refl euclidean__axioms.Point E)
+                   H11)
+                  ((H11:(sttfa.eps
+                           (logic.eq euclidean__axioms.Point E E)) =>
+                    H10 H11)
+                     (logic.eq__refl euclidean__axioms.Point E))))
+              (euclidean__axioms.axiom__nocollapse E F E E H9 H8)))
+          (lemma__congruencesymmetric.lemma__congruencesymmetric E E E F H7))
+         (euclidean__axioms.axiom__5__line A B E E A B F E H6 H4 H2 H H0 H5))
+        H1)
+       (euclidean__axioms.cn__congruencereflexive A B))
+      (euclidean__axioms.cn__congruencereflexive A E))
+     (lemma__congruencesymmetric.lemma__congruencesymmetric B B E F H1))
+    (euclidean__axioms.cn__congruencereflexive B E).
+

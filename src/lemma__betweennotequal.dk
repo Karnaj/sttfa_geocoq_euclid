@@ -1,0 +1,79 @@
+thm lemma__betweennotequal :
+  sttfa.eps
+    (sttfa.forall
+       euclidean__axioms.Point
+       (A:(sttfa.eta euclidean__axioms.Point) =>
+        sttfa.forall
+          euclidean__axioms.Point
+          (B:(sttfa.eta euclidean__axioms.Point) =>
+           sttfa.forall
+             euclidean__axioms.Point
+             (C:(sttfa.eta euclidean__axioms.Point) =>
+              sttfa.impl
+                (euclidean__axioms.BetS A B C)
+                (logic.and
+                   (euclidean__axioms.neq B C)
+                   (logic.and (euclidean__axioms.neq A B) (euclidean__axioms.neq A C)))))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  H:(sttfa.eps (euclidean__axioms.BetS A B C)) =>
+  (H0:(sttfa.eps (logic.not (euclidean__axioms.eq B C))) =>
+   (H1:(sttfa.eps (logic.not (euclidean__axioms.eq A B))) =>
+    (H2:(sttfa.eps (logic.not (euclidean__axioms.eq A C))) =>
+     logic.conj
+       (euclidean__axioms.neq B C)
+       (logic.and (euclidean__axioms.neq A B) (euclidean__axioms.neq A C))
+       H0
+       (logic.conj (euclidean__axioms.neq A B) (euclidean__axioms.neq A C) H1 H2))
+      (H2:(sttfa.eps (euclidean__axioms.eq A C)) =>
+       (H3:(sttfa.eps (euclidean__axioms.BetS A B A)) =>
+        (H4:(sttfa.eps (logic.not (euclidean__axioms.BetS A B A))) => H4 H3)
+          (euclidean__axioms.axiom__betweennessidentity A B))
+         (logic.eq__ind__r
+            euclidean__axioms.Point
+            C
+            (A0:(sttfa.eta euclidean__axioms.Point) =>
+             sttfa.impl
+               (euclidean__axioms.BetS A0 B C)
+               (sttfa.impl
+                  (logic.not (logic.eq euclidean__axioms.Point A0 B))
+                  (euclidean__axioms.BetS A0 B A0)))
+            (H3:(sttfa.eps (euclidean__axioms.BetS C B C)) =>
+             H4:(sttfa.eps (logic.not (logic.eq euclidean__axioms.Point C B))) => H3)
+            A
+            H2
+            H
+            H1)))
+     (H1:(sttfa.eps (euclidean__axioms.eq A B)) =>
+      (H2:(sttfa.eps (euclidean__axioms.BetS B A C)) =>
+       (H3:(sttfa.eps (euclidean__axioms.BetS A B A)) =>
+        (H4:(sttfa.eps (logic.not (euclidean__axioms.BetS A B A))) => H4 H3)
+          (euclidean__axioms.axiom__betweennessidentity A B))
+         (euclidean__axioms.axiom__innertransitivity A B A C H H2))
+        (logic.eq__ind__r
+           euclidean__axioms.Point
+           B
+           (A0:(sttfa.eta euclidean__axioms.Point) =>
+            sttfa.impl (euclidean__axioms.BetS A0 B C) (euclidean__axioms.BetS B A0 C))
+           (H2:(sttfa.eps (euclidean__axioms.BetS B B C)) => H2)
+           A
+           H1
+           H)))
+    (H0:(sttfa.eps (euclidean__axioms.eq B C)) =>
+     (H1:(sttfa.eps (euclidean__axioms.BetS A C B)) =>
+      (H2:(sttfa.eps (euclidean__axioms.BetS B C B)) =>
+       (H3:(sttfa.eps (logic.not (euclidean__axioms.BetS B C B))) => H3 H2)
+         (euclidean__axioms.axiom__betweennessidentity B C))
+        (lemma__3__6a.lemma__3__6a A B C B H H1))
+       (logic.eq__ind__r
+          euclidean__axioms.Point
+          C
+          (B0:(sttfa.eta euclidean__axioms.Point) =>
+           sttfa.impl (euclidean__axioms.BetS A B0 C) (euclidean__axioms.BetS A C B0))
+          (H1:(sttfa.eps (euclidean__axioms.BetS A C C)) => H1)
+          B
+          H0
+          H)).
+

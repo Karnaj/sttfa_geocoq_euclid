@@ -1,0 +1,148 @@
+thm lemma__NCdistinct :
+  sttfa.eps
+    (sttfa.forall
+       euclidean__axioms.Point
+       (A:(sttfa.eta euclidean__axioms.Point) =>
+        sttfa.forall
+          euclidean__axioms.Point
+          (B:(sttfa.eta euclidean__axioms.Point) =>
+           sttfa.forall
+             euclidean__axioms.Point
+             (C:(sttfa.eta euclidean__axioms.Point) =>
+              sttfa.impl
+                (euclidean__axioms.nCol A B C)
+                (logic.and
+                   (euclidean__axioms.neq A B)
+                   (logic.and
+                      (euclidean__axioms.neq B C)
+                      (logic.and
+                         (euclidean__axioms.neq A C)
+                         (logic.and
+                            (euclidean__axioms.neq B A)
+                            (logic.and
+                               (euclidean__axioms.neq C B)
+                               (euclidean__axioms.neq C A))))))))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  H:(sttfa.eps (euclidean__axioms.nCol A B C)) =>
+  (H0:(sttfa.eps (logic.not (euclidean__axioms.eq A B))) =>
+   (H1:(sttfa.eps (euclidean__axioms.neq B A)) =>
+    (H2:(sttfa.eps (logic.not (euclidean__axioms.eq A C))) =>
+     (H3:(sttfa.eps (euclidean__axioms.neq C A)) =>
+      (H4:(sttfa.eps (logic.not (euclidean__axioms.eq B C))) =>
+       (H5:(sttfa.eps (euclidean__axioms.neq C B)) =>
+        logic.conj
+          (euclidean__axioms.neq A B)
+          (logic.and
+             (euclidean__axioms.neq B C)
+             (logic.and
+                (euclidean__axioms.neq A C)
+                (logic.and
+                   (euclidean__axioms.neq B A)
+                   (logic.and
+                      (euclidean__axioms.neq C B)
+                      (euclidean__axioms.neq C A)))))
+          H0
+          (logic.conj
+             (euclidean__axioms.neq B C)
+             (logic.and
+                (euclidean__axioms.neq A C)
+                (logic.and
+                   (euclidean__axioms.neq B A)
+                   (logic.and
+                      (euclidean__axioms.neq C B)
+                      (euclidean__axioms.neq C A))))
+             H4
+             (logic.conj
+                (euclidean__axioms.neq A C)
+                (logic.and
+                   (euclidean__axioms.neq B A)
+                   (logic.and
+                      (euclidean__axioms.neq C B)
+                      (euclidean__axioms.neq C A)))
+                H2
+                (logic.conj
+                   (euclidean__axioms.neq B A)
+                   (logic.and
+                      (euclidean__axioms.neq C B)
+                      (euclidean__axioms.neq C A))
+                   H1
+                   (logic.conj
+                      (euclidean__axioms.neq C B)
+                      (euclidean__axioms.neq C A)
+                      H5
+                      H3)))))
+         (lemma__inequalitysymmetric.lemma__inequalitysymmetric B C H4))
+        (H4:(sttfa.eps (euclidean__axioms.eq B C)) =>
+         (H5:(sttfa.eps (euclidean__axioms.Col A B C)) =>
+          euclidean__tactics.Col__nCol__False A B C H H5)
+           (logic.or__intror
+              (euclidean__axioms.eq A B)
+              (logic.or
+                 (euclidean__axioms.eq A C)
+                 (logic.or
+                    (euclidean__axioms.eq B C)
+                    (logic.or
+                       (euclidean__axioms.BetS B A C)
+                       (logic.or
+                          (euclidean__axioms.BetS A B C)
+                          (euclidean__axioms.BetS A C B)))))
+              (logic.or__intror
+                 (euclidean__axioms.eq A C)
+                 (logic.or
+                    (euclidean__axioms.eq B C)
+                    (logic.or
+                       (euclidean__axioms.BetS B A C)
+                       (logic.or
+                          (euclidean__axioms.BetS A B C)
+                          (euclidean__axioms.BetS A C B))))
+                 (logic.or__introl
+                    (euclidean__axioms.eq B C)
+                    (logic.or
+                       (euclidean__axioms.BetS B A C)
+                       (logic.or
+                          (euclidean__axioms.BetS A B C)
+                          (euclidean__axioms.BetS A C B)))
+                    H4)))))
+       (lemma__inequalitysymmetric.lemma__inequalitysymmetric A C H2))
+      (H2:(sttfa.eps (euclidean__axioms.eq A C)) =>
+       (H3:(sttfa.eps (euclidean__axioms.Col A B C)) =>
+        euclidean__tactics.Col__nCol__False A B C H H3)
+         (logic.or__intror
+            (euclidean__axioms.eq A B)
+            (logic.or
+               (euclidean__axioms.eq A C)
+               (logic.or
+                  (euclidean__axioms.eq B C)
+                  (logic.or
+                     (euclidean__axioms.BetS B A C)
+                     (logic.or
+                        (euclidean__axioms.BetS A B C)
+                        (euclidean__axioms.BetS A C B)))))
+            (logic.or__introl
+               (euclidean__axioms.eq A C)
+               (logic.or
+                  (euclidean__axioms.eq B C)
+                  (logic.or
+                     (euclidean__axioms.BetS B A C)
+                     (logic.or
+                        (euclidean__axioms.BetS A B C)
+                        (euclidean__axioms.BetS A C B))))
+               H2))))
+     (lemma__inequalitysymmetric.lemma__inequalitysymmetric A B H0))
+    (H0:(sttfa.eps (euclidean__axioms.eq A B)) =>
+     (H1:(sttfa.eps (euclidean__axioms.Col A B C)) =>
+      euclidean__tactics.Col__nCol__False A B C H H1)
+       (logic.or__introl
+          (euclidean__axioms.eq A B)
+          (logic.or
+             (euclidean__axioms.eq A C)
+             (logic.or
+                (euclidean__axioms.eq B C)
+                (logic.or
+                   (euclidean__axioms.BetS B A C)
+                   (logic.or (euclidean__axioms.BetS A B C) (euclidean__axioms.BetS A C B)))))
+          H0)).
+

@@ -1,0 +1,251 @@
+true : sttfa.etap (sttfa.p sttfa.bool).
+
+false : sttfa.etap (sttfa.p sttfa.bool).
+
+def I : sttfa.eps true.
+
+False__ind :
+  sttfa.eps (sttfa.forall sttfa.bool (A:(sttfa.etap (sttfa.p sttfa.bool)) => sttfa.impl false A)).
+
+def not :
+  sttfa.etap (sttfa.p (sttfa.arrow sttfa.bool sttfa.bool))
+  :=
+  x:(sttfa.etap (sttfa.p sttfa.bool)) => sttfa.impl x false.
+
+def and :
+  sttfa.etap (sttfa.p (sttfa.arrow sttfa.bool (sttfa.arrow sttfa.bool sttfa.bool)))
+  :=
+  x:(sttfa.etap (sttfa.p sttfa.bool)) =>
+  y:(sttfa.etap (sttfa.p sttfa.bool)) =>
+  sttfa.forall
+    sttfa.bool
+    (z:(sttfa.etap (sttfa.p sttfa.bool)) => sttfa.impl (sttfa.impl x (sttfa.impl y z)) z).
+
+def or :
+  sttfa.etap (sttfa.p (sttfa.arrow sttfa.bool (sttfa.arrow sttfa.bool sttfa.bool)))
+  :=
+  x:(sttfa.etap (sttfa.p sttfa.bool)) =>
+  y:(sttfa.etap (sttfa.p sttfa.bool)) =>
+  sttfa.forall
+    sttfa.bool
+    (z:(sttfa.etap (sttfa.p sttfa.bool)) =>
+     sttfa.impl (sttfa.impl x z) (sttfa.impl (sttfa.impl y z) z)).
+
+def ex :
+  sttfa.etap
+    (sttfa.forallK (A:sttfa.type => sttfa.p (sttfa.arrow (sttfa.arrow A sttfa.bool) sttfa.bool)))
+  :=
+  A:sttfa.type =>
+  f:(sttfa.etap (sttfa.p (sttfa.arrow A sttfa.bool))) =>
+  sttfa.forall
+    sttfa.bool
+    (z:(sttfa.etap (sttfa.p sttfa.bool)) =>
+     sttfa.impl (sttfa.forall A (x:(sttfa.etap (sttfa.p A)) => sttfa.impl (f x) z)) z).
+
+def and__ind :
+  sttfa.eps
+    (sttfa.forall
+       sttfa.bool
+       (A:(sttfa.etap (sttfa.p sttfa.bool)) =>
+        sttfa.forall
+          sttfa.bool
+          (B:(sttfa.etap (sttfa.p sttfa.bool)) =>
+           sttfa.forall
+             sttfa.bool
+             (P:(sttfa.etap (sttfa.p sttfa.bool)) =>
+              sttfa.impl (sttfa.impl A (sttfa.impl B P)) (sttfa.impl (and A B) P)))))
+  :=
+  A:(sttfa.etap (sttfa.p sttfa.bool)) =>
+  B:(sttfa.etap (sttfa.p sttfa.bool)) =>
+  P:(sttfa.etap (sttfa.p sttfa.bool)) =>
+  f:(sttfa.eps (sttfa.impl A (sttfa.impl B P))) => g:(sttfa.eps (and A B)) => g P f.
+
+def or__ind :
+  sttfa.eps
+    (sttfa.forall
+       sttfa.bool
+       (A:(sttfa.etap (sttfa.p sttfa.bool)) =>
+        sttfa.forall
+          sttfa.bool
+          (B:(sttfa.etap (sttfa.p sttfa.bool)) =>
+           sttfa.forall
+             sttfa.bool
+             (P:(sttfa.etap (sttfa.p sttfa.bool)) =>
+              sttfa.impl (sttfa.impl A P) (sttfa.impl (sttfa.impl B P) (sttfa.impl (or A B) P))))))
+  :=
+  A:(sttfa.etap (sttfa.p sttfa.bool)) =>
+  B:(sttfa.etap (sttfa.p sttfa.bool)) =>
+  P:(sttfa.etap (sttfa.p sttfa.bool)) =>
+  f:(sttfa.eps (sttfa.impl A P)) =>
+  g:(sttfa.eps (sttfa.impl B P)) => h:(sttfa.eps (or A B)) => h P f g.
+
+def ex__ind :
+  sttfa.eps
+    (sttfa.forallP
+       (A:sttfa.type =>
+        sttfa.forall
+          (sttfa.arrow A sttfa.bool)
+          (P:(sttfa.etap (sttfa.p (sttfa.arrow A sttfa.bool))) =>
+           sttfa.forall
+             sttfa.bool
+             (return:(sttfa.etap (sttfa.p sttfa.bool)) =>
+              sttfa.impl
+                (sttfa.forall A (x:(sttfa.etap (sttfa.p A)) => sttfa.impl (P x) return))
+                (sttfa.impl (ex A P) return)))))
+  :=
+  A:sttfa.type =>
+  P:(sttfa.etap (sttfa.p (sttfa.arrow A sttfa.bool))) =>
+  return:(sttfa.etap (sttfa.p sttfa.bool)) =>
+  case:(sttfa.eps (sttfa.forall A (x:(sttfa.etap (sttfa.p A)) => sttfa.impl (P x) return))) =>
+  ExPrf:(sttfa.eps (ex A P)) => ExPrf return case.
+
+def conj :
+  sttfa.eps
+    (sttfa.forall
+       sttfa.bool
+       (A:(sttfa.etap (sttfa.p sttfa.bool)) =>
+        sttfa.forall
+          sttfa.bool
+          (B:(sttfa.etap (sttfa.p sttfa.bool)) => sttfa.impl A (sttfa.impl B (and A B)))))
+  :=
+  A:(sttfa.etap (sttfa.p sttfa.bool)) =>
+  B:(sttfa.etap (sttfa.p sttfa.bool)) =>
+  f:(sttfa.eps A) =>
+  g:(sttfa.eps B) =>
+  C:(sttfa.etap (sttfa.p sttfa.bool)) => F:(sttfa.eps (sttfa.impl A (sttfa.impl B C))) => F f g.
+
+def or__introl :
+  sttfa.eps
+    (sttfa.forall
+       sttfa.bool
+       (A:(sttfa.etap (sttfa.p sttfa.bool)) =>
+        sttfa.forall sttfa.bool (B:(sttfa.etap (sttfa.p sttfa.bool)) => sttfa.impl A (or A B))))
+  :=
+  A:(sttfa.etap (sttfa.p sttfa.bool)) =>
+  B:(sttfa.etap (sttfa.p sttfa.bool)) =>
+  f:(sttfa.eps A) =>
+  C:(sttfa.etap (sttfa.p sttfa.bool)) =>
+  F:(sttfa.eps (sttfa.impl A C)) => G:(sttfa.eps (sttfa.impl B C)) => F f.
+
+def or__intror :
+  sttfa.eps
+    (sttfa.forall
+       sttfa.bool
+       (A:(sttfa.etap (sttfa.p sttfa.bool)) =>
+        sttfa.forall sttfa.bool (B:(sttfa.etap (sttfa.p sttfa.bool)) => sttfa.impl B (or A B))))
+  :=
+  A:(sttfa.etap (sttfa.p sttfa.bool)) =>
+  B:(sttfa.etap (sttfa.p sttfa.bool)) =>
+  g:(sttfa.eps B) =>
+  C:(sttfa.etap (sttfa.p sttfa.bool)) =>
+  F:(sttfa.eps (sttfa.impl A C)) => G:(sttfa.eps (sttfa.impl B C)) => G g.
+
+def ex__intro :
+  sttfa.eps
+    (sttfa.forallP
+       (A:sttfa.type =>
+        sttfa.forall
+          (sttfa.arrow A sttfa.bool)
+          (P:(sttfa.etap (sttfa.p (sttfa.arrow A sttfa.bool))) =>
+           sttfa.forall A (x:(sttfa.eta A) => sttfa.impl (P x) (ex A P)))))
+  :=
+  A:sttfa.type =>
+  P:(sttfa.etap (sttfa.p (sttfa.arrow A sttfa.bool))) =>
+  x:(sttfa.eta A) =>
+  f:(sttfa.eps (P x)) =>
+  p:(sttfa.etap (sttfa.p sttfa.bool)) =>
+  g:(sttfa.eps (sttfa.forall A (x0:(sttfa.etap (sttfa.p A)) => sttfa.impl (P x0) p))) => g x f.
+
+def eq :
+  sttfa.etap (sttfa.forallK (A:sttfa.type => sttfa.p (sttfa.arrow A (sttfa.arrow A sttfa.bool))))
+  :=
+  A:sttfa.type =>
+  x:(sttfa.etap (sttfa.p A)) =>
+  y:(sttfa.etap (sttfa.p A)) =>
+  sttfa.forall
+    (sttfa.arrow A sttfa.bool)
+    (P:(sttfa.etap (sttfa.p (sttfa.arrow A sttfa.bool))) => sttfa.impl (P x) (P y)).
+
+def eq__refl :
+  sttfa.eps (sttfa.forallP (A:sttfa.type => sttfa.forall A (x:(sttfa.eta A) => eq A x x)))
+  :=
+  A:sttfa.type =>
+  x:(sttfa.eta A) => P:(sttfa.eta (sttfa.arrow A sttfa.bool)) => H:(sttfa.eps (P x)) => H.
+
+def eq__trans :
+  sttfa.eps
+    (sttfa.forallP
+       (A:sttfa.type =>
+        sttfa.forall
+          A
+          (x:(sttfa.eta A) =>
+           sttfa.forall
+             A
+             (y:(sttfa.eta A) =>
+              sttfa.forall
+                A
+                (z:(sttfa.eta A) => sttfa.impl (eq A x y) (sttfa.impl (eq A y z) (eq A x z)))))))
+  :=
+  A:sttfa.type =>
+  x:(sttfa.eta A) =>
+  y:(sttfa.eta A) =>
+  z:(sttfa.eta A) =>
+  L:(sttfa.eps (eq A x y)) =>
+  R:(sttfa.eps (eq A y z)) =>
+  P:(sttfa.eta (sttfa.arrow A sttfa.bool)) => PX:(sttfa.eps (P x)) => R P (L P PX).
+
+def eq__ind :
+  sttfa.eps
+    (sttfa.forallP
+       (A:sttfa.type =>
+        sttfa.forall
+          A
+          (x:(sttfa.etap (sttfa.p A)) =>
+           sttfa.forall
+             (sttfa.arrow A sttfa.bool)
+             (P:(sttfa.etap (sttfa.p (sttfa.arrow A sttfa.bool))) =>
+              sttfa.impl
+                (P x)
+                (sttfa.forall A (y:(sttfa.etap (sttfa.p A)) => sttfa.impl (eq A x y) (P y)))))))
+  :=
+  A:sttfa.type =>
+  x:(sttfa.etap (sttfa.p A)) =>
+  P:(sttfa.etap (sttfa.p (sttfa.arrow A sttfa.bool))) =>
+  p:(sttfa.eps (P x)) => y:(sttfa.etap (sttfa.p A)) => p0:(sttfa.eps (eq A x y)) => p0 P p.
+
+def eq__sym :
+  sttfa.eps
+    (sttfa.forallP
+       (A:sttfa.type =>
+        sttfa.forall
+          A
+          (x:(sttfa.eta A) => sttfa.forall A (y:(sttfa.eta A) => sttfa.impl (eq A x y) (eq A y x)))))
+  :=
+  A:sttfa.type =>
+  x:(sttfa.eta A) =>
+  y:(sttfa.eta A) =>
+  H:(sttfa.eps (eq A x y)) =>
+  eq__ind A x (y0:(sttfa.etap (sttfa.p A)) => eq A y0 x) (eq__refl A x) y H.
+
+def eq__ind__r :
+  sttfa.eps
+    (sttfa.forallP
+       (A:sttfa.type =>
+        sttfa.forall
+          A
+          (a:(sttfa.etap (sttfa.p A)) =>
+           sttfa.forall
+             (sttfa.arrow A sttfa.bool)
+             (P:(sttfa.etap (sttfa.p (sttfa.arrow A sttfa.bool))) =>
+              sttfa.impl
+                (P a)
+                (sttfa.forall A (x:(sttfa.etap (sttfa.p A)) => sttfa.impl (eq A x a) (P x)))))))
+  :=
+  A:sttfa.type =>
+  a:(sttfa.etap (sttfa.p A)) =>
+  P:(sttfa.etap (sttfa.p (sttfa.arrow A sttfa.bool))) =>
+  p:(sttfa.eps (P a)) =>
+  x0:(sttfa.etap (sttfa.p A)) =>
+  p0:(sttfa.eps (eq A x0 a)) =>
+  eq__ind A a (y0:(sttfa.etap (sttfa.p A)) => P y0) p x0 (eq__sym A x0 a p0).
+

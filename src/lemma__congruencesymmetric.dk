@@ -1,0 +1,26 @@
+thm lemma__congruencesymmetric :
+  sttfa.eps
+    (sttfa.forall
+       euclidean__axioms.Point
+       (A:(sttfa.eta euclidean__axioms.Point) =>
+        sttfa.forall
+          euclidean__axioms.Point
+          (B:(sttfa.eta euclidean__axioms.Point) =>
+           sttfa.forall
+             euclidean__axioms.Point
+             (C:(sttfa.eta euclidean__axioms.Point) =>
+              sttfa.forall
+                euclidean__axioms.Point
+                (D:(sttfa.eta euclidean__axioms.Point) =>
+                 sttfa.impl (euclidean__axioms.Cong B C A D) (euclidean__axioms.Cong A D B C))))))
+  :=
+  A:(sttfa.eta euclidean__axioms.Point) =>
+  B:(sttfa.eta euclidean__axioms.Point) =>
+  C:(sttfa.eta euclidean__axioms.Point) =>
+  D:(sttfa.eta euclidean__axioms.Point) =>
+  H:(sttfa.eps (euclidean__axioms.Cong B C A D)) =>
+  (H0:(sttfa.eps (euclidean__axioms.Cong B C B C)) =>
+   (H1:(sttfa.eps (euclidean__axioms.Cong A D B C)) => H1)
+     (euclidean__axioms.cn__congruencetransitive A D B C B C H H0))
+    (euclidean__axioms.cn__congruencereflexive B C).
+
