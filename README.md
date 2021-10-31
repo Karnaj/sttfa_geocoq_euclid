@@ -44,7 +44,7 @@ to Dedukti and to encoding. So,
 - [`euclidean__defs`](src/euclidean__defs.dk) contains some predicates that form definitions (`MidPoint`, `Triangle`, etc.).
 
 Some other files could be interesting. For instance 
-[`euclidean_tactics`](src/euclidean__defs.dk) defines 
+[`euclidean_tactics`](src/euclidean__tactics.dk) defines 
 helper functions that will facilitate the proofs. By the 
 way, an axiom for classical logic is also added in this 
 file. Therefore, the first elements of this file are the 
