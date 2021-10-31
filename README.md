@@ -28,10 +28,10 @@ So, it should be possible to translate them into
 systems with theories weaker than STTFA.
 
 
-## Navigate into the code
+## Read the code
 
 Big proof terms are not really readable, and it is not 
-recommended into the code to understand the proofs' 
+recommended to read the code to understand the proofs' 
 formalization (it is better to consult GeoCoq, and maybe 
 [this article](http://www.michaelbeeson.com/research/papers/ProofCheckingEuclid.pdf)).
 
