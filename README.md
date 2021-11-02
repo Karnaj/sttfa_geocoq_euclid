@@ -67,7 +67,7 @@ Here are the size of the generated translations.
 | Open Theory   | 854 Mib                |
 | PVS           | 191 Mib                |
 
-There is no comparison with the size to the size of the 
+There is no comparison with the size of the 
 [proofs of GeoCoq](https://github.com/GeoCoq/GeoCoq/tree/master/Elements/OriginalProofs). 
 Indeed, the code of the original proofs uses Coq tactics
 while the translations only consists of proof terms, so
